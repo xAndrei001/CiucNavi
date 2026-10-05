@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ciuc Navi | CS2 Team from Miercurea Ciuc</title>
+  <meta name="description" content="Ciuc Navi - a CS2 Premier team from Miercurea Ciuc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#home" class="brand">
+      <span class="brand-mark">CN</span>
+      <span class="brand-text">CIUC <b>NAVI</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#roster">Roster</a>
+      <a href="#bench">Bench</a>
+      <a href="#merch">Merch</a>
+      <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn btn-small">Join Discord</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow"></div>
+      <p class="eyebrow">Miercurea Ciuc &bull; CS2 Premier</p>
+      <h1>CIUC <span class="yellow">NAVI</span></h1>
+      <p class="hero-sub">Born in Harghita. Playing like champions. Five friends, one roster, zero chill.</p>
+      <div class="hero-cta">
+        <a href="#roster" class="btn">Meet the Team</a>
+        <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn btn-ghost">Discord</a>
+      </div>
+      <div class="hero-stats" id="hero-stats"></div>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section-title">About <span class="yellow">Us</span></h2>
+      <div class="about-grid">
+        <p>Ciuc Navi is a community team from Miercurea Ciuc, built on friendship and a love for Counter-Strike 2. We queue together in Premier, take the game seriously, and take ourselves a little less seriously.</p>
+        <ul class="facts">
+          <li><span>Game</span> Counter-Strike 2</li>
+          <li><span>Mode</span> Premier</li>
+          <li><span>Origin</span> Miercurea Ciuc, RO</li>
+          <li><span>Colours</span> Black &amp; Yellow</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="roster">
+      <h2 class="section-title">Main <span class="yellow">Roster</span></h2>
+      <div class="grid" id="main-grid"></div>
+    </section>
+
+    <section class="section" id="bench">
+      <h2 class="section-title">The <span class="yellow">Bench</span></h2>
+      <div class="grid grid-bench" id="bench-grid"></div>
+      <p class="empty" id="bench-empty" hidden>No players on the bench yet. Recruiting soon.</p>
+    </section>
+
+    <section class="section" id="merch">
+      <h2 class="section-title">Merch <span class="yellow">Store</span></h2>
+      <div class="merch-box">
+        <span class="badge">COMING SOON</span>
+        <p>Jerseys, mousepads and other fan-made nonsense. Just for fun.</p>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <h2>Want to play with us?</h2>
+      <p>Join the Discord and say hi.</p>
+      <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn">Join our Discord</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Ciuc Navi. Fan-made parody project, not affiliated with NAVI (Natus Vincere).</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
