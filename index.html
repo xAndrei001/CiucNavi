@@ -1,92 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ciuc Navi | CS2 Team from Miercurea Ciuc</title>
-  <meta name="description" content="Ciuc Navi - a CS2 Premier team from Miercurea Ciuc." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Ciuc Navi | CS2 Team from Miercurea Ciuc</title>
+<meta name='description' content='Ciuc Navi - a CS2 Premier team from Miercurea Ciuc.'>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap' rel='stylesheet'>
+<link rel='stylesheet' href='css/style.css'>
 </head>
-<body>
+<body data-title='title'>
+<canvas id='snow'></canvas>
+<div id='progress'></div>
 
-  <header class="nav">
-    <a href="#home" class="brand">
-      <span class="brand-mark">CN</span>
-      <span class="brand-text">CIUC <b>NAVI</b></span>
-    </a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#roster">Roster</a>
-      <a href="#bench">Bench</a>
-      <a href="#merch">Merch</a>
-      <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn btn-small">Join Discord</a>
-    </nav>
-  </header>
+<header class='nav'>
+  <a href='#home' class='brand'><span class='brand-mark'>CN</span><span class='brand-text'>CIUC <b>NAVI</b></span></a>
+  <nav class='nav-links'>
+    <a href='#about' data-i18n='nav.about'>About</a>
+    <a href='#roster' data-i18n='nav.roster'>Roster</a>
+    <a href='#bench' data-i18n='nav.bench'>Bench</a>
+    <a href='#merch' data-i18n='nav.merch'>Merch</a>
+    <div class='lang'>
+      <button class='lang-btn' data-lang='en'>EN</button>
+      <button class='lang-btn' data-lang='ro'>RO</button>
+      <button class='lang-btn' data-lang='hu'>HU</button>
+    </div>
+    <a href='https://discord.gg/7jR3Qr9Znz' target='_blank' rel='noopener' class='btn btn-small' data-i18n='nav.discord'>Join Discord</a>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-glow"></div>
-      <p class="eyebrow">Miercurea Ciuc &bull; CS2 Premier</p>
-      <h1>CIUC <span class="yellow">NAVI</span></h1>
-      <p class="hero-sub">Born in Harghita. Playing like champions. Five friends, one roster, zero chill.</p>
-      <div class="hero-cta">
-        <a href="#roster" class="btn">Meet the Team</a>
-        <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn btn-ghost">Discord</a>
+<main>
+  <section class='hero' id='home'>
+    <div class='hero-glow'></div>
+    <p class='eyebrow' data-i18n='hero.eyebrow'></p>
+    <h1>CIUC <span class='yellow'>NAVI</span></h1>
+    <p class='hero-sub' data-i18n='hero.sub'></p>
+    <div class='hero-cta'>
+      <a href='#roster' class='btn' data-i18n='hero.cta1'></a>
+      <a href='https://discord.gg/7jR3Qr9Znz' target='_blank' rel='noopener' class='btn btn-ghost' data-i18n='hero.cta2'></a>
+    </div>
+    <div class='hero-stats' id='hero-stats'></div>
+  </section>
+
+  <section class='section reveal' id='about'>
+    <h2 class='section-title' data-i18n='about.title'></h2>
+    <div class='about-grid'>
+      <div class='about-text'>
+        <h3 class='about-headline' data-i18n='about.headline'></h3>
+        <p data-i18n='about.p1'></p>
+        <p data-i18n='about.p2'></p>
+        <p class='about-btn'><a href='https://steamcommunity.com/groups/keyboardgoblin' target='_blank' rel='noopener' class='btn btn-ghost btn-small' data-i18n='about.steam'></a></p>
       </div>
-      <div class="hero-stats" id="hero-stats"></div>
-    </section>
+      <ul class='facts'>
+        <li><span data-i18n='facts.game'></span> Counter-Strike 2</li>
+        <li><span data-i18n='facts.mode'></span> Premier</li>
+        <li><span data-i18n='facts.origin'></span> Miercurea Ciuc, RO</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="section" id="about">
-      <h2 class="section-title">About <span class="yellow">Us</span></h2>
-      <div class="about-grid">
-        <div class="about-text" lang="ro">
-          <h3 style="color:#ffe600;font-family:'Rajdhani',sans-serif;font-size:1.5rem;letter-spacing:1px;margin-bottom:14px;">Natus Vincere de Harghita: N&#259;scu&#355;i s&#259; &icirc;nving&#259;, dar c&#259;li&#355;i la -20&deg;C.</h3>
-          <p>Dac&#259; s1mple &#537;i b1t s-ar fi n&#259;scut l&acirc;ng&#259; patinoarul V&aacute;k&aacute;r Lajos, echipa asta ar fi fost rezultatul. Suntem Na'Vi de Miercurea Ciuc, forma&#539;ia care aduce disciplina de hochei direct pe Mirage &#537;i Inferno. C&acirc;nd degetele &icirc;&#539;i &icirc;nghea&#539;&#259; iarna pe mouse, &icirc;nve&#539;i s&#259; tragi doar cu one-tap-uri ca s&#259; economise&#537;ti mi&#537;carea.</p>
-          <p style="margin-top:14px;">Nu ne tem de rush pe B &#537;i nici de prelungiri, pentru c&#259; rezisten&#539;a noastr&#259; la stres termic &#537;i psihic e imbatabil&#259;. Strategia e simpl&#259;: fum pe mid, flash pe lung, ceai fierbinte (sau o afinat&#259;) &icirc;n freeze time &#537;i &#539;inta direct pe cap.</p>
-          <p style="margin-top:18px;"><a href="https://steamcommunity.com/groups/keyboardgoblin" target="_blank" rel="noopener" class="btn btn-ghost btn-small">Steam Group</a></p>
-        </div>
-        <ul class="facts">
-          <li><span>Game</span> Counter-Strike 2</li>
-          <li><span>Mode</span> Premier</li>
-          <li><span>Origin</span> Miercurea Ciuc, RO</li>
-          <li><span>Colours</span> Black &amp; Yellow</li>
-        </ul>
-      </div>
-    </section>
+  <section class='section' id='roster'>
+    <h2 class='section-title reveal' data-i18n='roster.title'></h2>
+    <div class='grid' id='main-grid'></div>
+  </section>
 
-    <section class="section" id="roster">
-      <h2 class="section-title">Main <span class="yellow">Roster</span></h2>
-      <div class="grid" id="main-grid"></div>
-    </section>
+  <section class='section' id='bench'>
+    <h2 class='section-title reveal' data-i18n='bench.title'></h2>
+    <div class='grid grid-bench' id='bench-grid'></div>
+    <p class='empty' id='bench-empty' data-i18n='bench.empty' hidden></p>
+  </section>
 
-    <section class="section" id="bench">
-      <h2 class="section-title">The <span class="yellow">Bench</span></h2>
-      <div class="grid grid-bench" id="bench-grid"></div>
-      <p class="empty" id="bench-empty" hidden>No players on the bench yet. Recruiting soon.</p>
-    </section>
+  <section class='section reveal' id='merch'>
+    <h2 class='section-title' data-i18n='merch.title'></h2>
+    <div class='merch-box'>
+      <span class='badge' data-i18n='merch.badge'></span>
+      <p data-i18n='merch.text'></p>
+    </div>
+  </section>
 
-    <section class="section" id="merch">
-      <h2 class="section-title">Merch <span class="yellow">Store</span></h2>
-      <div class="merch-box">
-        <span class="badge">COMING SOON</span>
-        <p>Jerseys, mousepads and other fan-made nonsense. Just for fun.</p>
-      </div>
-    </section>
+  <section class='section cta-band reveal'>
+    <h2 data-i18n='cta.title'></h2>
+    <p data-i18n='cta.text'></p>
+    <a href='https://discord.gg/7jR3Qr9Znz' target='_blank' rel='noopener' class='btn' data-i18n='cta.btn'></a>
+  </section>
+</main>
 
-    <section class="section cta-band">
-      <h2>Want to play with us?</h2>
-      <p>Join the Discord and say hi.</p>
-      <a href="https://discord.gg/7jR3Qr9Znz" target="_blank" rel="noopener" class="btn">Join our Discord</a>
-    </section>
-  </main>
+<footer class='footer'>
+  <p><span id='stats-updated'></span>&copy; <span id='year'></span> Ciuc Navi. <span data-i18n='footer.text'></span></p>
+</footer>
 
-  <footer class="footer">
-    <p><span id="stats-updated"></span>&copy; <span id="year"></span> Ciuc Navi. Fan-made parody project, not affiliated with NAVI (Natus Vincere).</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+<script src='js/common.js'></script>
+<script src='js/main.js'></script>
 </body>
 </html>

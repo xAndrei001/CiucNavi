@@ -1,0 +1,47 @@
+{
+  "gheopard": {
+    "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
+    "settings": {
+      "mouse": { "mouse_model": "", "dpi": "", "sensitivity": "", "edpi": "", "zoom_sensitivity": "", "polling_rate": "" },
+      "video": { "resolution": "", "aspect_ratio": "", "scaling_mode": "", "refresh_rate": "" },
+      "viewmodel": { "fov": "", "offset_x": "", "offset_y": "", "offset_z": "", "preset": "" },
+      "gear": { "keyboard": "", "monitor": "", "headset": "", "mousepad": "" }
+    }
+  },
+  "ceontixx": {
+    "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
+    "settings": {
+      "mouse": { "mouse_model": "", "dpi": "", "sensitivity": "", "edpi": "", "zoom_sensitivity": "", "polling_rate": "" },
+      "video": { "resolution": "", "aspect_ratio": "", "scaling_mode": "", "refresh_rate": "" },
+      "viewmodel": { "fov": "", "offset_x": "", "offset_y": "", "offset_z": "", "preset": "" },
+      "gear": { "keyboard": "", "monitor": "", "headset": "", "mousepad": "" }
+    }
+  },
+  "stfandrei": {
+    "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
+    "settings": {
+      "mouse": { "mouse_model": "", "dpi": "", "sensitivity": "", "edpi": "", "zoom_sensitivity": "", "polling_rate": "" },
+      "video": { "resolution": "", "aspect_ratio": "", "scaling_mode": "", "refresh_rate": "" },
+      "viewmodel": { "fov": "", "offset_x": "", "offset_y": "", "offset_z": "", "preset": "" },
+      "gear": { "keyboard": "", "monitor": "", "headset": "", "mousepad": "" }
+    }
+  },
+  "regele": {
+    "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
+    "settings": {
+      "mouse": { "mouse_model": "", "dpi": "", "sensitivity": "", "edpi": "", "zoom_sensitivity": "", "polling_rate": "" },
+      "video": { "resolution": "", "aspect_ratio": "", "scaling_mode": "", "refresh_rate": "" },
+      "viewmodel": { "fov": "", "offset_x": "", "offset_y": "", "offset_z": "", "preset": "" },
+      "gear": { "keyboard": "", "monitor": "", "headset": "", "mousepad": "" }
+    }
+  },
+  "teaca": {
+    "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
+    "settings": {
+      "mouse": { "mouse_model": "", "dpi": "", "sensitivity": "", "edpi": "", "zoom_sensitivity": "", "polling_rate": "" },
+      "video": { "resolution": "", "aspect_ratio": "", "scaling_mode": "", "refresh_rate": "" },
+      "viewmodel": { "fov": "", "offset_x": "", "offset_y": "", "offset_z": "", "preset": "" },
+      "gear": { "keyboard": "", "monitor": "", "headset": "", "mousepad": "" }
+    }
+  }
+}
