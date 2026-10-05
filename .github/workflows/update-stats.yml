@@ -18,8 +18,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch stats from Steam
+      - name: Fetch stats from Leetify
         env:
+          LEETIFY_API_KEY: ${{ secrets.LEETIFY_API_KEY }}
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
         run: python scripts/update_stats.py
 
