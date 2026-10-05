@@ -44,6 +44,20 @@
       "steam64": "76561199846135632",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199846135632" }
+    },
+    {
+      "name": "MikaHell Jacksone", "tag": "", "role": "Substitute",
+      "status": "bench", "icon": "mihut.png",
+      "steam64": "76561198177258210",
+      "stats": { "premier": "-" },
+      "links": { "steam": "https://steamcommunity.com/profiles/76561198177258210" }
+    },
+    {
+      "name": "cata2PEU", "tag": "", "role": "Substitute",
+      "status": "bench", "icon": "cata.png",
+      "vanity": "577293053",
+      "stats": { "premier": "-" },
+      "links": { "steam": "https://steamcommunity.com/id/577293053" }
     }
   ]
 }
