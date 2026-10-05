@@ -55,9 +55,9 @@
     {
       "name": "cata2PEU", "tag": "", "role": "Substitute",
       "status": "bench", "icon": "cata.png",
-      "vanity": "577293053",
+      "steam64": "76561199046293468",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/id/577293053" }
+      "links": { "steam": "https://steamcommunity.com/profiles/76561199046293468" }
     }
   ]
 }
