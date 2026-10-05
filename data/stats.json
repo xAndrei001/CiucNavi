@@ -1,1 +1,21 @@
-{}
+{
+  "stoodios": {
+    "premier": "20,638",
+    "hs": "16.9%",
+    "winrate": "51.7%",
+    "matches": 1512
+  },
+  "ceontixx": {
+    "premier": "14,370",
+    "hs": "15.7%",
+    "winrate": "55.2%",
+    "matches": 467
+  },
+  "76561199046007584": {
+    "premier": "19,504",
+    "hs": "24.4%",
+    "winrate": "50.0%",
+    "matches": 752
+  },
+  "_updated": "2026-10-05 01:44 UTC"
+}
