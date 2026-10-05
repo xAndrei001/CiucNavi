@@ -5,21 +5,21 @@
       "status": "main", "icon": "gheopard.png",
       "vanity": "stoodios",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/id/stoodios/" }
+      "links": { "steam": "https://leetify.com/app/profile/76561198930064082" }
     },
     {
       "name": "Ceontixx", "tag": "™Ceontixx™", "role": "Support",
       "status": "main", "icon": "ceontixx.png",
       "vanity": "ceontixx",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/id/ceontixx/" }
+      "links": { "steam": "https://leetify.com/app/profile/76561198157122706" }
     },
     {
       "name": "stfandrei", "tag": "stfandrei", "role": "Entry",
       "status": "main", "icon": "stfandrei.png",
       "steam64": "76561199106120931",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/profiles/76561199106120931/" }
+      "links": { "steam": "https://leetify.com/app/profile/76561199106120931" }
     },
     {
       "name": "REGELE", "tag": "xAndrei001 | REGELE", "role": "IGL",
@@ -33,7 +33,7 @@
       "status": "main", "icon": "teaca.png",
       "vanity": "keyboardgremlin",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/id/keyboardgremlin" }
+      "links": { "steam": "https://leetify.com/app/profile/76561199243387378" }
     }
   ]
 }
