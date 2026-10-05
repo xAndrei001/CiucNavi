@@ -37,6 +37,13 @@
       "vanity": "keyboardgremlin",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/id/keyboardgremlin" }
+    },
+    {
+      "name": "Viccash", "tag": "", "role": "Substitute",
+      "status": "bench", "icon": "viccash.png",
+      "steam64": "76561199846135632",
+      "stats": { "premier": "-" },
+      "links": { "steam": "https://steamcommunity.com/profiles/76561199846135632" }
     }
   ]
 }
