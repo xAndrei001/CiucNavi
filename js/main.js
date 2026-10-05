@@ -5,6 +5,14 @@ const heroStats = document.getElementById("hero-stats");
 const updatedEl = document.getElementById("stats-updated");
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const footer = document.querySelector(".footer");
+if (footer && !footer.querySelector(".leetify-credit")) {
+  const credit = document.createElement("p");
+  credit.className = "leetify-credit";
+  credit.innerHTML = 'Data Provided by <a href="https://leetify.com" target="_blank" rel="noopener" style="color:#ffe600">Leetify</a>';
+  footer.appendChild(credit);
+}
+
 const esc = (s = "") =>
   String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
@@ -27,9 +35,11 @@ function playerCard(p) {
          onerror="this.parentElement.innerHTML='<span class=&quot;initials&quot;>${esc(initials(p.name))}</span>'" />`
     : `<span class="initials">${esc(initials(p.name))}</span>`;
 
-  const links = l.steam
-    ? `<a href="${esc(l.steam)}" target="_blank" rel="noopener">Steam Profile</a>`
-    : "";
+  const leetify = p.steam64 ? `https://leetify.com/app/profile/${encodeURIComponent(p.steam64)}` : "";
+  const links = [
+    l.steam ? `<a href="${esc(l.steam)}" target="_blank" rel="noopener">Steam</a>` : "",
+    leetify ? `<a href="${esc(leetify)}" target="_blank" rel="noopener">Leetify</a>` : ""
+  ].join("");
 
   return `
     <article class="card">
@@ -42,8 +52,8 @@ function playerCard(p) {
         <p class="card-real">${esc(p.tag || "")}</p>
         <div class="card-stats">
           ${statBox("Premier", s.premier)}
-          ${statBox("K/D", s.kd)}
           ${statBox("HS%", s.hs)}
+          ${statBox("Win rate", s.winrate)}
         </div>
         <div class="card-links">${links}</div>
       </div>
@@ -79,7 +89,7 @@ Promise.all([getJson("data/players.json"), getJson("data/stats.json").catch(() =
       <div class="hero-stat"><strong>${bench.length}</strong><span>On the bench</span></div>
       <div class="hero-stat"><strong>${avg ? avg.toLocaleString() : "-"}</strong><span>Avg. Premier</span></div>`;
 
-    if (live._updated && updatedEl) updatedEl.textContent = `Career stats updated: ${live._updated}. `;
+    if (live._updated && updatedEl) updatedEl.textContent = `Stats updated: ${live._updated}. `;
   })
   .catch(err => {
     mainGrid.innerHTML = `<p class="empty">${esc(err.message)}. If testing locally, use a local server (e.g. VS Code Live Server).</p>`;

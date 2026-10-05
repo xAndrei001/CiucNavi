@@ -1,30 +1,56 @@
 import json
 import os
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-KEY = os.environ.get("STEAM_API_KEY", "")
-BASE = "https://api.steampowered.com"
+LEETIFY_KEY = os.environ.get("LEETIFY_API_KEY", "")
+STEAM_KEY = os.environ.get("STEAM_API_KEY", "")
+LEETIFY_URL = "https://api-public.cs-prod.leetify.com/v3/profile?steam64_id={}"
 
 
-def call(path, **params):
-    params["key"] = KEY
-    url = f"{BASE}/{path}?{urllib.parse.urlencode(params)}"
-    req = urllib.request.Request(url, headers={"User-Agent": "CiucNavi-stats-bot"})
+def http_json(url, headers=None):
+    h = {"User-Agent": "CiucNavi-stats-bot"}
+    h.update(headers or {})
+    req = urllib.request.Request(url, headers=h)
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.load(r)
 
 
 def resolve_vanity(name):
-    r = call("ISteamUser/ResolveVanityURL/v1/", vanityurl=name).get("response", {})
+    if not STEAM_KEY:
+        return None
+    q = urllib.parse.urlencode({"key": STEAM_KEY, "vanityurl": name})
+    r = http_json(f"https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/?{q}")
+    r = r.get("response", {})
     return r.get("steamid") if r.get("success") == 1 else None
 
 
-def cs_stats(steam64):
-    data = call("ISteamUserStats/GetUserStatsForGame/v2/", steamid=steam64, appid=730)
-    return {s["name"]: s["value"] for s in data["playerstats"]["stats"]}
+def leetify_profile(steam64):
+    return http_json(LEETIFY_URL.format(steam64), {"_leetify_key": LEETIFY_KEY})
+
+
+def get(d, path):
+    for p in path.split("."):
+        if not isinstance(d, dict) or p not in d:
+            return None
+        d = d[p]
+    return d
+
+
+def first(d, *paths):
+    for path in paths:
+        v = get(d, path)
+        if v is not None:
+            return v
+    return None
+
+
+def pct(v):
+    v = float(v)
+    return round(v * 100 if v <= 1 else v, 1)
 
 
 with open("data/players.json", encoding="utf-8") as f:
@@ -36,6 +62,7 @@ try:
 except (FileNotFoundError, json.JSONDecodeError):
     out = {}
 
+shown_debug = False
 for p in players:
     vanity = str(p.get("vanity", "")).strip()
     sid = str(p.get("steam64", "")).strip()
@@ -47,35 +74,44 @@ for p in players:
         if not sid.isdigit():
             sid = resolve_vanity(vanity)
             if not sid:
-                print(f"FAIL {p['name']}: vanity '{vanity}' not found")
+                print(f"FAIL {p['name']}: could not resolve vanity '{vanity}' (is STEAM_API_KEY set?)")
                 continue
-        s = cs_stats(sid)
+        data = leetify_profile(sid)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", "ignore")[:200]
+        print(f"FAIL {p['name']}: HTTP {e.code} {body}")
+        continue
     except Exception as e:
-        print(f"FAIL {p['name']}: {e} (profile or game details private?)")
+        print(f"FAIL {p['name']}: {e}")
         continue
 
-    kills = s.get("total_kills", 0)
-    deaths = s.get("total_deaths", 0)
-    hs = s.get("total_kills_headshot", 0)
-    played = s.get("total_matches_played", 0)
-    won = s.get("total_matches_won", 0)
+    if not shown_debug:
+        print("TOP-LEVEL KEYS:", list(data.keys()))
+        print("RANKS:", json.dumps(data.get("ranks"))[:500])
+        print("STATS KEYS:", list((data.get("stats") or {}).keys()))
+        shown_debug = True
+
+    premier = first(data, "ranks.premier", "ranks.premier_rating", "rating.premier")
+    if isinstance(premier, dict):
+        premier = first(premier, "rating", "value", "current")
+    hs = first(data, "stats.accuracy_head", "stats.headshot_accuracy")
+    wr = first(data, "winrate", "win_rate")
 
     entry = {}
-    if deaths:
-        entry["kd"] = f"{kills / deaths:.2f}"
-    if kills:
-        entry["hs"] = f"{hs / kills * 100:.1f}%"
-    if played:
-        entry["winrate"] = f"{won / played * 100:.1f}%"
-        entry["matches"] = played
-    if s.get("total_time_played"):
-        entry["hours"] = round(s["total_time_played"] / 3600)
+    if premier:
+        entry["premier"] = f"{int(premier):,}"
+    if hs is not None:
+        entry["hs"] = f"{pct(hs)}%"
+    if wr is not None:
+        entry["winrate"] = f"{pct(wr)}%"
+    if data.get("total_matches") is not None:
+        entry["matches"] = data["total_matches"]
 
     if entry:
         out[key] = entry
         print(f"OK {p['name']}: {entry}")
     else:
-        print(f"EMPTY {p['name']}: no CS stats returned. Keys: {list(s)[:10]}")
+        print(f"EMPTY {p['name']}: nothing usable returned")
     time.sleep(1)
 
 out["_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
