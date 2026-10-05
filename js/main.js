@@ -38,7 +38,7 @@ const average=v=>{
 function dashHTML(){
   const C=window.Charts;
   if(!C)return '';
-  const rows=STATE.main.map((p,i)=>({p,i,prem:C.num(p.stats.premier),hs:C.num(p.stats.hs),win:C.num(p.stats.winrate),m:C.num(p.stats.matches),axes:C.ratingAxes((p.detail||{}).rating)}));
+  const rows=STATE.main.map((p,i)=>({p,i,col:C.PLC[i%C.PLC.length],prem:C.num(p.stats.premier),hs:C.num(p.stats.hs),win:C.num(p.stats.winrate),m:C.num(p.stats.matches),axes:C.profileAxes(p.detail),recent:(p.detail||{}).recent||[]}));
   if(!rows.some(r=>r.prem||r.hs||r.win))return `<p class='note'>${t('dash.nodata')}</p>`;
   const avg=f=>{const v=rows.map(f).filter(x=>x!=null&&x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null};
   const ap=avg(r=>r.prem),ah=avg(r=>r.hs),aw=avg(r=>r.win);
@@ -53,11 +53,11 @@ function dashHTML(){
   const hr=rows.filter(r=>r.hs);
   if(hr.length){
     const mx=Math.max(50,Math.max(...hr.map(r=>r.hs))*1.2);
-    h+=`<div class='panel reveal'><h3>${t('dash.hsChart')}</h3>${C.bars(hr.map(r=>({label:r.p.name,value:r.hs,text:r.hs.toFixed(1)+'%',color:C.PAL[r.i%C.PAL.length]})),mx)}</div>`;
+    h+=`<div class='panel reveal'><h3>${t('dash.hsChart')}</h3>${C.meters(hr.map(r=>({label:r.p.name,value:r.hs,text:r.hs.toFixed(1)+'%',color:r.col})),mx)}</div>`;
   }
   const wr=rows.filter(r=>r.win);
   if(wr.length){
-    h+=`<div class='panel reveal'><h3>${t('dash.winChart')}</h3>${C.bars(wr.map(r=>({label:r.p.name,value:r.win,text:r.win.toFixed(1)+'%',color:C.PAL[r.i%C.PAL.length]})),100)}</div>`;
+    h+=`<div class='panel reveal'><h3>${t('dash.winChart')}</h3>${C.meters(wr.map(r=>({label:r.p.name,value:r.win,text:r.win.toFixed(1)+'%',color:r.col})),100)}</div>`;
   }
   let keys=[];
   rows.forEach(r=>r.axes.forEach(a=>{if(!keys.some(k=>k.key===a.key))keys.push({key:a.key,label:a.label})}));
@@ -67,8 +67,7 @@ function dashHTML(){
     rows.forEach(r=>{
       if(r.axes.length){
         const v={};r.axes.forEach(a=>{v[a.key]=a.value});
-        const col=C.PAL[r.i%C.PAL.length];
-        series.push({color:col,fill:.05,w:1.3,values:v});leg.push({color:col,name:r.p.name});
+        series.push({color:r.col,fill:.06,w:1.8,values:v});leg.push({color:r.col,name:r.p.name});
       }
     });
     const tv={};
@@ -76,9 +75,18 @@ function dashHTML(){
       const vals=rows.map(r=>{const a=r.axes.find(x=>x.key===k.key);return a?a.value:null}).filter(x=>x!=null);
       if(vals.length)tv[k.key]=vals.reduce((a,b)=>a+b,0)/vals.length;
     });
-    series.push({color:'#ffe600',fill:.22,w:2.6,values:tv});
-    leg.push({color:'#ffe600',name:t('dash.radarTeam')});
+    series.push({color:'#ffffff',fill:.1,w:2.8,dash:'7 5',values:tv});
+    leg.push({color:'#ffffff',name:t('dash.radarTeam')});
     h+=`<div class='panel reveal'><h3>${t('dash.radar')}</h3>${C.radar(keys,series)}${C.legend(leg)}</div>`;
+  }
+  const all=[];rows.forEach(r=>r.recent.forEach(x=>all.push(x)));
+  const mr=C.mapRows(all).filter(x=>x.n>=3).sort((a,b)=>b.wr-a.wr||b.n-a.n);
+  if(mr.length){
+    const best=mr[0],worst=mr[mr.length-1];
+    const co=(cls,lab,r)=>`<div class='co ${cls}'><span>${lab}</span><strong>${esc(C.mapName(r.map))}</strong><em>${r.wr.toFixed(0)}%</em></div>`;
+    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><div class='callouts'>${co('good',t('dash.best'),best)}${mr.length>1?co('bad',t('dash.worst'),worst):''}</div>${C.mapMeters(mr)}<p class='note' style='margin-top:14px'>${t('dash.mapsNote')}</p></div>`;
+  }else{
+    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><p class='note'>${t('dash.nomaps')}</p></div>`;
   }
   return h+'</div>';
 }

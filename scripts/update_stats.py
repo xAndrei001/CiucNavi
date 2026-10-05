@@ -59,6 +59,14 @@ def prim(d):
     return {k: v for k, v in d.items() if isinstance(v, (int, float, str)) and not isinstance(v, bool)}
 
 
+def recent_list(data):
+    out = []
+    for x in (data.get('recent_matches') or []):
+        if isinstance(x, dict):
+            out.append({'m': x.get('map_name'), 'o': x.get('outcome'), 'd': x.get('finished_at'), 's': x.get('data_source'), 'r': x.get('leetify_rating')})
+    return out[:50]
+
+
 with open('data/players.json', encoding='utf-8') as f:
     players = json.load(f)['players']
 
@@ -93,9 +101,11 @@ for p in players:
 
     if not shown_debug:
         print('TOP-LEVEL KEYS:', list(data.keys()))
-        print('RANKS:', json.dumps(data.get('ranks'))[:500])
+        print('RANKS:', json.dumps(data.get('ranks'))[:600])
         print('RATING:', json.dumps(data.get('rating'))[:500])
         print('STATS KEYS:', list((data.get('stats') or {}).keys()))
+        rm = data.get('recent_matches') or []
+        print('RECENT COUNT:', len(rm), 'FIRST:', json.dumps(rm[0])[:400] if rm else None)
         shown_debug = True
 
     premier = first(data, 'ranks.premier', 'ranks.premier_rating', 'rating.premier')
@@ -113,13 +123,13 @@ for p in players:
         entry['winrate'] = str(pct(wr)) + '%'
     if data.get('total_matches') is not None:
         entry['matches'] = data['total_matches']
-    detail = {'rating': prim(data.get('rating')), 'stats': prim(data.get('stats')), 'ranks': prim(data.get('ranks'))}
+    detail = {'rating': prim(data.get('rating')), 'stats': prim(data.get('stats')), 'ranks': prim(data.get('ranks')), 'recent': recent_list(data)}
     if any(detail.values()):
         entry['detail'] = detail
 
     if entry:
         out[key] = entry
-        print('OK ' + p['name'] + ': ' + str({k: v for k, v in entry.items() if k != 'detail'}))
+        print('OK ' + p['name'] + ': ' + str({k: v for k, v in entry.items() if k != 'detail'}) + ' recent=' + str(len(detail['recent'])))
     else:
         print('EMPTY ' + p['name'] + ': nothing usable returned')
     time.sleep(1)

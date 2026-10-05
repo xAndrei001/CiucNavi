@@ -4,22 +4,7 @@ const root=document.getElementById('player-root');
 const want=(new URLSearchParams(location.search).get('p')||'').toLowerCase();
 let ST=null,tab='stats';
 
-const pretty=k=>k.split('_').map(w=>['ct','t','hs','ms','adr','kd'].includes(w)?w.toUpperCase():(w?w[0].toUpperCase()+w.slice(1):w)).join(' ');
-
-function fmt(k,v){
-  if(typeof v!=='number')return String(v);
-  const key=k.toLowerCase();
-  const pc=['ratio','percentage','accuracy','winrate','success'].some(x=>key.includes(x));
-  if(pc)return (Math.abs(v)<=1?v*100:v).toFixed(1)+'%';
-  if(key.endsWith('_ms'))return Math.round(v)+' ms';
-  return Number.isInteger(v)?v.toLocaleString():v.toFixed(2);
-}
-
-function grid(obj){
-  const e=Object.entries(obj||{}).filter(([k,v])=>v!==null&&v!==''&&typeof v!=='object');
-  if(!e.length)return '';
-  return `<div class='kv-grid'>${e.map(([k,v])=>`<div class='kv'><strong>${esc(fmt(k,v))}</strong><span>${esc(pretty(k))}</span></div>`).join('')}</div>`;
-}
+const pretty=k=>k.split('_').map(w=>w?w[0].toUpperCase()+w.slice(1):w).join(' ');
 
 function crosshairSVG(c){
   const col=c.color||'#00ff00';
@@ -48,40 +33,43 @@ function settingsHTML(set){
   }).join('');
 }
 
-function chartsHTML(s,d){
+function statsTab(){
   const C=window.Charts;
-  if(!C)return '';
+  const {p,s,detail}=ST;
+  const d=detail||{};const st=d.stats||{};
+  if(!C||!detail)return `<div class='panel'><h3>${t('nodata.title')}</h3><p class='note'>${t('nodata.text')}</p></div>`;
   let h='';
-  const win=C.num(s.winrate),hs=C.num(s.hs),prem=C.num(s.premier);
-  const g=[];
-  if(win!=null)g.push(C.gauge(win,t('chart.winrate'),s.winrate));
-  if(hs!=null)g.push(C.gauge(hs,t('chart.hs'),s.hs));
-  if(g.length)h+=`<div class='panel reveal'><h3>${t('chart.perf')}</h3><div class='gauges'>${g.join('')}</div></div>`;
-  const axes=C.ratingAxes((d||{}).rating);
+  const g=(v,label)=>v==null?'':C.gauge(v,label,v.toFixed(1)+'%');
+  const pc=k=>typeof st[k]==='number'?C.pctv(st[k]):null;
+  const opens=[pc('ct_opening_duel_success_percentage'),pc('t_opening_duel_success_percentage')].filter(x=>x!=null);
+  const open=opens.length?opens.reduce((a,b)=>a+b,0)/opens.length:null;
+  const gauges=[g(C.num(s.winrate),t('chart.winrate')),g(pc('accuracy_head'),t('chart.hs')),g(pc('spray_accuracy'),t('chart.spray')),g(pc('counter_strafing_good_shots_ratio'),t('chart.cs')),g(open,t('chart.open')),g(pc('trade_kills_success_percentage'),t('chart.trade'))].join('');
+  const tile=(k,v)=>v==null||v===''||v==='-'?'':`<div class='kv'><strong>${esc(v)}</strong><span>${esc(k)}</span></div>`;
+  const tiles=[
+    tile(t('tile.premier'),s.premier),
+    tile(t('tile.matches'),s.matches),
+    typeof st.reaction_time_ms==='number'?tile(C.statLabel('reaction_time_ms'),C.fmtStat('reaction_time_ms',st.reaction_time_ms)):'',
+    typeof st.preaim==='number'?tile(C.statLabel('preaim'),C.fmtStat('preaim',st.preaim)):'',
+    typeof st.flashbang_hit_foe_per_flashbang==='number'?tile(C.statLabel('flashbang_hit_foe_per_flashbang'),C.fmtStat('flashbang_hit_foe_per_flashbang',st.flashbang_hit_foe_per_flashbang)):'',
+    typeof st.he_foes_damage_avg==='number'?tile(C.statLabel('he_foes_damage_avg'),C.fmtStat('he_foes_damage_avg',st.he_foes_damage_avg)):''
+  ].join('');
+  h+=`<div class='panel reveal'><h3>${t('chart.perf')}</h3><div class='gauges'>${gauges}</div><div class='tiles'>${tiles}</div></div>`;
+  const axes=C.orderAxes(C.profileAxes(d));
   if(axes.length>=3){
     const pv={};axes.forEach(a=>{pv[a.key]=a.value});
-    const ser=[],leg=[];
-    if(ST.team&&ST.team.rating&&Object.keys(ST.team.rating).length){
-      ser.push({color:'#4cc9f0',fill:.08,w:1.6,values:ST.team.rating});leg.push({color:'#4cc9f0',name:t('chart.team')});
-    }
-    ser.push({color:'#ffe600',fill:.25,w:2.6,values:pv});leg.push({color:'#ffe600',name:ST.p.name});
-    h+=`<div class='panel reveal'><h3>${t('chart.radar')}</h3>${C.radar(axes,ser)}${C.legend(leg)}</div>`;
+    h+=`<div class='panel reveal'><h3>${t('chart.radar')}</h3>${C.radar(axes,[{color:'#ffe600',fill:.25,w:2.6,values:pv}])}</div>`;
   }
-  const pct=Object.entries((d||{}).stats||{})
-    .filter(([k,v])=>typeof v==='number'&&['accuracy','ratio','percentage','success'].some(x=>k.toLowerCase().includes(x)))
-    .map(([k,v])=>[k,Math.abs(v)<=1?v*100:v]).filter(([k,v])=>v>=0&&v<=100).slice(0,12);
-  if(pct.length)h+=`<div class='panel reveal'><h3>${t('chart.accuracy')}</h3>${C.bars(pct.map(([k,v])=>({label:C.pretty(k),value:v,text:v.toFixed(1)+'%'})),100)}</div>`;
-  const cmp=[];const T=ST.team||{};
-  if(prem!=null&&T.premier!=null)cmp.push(C.compare(t('card.premier'),prem,T.premier,Math.max(prem,T.premier)*1.15,Math.round(prem).toLocaleString(),Math.round(T.premier).toLocaleString()));
-  if(hs!=null&&T.hs!=null)cmp.push(C.compare(t('card.hs'),hs,T.hs,Math.max(50,Math.max(hs,T.hs)*1.2),hs.toFixed(1)+'%',T.hs.toFixed(1)+'%'));
-  if(win!=null&&T.win!=null)cmp.push(C.compare(t('card.win'),win,T.win,100,win.toFixed(1)+'%',T.win.toFixed(1)+'%'));
-  if(cmp.length)h+=`<div class='panel reveal'><h3>${t('chart.vsTeam')}</h3>${cmp.join('')}${C.legend([{color:'#ffe600',name:ST.p.name},{color:'#4cc9f0',name:t('chart.team')}])}</div>`;
+  h+=C.ranksPanel(d.ranks,s.premier);
+  h+=C.playerMaps(d.recent);
+  h+=C.formPanel(d.recent);
+  h+=C.ratingsPanel(d.rating);
+  h+=C.statGroups(st);
   return h;
 }
 
 function render(){
   if(!ST){return}
-  const {p,s,detail,info}=ST;
+  const {p,s,info}=ST;
   if(!p){root.innerHTML=`<a class='back' href='index.html#roster'>${t('player.back')}</a><p class='empty'>${t('player.notfound')}</p>`;return}
   document.title=p.name+' | Ciuc Navi';
   const img=p.icon?`<img src='icons/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}'>`:`<span class='initials'>${esc(initials(p.name))}</span>`;
@@ -92,15 +80,7 @@ function render(){
 
   let body='';
   if(tab==='stats'){
-    body+=chartsHTML(s,detail);
-    const sum=[[t('card.premier'),s.premier],[t('card.hs'),s.hs],[t('card.win'),s.winrate],[t('sum.matches'),s.matches]].filter(x=>x[1]!==undefined&&x[1]!==''&&x[1]!=='-');
-    if(sum.length)body+=`<div class='panel'><h3>${t('sec.summary')}</h3><div class='kv-grid'>${sum.map(x=>`<div class='kv'><strong>${esc(x[1])}</strong><span>${esc(x[0])}</span></div>`).join('')}</div></div>`;
-    const d=detail||{};
-    const r=grid(d.rating),st=grid(d.stats),rk=grid(d.ranks);
-    if(r)body+=`<div class='panel'><h3>${t('sec.rating')}</h3>${r}</div>`;
-    if(st)body+=`<div class='panel'><h3>${t('sec.stats')}</h3>${st}</div>`;
-    if(rk)body+=`<div class='panel'><h3>${t('sec.ranks')}</h3>${rk}</div>`;
-    if(!r&&!st&&!rk)body+=`<div class='panel'><h3>${t('nodata.title')}</h3><p class='note'>${t('nodata.text')}</p></div>`;
+    body=statsTab();
   }else{
     const c=(info&&info.crosshair)||{};
     const code=c.code||'';
@@ -135,25 +115,6 @@ function render(){
   if(u&&ST.live._updated)u.textContent=t('updated')+': '+ST.live._updated+'. ';
 }
 
-function teamAverages(players,live){
-  const C=window.Charts;
-  if(!C)return null;
-  const rows=players.filter(x=>x.status==='main').map(x=>{
-    const a=live[x.steam64]||live[x.vanity]||{};
-    const f={...(x.stats||{}),...a};
-    return {prem:C.num(f.premier),hs:C.num(f.hs),win:C.num(f.winrate),axes:C.ratingAxes((a.detail||{}).rating)};
-  });
-  const avg=f=>{const v=rows.map(f).filter(x=>x!=null&&x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null};
-  const rating={};
-  const keys=[];
-  rows.forEach(r=>r.axes.forEach(a=>{if(!keys.includes(a.key))keys.push(a.key)}));
-  keys.forEach(k=>{
-    const v=rows.map(r=>{const a=r.axes.find(x=>x.key===k);return a?a.value:null}).filter(x=>x!=null);
-    if(v.length)rating[k]=v.reduce((a,b)=>a+b,0)/v.length;
-  });
-  return {premier:avg(r=>r.prem),hs:avg(r=>r.hs),win:avg(r=>r.win),rating};
-}
-
 Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>({})),getJson('data/player-details.json').catch(()=>({}))]).then(([data,live,details])=>{
   const p=(data.players||[]).find(x=>slug(x.name)===want);
   let s={},detail=null;
@@ -162,7 +123,7 @@ Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>(
     const {detail:dd,...flat}=auto;
     s={...(p.stats||{}),...flat};detail=dd||null;
   }
-  ST={p,s,detail,info:p?details[slug(p.name)]:null,live,team:teamAverages(data.players||[],live)};
+  ST={p,s,detail,info:p?details[slug(p.name)]:null,live};
   render();
 }).catch(err=>{root.innerHTML=`<p class='empty'>${esc(err.message)}</p>`});
 document.addEventListener('langchange',render);
