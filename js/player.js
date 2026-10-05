@@ -1,4 +1,5 @@
 (function(){
+function boot(){
 const root=document.getElementById('player-root');
 const want=(new URLSearchParams(location.search).get('p')||'').toLowerCase();
 let ST=null,tab='stats';
@@ -47,6 +48,37 @@ function settingsHTML(set){
   }).join('');
 }
 
+function chartsHTML(s,d){
+  const C=window.Charts;
+  if(!C)return '';
+  let h='';
+  const win=C.num(s.winrate),hs=C.num(s.hs),prem=C.num(s.premier);
+  const g=[];
+  if(win!=null)g.push(C.gauge(win,t('chart.winrate'),s.winrate));
+  if(hs!=null)g.push(C.gauge(hs,t('chart.hs'),s.hs));
+  if(g.length)h+=`<div class='panel reveal'><h3>${t('chart.perf')}</h3><div class='gauges'>${g.join('')}</div></div>`;
+  const axes=C.ratingAxes((d||{}).rating);
+  if(axes.length>=3){
+    const pv={};axes.forEach(a=>{pv[a.key]=a.value});
+    const ser=[],leg=[];
+    if(ST.team&&ST.team.rating&&Object.keys(ST.team.rating).length){
+      ser.push({color:'#4cc9f0',fill:.08,w:1.6,values:ST.team.rating});leg.push({color:'#4cc9f0',name:t('chart.team')});
+    }
+    ser.push({color:'#ffe600',fill:.25,w:2.6,values:pv});leg.push({color:'#ffe600',name:ST.p.name});
+    h+=`<div class='panel reveal'><h3>${t('chart.radar')}</h3>${C.radar(axes,ser)}${C.legend(leg)}</div>`;
+  }
+  const pct=Object.entries((d||{}).stats||{})
+    .filter(([k,v])=>typeof v==='number'&&['accuracy','ratio','percentage','success'].some(x=>k.toLowerCase().includes(x)))
+    .map(([k,v])=>[k,Math.abs(v)<=1?v*100:v]).filter(([k,v])=>v>=0&&v<=100).slice(0,12);
+  if(pct.length)h+=`<div class='panel reveal'><h3>${t('chart.accuracy')}</h3>${C.bars(pct.map(([k,v])=>({label:C.pretty(k),value:v,text:v.toFixed(1)+'%'})),100)}</div>`;
+  const cmp=[];const T=ST.team||{};
+  if(prem!=null&&T.premier!=null)cmp.push(C.compare(t('card.premier'),prem,T.premier,Math.max(prem,T.premier)*1.15,Math.round(prem).toLocaleString(),Math.round(T.premier).toLocaleString()));
+  if(hs!=null&&T.hs!=null)cmp.push(C.compare(t('card.hs'),hs,T.hs,Math.max(50,Math.max(hs,T.hs)*1.2),hs.toFixed(1)+'%',T.hs.toFixed(1)+'%'));
+  if(win!=null&&T.win!=null)cmp.push(C.compare(t('card.win'),win,T.win,100,win.toFixed(1)+'%',T.win.toFixed(1)+'%'));
+  if(cmp.length)h+=`<div class='panel reveal'><h3>${t('chart.vsTeam')}</h3>${cmp.join('')}${C.legend([{color:'#ffe600',name:ST.p.name},{color:'#4cc9f0',name:t('chart.team')}])}</div>`;
+  return h;
+}
+
 function render(){
   if(!ST){return}
   const {p,s,detail,info}=ST;
@@ -60,6 +92,7 @@ function render(){
 
   let body='';
   if(tab==='stats'){
+    body+=chartsHTML(s,detail);
     const sum=[[t('card.premier'),s.premier],[t('card.hs'),s.hs],[t('card.win'),s.winrate],[t('sum.matches'),s.matches]].filter(x=>x[1]!==undefined&&x[1]!==''&&x[1]!=='-');
     if(sum.length)body+=`<div class='panel'><h3>${t('sec.summary')}</h3><div class='kv-grid'>${sum.map(x=>`<div class='kv'><strong>${esc(x[1])}</strong><span>${esc(x[0])}</span></div>`).join('')}</div></div>`;
     const d=detail||{};
@@ -97,9 +130,28 @@ function render(){
   if(cp)cp.addEventListener('click',()=>{
     navigator.clipboard.writeText(info.crosshair.code).then(()=>{cp.textContent=t('xh.copied');setTimeout(()=>{cp.textContent=t('xh.copy')},1500)});
   });
-  fixImages();
+  fixImages();observeReveals();
   const u=document.getElementById('stats-updated');
   if(u&&ST.live._updated)u.textContent=t('updated')+': '+ST.live._updated+'. ';
+}
+
+function teamAverages(players,live){
+  const C=window.Charts;
+  if(!C)return null;
+  const rows=players.filter(x=>x.status==='main').map(x=>{
+    const a=live[x.steam64]||live[x.vanity]||{};
+    const f={...(x.stats||{}),...a};
+    return {prem:C.num(f.premier),hs:C.num(f.hs),win:C.num(f.winrate),axes:C.ratingAxes((a.detail||{}).rating)};
+  });
+  const avg=f=>{const v=rows.map(f).filter(x=>x!=null&&x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null};
+  const rating={};
+  const keys=[];
+  rows.forEach(r=>r.axes.forEach(a=>{if(!keys.includes(a.key))keys.push(a.key)}));
+  keys.forEach(k=>{
+    const v=rows.map(r=>{const a=r.axes.find(x=>x.key===k);return a?a.value:null}).filter(x=>x!=null);
+    if(v.length)rating[k]=v.reduce((a,b)=>a+b,0)/v.length;
+  });
+  return {premier:avg(r=>r.prem),hs:avg(r=>r.hs),win:avg(r=>r.win),rating};
 }
 
 Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>({})),getJson('data/player-details.json').catch(()=>({}))]).then(([data,live,details])=>{
@@ -110,8 +162,12 @@ Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>(
     const {detail:dd,...flat}=auto;
     s={...(p.stats||{}),...flat};detail=dd||null;
   }
-  ST={p,s,detail,info:p?details[slug(p.name)]:null,live};
+  ST={p,s,detail,info:p?details[slug(p.name)]:null,live,team:teamAverages(data.players||[],live)};
   render();
 }).catch(err=>{root.innerHTML=`<p class='empty'>${esc(err.message)}</p>`});
 document.addEventListener('langchange',render);
+}
+if(window.Charts){boot()}else{
+  const s=document.createElement('script');s.src='js/charts.js';s.onload=boot;s.onerror=boot;document.head.appendChild(s);
+}
 })();
