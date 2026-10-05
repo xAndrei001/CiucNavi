@@ -132,10 +132,362 @@
         "premier": 19504,
         "faceit": 10,
         "wingman": 17
-      }
+      },
+      "recent": [
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-10-05T00:07:29.000Z",
+          "s": "matchmaking",
+          "r": -0.0652
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T23:38:40.000Z",
+          "s": "matchmaking",
+          "r": -0.0754
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-04T23:01:22.000Z",
+          "s": "matchmaking",
+          "r": -0.0535
+        },
+        {
+          "m": "de_cache",
+          "o": "loss",
+          "d": "2026-10-04T22:21:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0178
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-10-04T21:24:32.000Z",
+          "s": "matchmaking",
+          "r": 0.0041
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T19:41:07.000Z",
+          "s": "matchmaking",
+          "r": 0.0027
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-10-03T23:57:03.000Z",
+          "s": "matchmaking",
+          "r": -0.0468
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-03T23:20:06.000Z",
+          "s": "matchmaking",
+          "r": -0.0085
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-01T16:35:29.000Z",
+          "s": "matchmaking",
+          "r": -0.0679
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T18:49:05.000Z",
+          "s": "matchmaking",
+          "r": -0.0066
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-09-20T01:14:57.000Z",
+          "s": "matchmaking",
+          "r": 0.0264
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-09-14T01:53:13.000Z",
+          "s": "matchmaking",
+          "r": -0.0369
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-09-14T00:39:43.000Z",
+          "s": "matchmaking",
+          "r": -0.0687
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-13T21:34:33.000Z",
+          "s": "matchmaking",
+          "r": 0.0384
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-09-13T20:50:18.000Z",
+          "s": "matchmaking",
+          "r": -0.0144
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-13T00:51:17.000Z",
+          "s": "matchmaking",
+          "r": -0.0029
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-09-13T00:16:06.000Z",
+          "s": "matchmaking",
+          "r": -0.0675
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-12T23:23:50.000Z",
+          "s": "matchmaking",
+          "r": -0.0849
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-09-12T22:58:57.000Z",
+          "s": "matchmaking",
+          "r": -0.0404
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-07-18T22:31:40.000Z",
+          "s": "matchmaking",
+          "r": -0.0328
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-07-02T18:27:35.000Z",
+          "s": "matchmaking",
+          "r": -0.0327
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-07-02T17:52:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0721
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-04-23T17:23:49.000Z",
+          "s": "matchmaking",
+          "r": 0.0048
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-04-21T20:34:28.000Z",
+          "s": "matchmaking",
+          "r": -0.0503
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-04-20T17:14:16.000Z",
+          "s": "faceit",
+          "r": 0.0304
+        },
+        {
+          "m": "de_stronghold",
+          "o": "win",
+          "d": "2026-03-30T23:52:04.000Z",
+          "s": "matchmaking",
+          "r": 0.0524
+        },
+        {
+          "m": "de_warden",
+          "o": "loss",
+          "d": "2026-03-30T23:21:58.000Z",
+          "s": "matchmaking",
+          "r": -0.0608
+        },
+        {
+          "m": "cs_alpine",
+          "o": "loss",
+          "d": "2026-03-30T22:56:59.000Z",
+          "s": "matchmaking",
+          "r": -0.0409
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-03-30T16:33:05.000Z",
+          "s": "faceit",
+          "r": 0.0666
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-03-29T18:38:41.000Z",
+          "s": "matchmaking",
+          "r": -0.0574
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-03-27T20:45:32.000Z",
+          "s": "faceit",
+          "r": -0.0361
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-03-27T13:34:04.000Z",
+          "s": "matchmaking",
+          "r": -0.0873
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-03-27T12:21:12.000Z",
+          "s": "matchmaking",
+          "r": -0.005
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-03-12T17:21:28.000Z",
+          "s": "faceit",
+          "r": -0.0267
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-03-08T20:05:55.000Z",
+          "s": "faceit",
+          "r": -0.0263
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-03-02T16:39:22.000Z",
+          "s": "matchmaking",
+          "r": -0.0565
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-03-02T15:58:23.000Z",
+          "s": "matchmaking",
+          "r": 0.0558
+        },
+        {
+          "m": "de_nuke",
+          "o": "loss",
+          "d": "2026-03-01T21:49:31.000Z",
+          "s": "matchmaking",
+          "r": -0.0823
+        },
+        {
+          "m": "de_anubis",
+          "o": "tie",
+          "d": "2026-03-01T16:21:14.000Z",
+          "s": "matchmaking",
+          "r": -0.0078
+        },
+        {
+          "m": "de_overpass",
+          "o": "win",
+          "d": "2026-03-01T15:32:40.000Z",
+          "s": "matchmaking",
+          "r": -0.0153
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-03-01T14:56:52.000Z",
+          "s": "matchmaking",
+          "r": -0.0058
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-03-01T14:17:14.000Z",
+          "s": "matchmaking",
+          "r": 0.0856
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-02-16T10:16:37.000Z",
+          "s": "matchmaking",
+          "r": 0.0116
+        },
+        {
+          "m": "de_overpass",
+          "o": "win",
+          "d": "2026-02-14T16:19:39.000Z",
+          "s": "matchmaking",
+          "r": -0.0587
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-02-14T15:49:05.000Z",
+          "s": "matchmaking",
+          "r": -0.0658
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-02-08T22:49:37.000Z",
+          "s": "matchmaking",
+          "r": 0.053
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-02-08T22:22:28.000Z",
+          "s": "matchmaking",
+          "r": -0.0221
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-02-08T21:36:28.000Z",
+          "s": "matchmaking",
+          "r": 0.0146
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-02-08T10:45:33.000Z",
+          "s": "matchmaking",
+          "r": 0.0478
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-02-07T22:32:46.000Z",
+          "s": "matchmaking",
+          "r": -0.0523
+        }
+      ]
     }
   },
-  "_updated": "2026-10-05 13:12 UTC",
+  "_updated": "2026-10-05 18:31 UTC",
   "76561198930064082": {
     "premier": "20,638",
     "hs": "16.9%",
@@ -178,7 +530,359 @@
         "leetify": 6.959999999999999,
         "premier": 20638,
         "faceit_elo": 2044
-      }
+      },
+      "recent": [
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-10-05T00:07:29.000Z",
+          "s": "matchmaking",
+          "r": 0.1901
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T23:38:40.000Z",
+          "s": "matchmaking",
+          "r": -0.055
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-04T23:01:22.000Z",
+          "s": "matchmaking",
+          "r": 0.0844
+        },
+        {
+          "m": "de_cache",
+          "o": "loss",
+          "d": "2026-10-04T22:21:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0112
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-10-04T21:24:32.000Z",
+          "s": "matchmaking",
+          "r": 0.149
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T19:41:07.000Z",
+          "s": "matchmaking",
+          "r": 0.0702
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-10-03T23:57:03.000Z",
+          "s": "matchmaking",
+          "r": 0.0397
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-03T23:20:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0495
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-02T22:47:21.000Z",
+          "s": "matchmaking",
+          "r": 0.0573
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-10-01T23:31:52.000Z",
+          "s": "matchmaking",
+          "r": 0.0844
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-10-01T22:54:23.000Z",
+          "s": "matchmaking",
+          "r": 0.0624
+        },
+        {
+          "m": "de_ancient",
+          "o": "tie",
+          "d": "2026-10-01T21:57:50.000Z",
+          "s": "matchmaking",
+          "r": 0.0644
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-01T21:20:18.000Z",
+          "s": "matchmaking",
+          "r": 0.0908
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T20:31:08.000Z",
+          "s": "matchmaking",
+          "r": 0.1027
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-01T16:35:29.000Z",
+          "s": "matchmaking",
+          "r": 0.0907
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-10-01T16:03:16.000Z",
+          "s": "matchmaking",
+          "r": 0.0293
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-10-01T14:51:33.000Z",
+          "s": "matchmaking",
+          "r": 0.0217
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-10-01T01:22:39.000Z",
+          "s": "matchmaking",
+          "r": 0.0601
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-01T00:41:51.000Z",
+          "s": "matchmaking",
+          "r": 0.0366
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T00:13:34.000Z",
+          "s": "matchmaking",
+          "r": 0.0499
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-09-30T22:30:22.000Z",
+          "s": "matchmaking",
+          "r": 0.0794
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-30T22:01:51.000Z",
+          "s": "matchmaking",
+          "r": 0.0576
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-30T00:37:05.000Z",
+          "s": "matchmaking",
+          "r": -0.0009
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-09-29T23:57:19.000Z",
+          "s": "matchmaking",
+          "r": 0.0571
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-09-29T23:25:23.000Z",
+          "s": "matchmaking",
+          "r": 0.1683
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-29T21:14:28.000Z",
+          "s": "matchmaking",
+          "r": 0.1264
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-09-29T20:43:37.000Z",
+          "s": "matchmaking",
+          "r": 0.0927
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-09-29T20:07:48.000Z",
+          "s": "matchmaking",
+          "r": 0.0814
+        },
+        {
+          "m": "de_cache",
+          "o": "loss",
+          "d": "2026-09-29T14:54:32.000Z",
+          "s": "matchmaking",
+          "r": 0.0722
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-29T00:44:29.000Z",
+          "s": "matchmaking",
+          "r": 0.0669
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-29T00:03:28.000Z",
+          "s": "matchmaking",
+          "r": 0.0904
+        },
+        {
+          "m": "de_nuke",
+          "o": "loss",
+          "d": "2026-09-25T01:00:48.000Z",
+          "s": "matchmaking",
+          "r": -0.032
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-09-24T20:40:00.000Z",
+          "s": "matchmaking",
+          "r": 0.2142
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T20:04:02.000Z",
+          "s": "matchmaking",
+          "r": 0.0274
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T18:49:05.000Z",
+          "s": "matchmaking",
+          "r": 0.0564
+        },
+        {
+          "m": "de_cache",
+          "o": "loss",
+          "d": "2026-09-24T02:31:01.000Z",
+          "s": "matchmaking",
+          "r": -0.0059
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T01:47:43.000Z",
+          "s": "matchmaking",
+          "r": 0.1257
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-09-24T01:11:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0204
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T00:41:23.000Z",
+          "s": "matchmaking",
+          "r": -0.0252
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-24T00:03:33.000Z",
+          "s": "matchmaking",
+          "r": 0.1372
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-09-23T23:28:11.000Z",
+          "s": "matchmaking",
+          "r": 0.0147
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-23T22:40:04.000Z",
+          "s": "matchmaking",
+          "r": -0.0099
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-09-23T21:56:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0135
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-09-20T01:14:57.000Z",
+          "s": "matchmaking",
+          "r": 0.0991
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-18T00:42:41.000Z",
+          "s": "matchmaking",
+          "r": -0.0312
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-18T00:09:35.000Z",
+          "s": "matchmaking",
+          "r": 0.0507
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-16T23:22:20.000Z",
+          "s": "matchmaking",
+          "r": -0.0576
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-09-16T22:42:18.000Z",
+          "s": "matchmaking",
+          "r": 0.0632
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-16T22:03:36.000Z",
+          "s": "matchmaking",
+          "r": 0.0588
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-09-14T23:17:13.000Z",
+          "s": "matchmaking",
+          "r": -0.1072
+        }
+      ]
     }
   },
   "76561198157122706": {
@@ -223,7 +927,359 @@
         "leetify": 0.3,
         "premier": 14370,
         "faceit": 4
-      }
+      },
+      "recent": [
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-10-05T00:07:29.000Z",
+          "s": "matchmaking",
+          "r": 0.1835
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T23:38:40.000Z",
+          "s": "matchmaking",
+          "r": -0.0191
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-04T23:01:22.000Z",
+          "s": "matchmaking",
+          "r": -0.0011
+        },
+        {
+          "m": "de_cache",
+          "o": "loss",
+          "d": "2026-10-04T22:21:06.000Z",
+          "s": "matchmaking",
+          "r": -0.0377
+        },
+        {
+          "m": "de_anubis",
+          "o": "win",
+          "d": "2026-10-04T21:24:32.000Z",
+          "s": "matchmaking",
+          "r": -0.0364
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-04T19:41:07.000Z",
+          "s": "matchmaking",
+          "r": 0.0187
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-10-01T23:31:52.000Z",
+          "s": "matchmaking",
+          "r": -0.0343
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-10-01T22:54:23.000Z",
+          "s": "matchmaking",
+          "r": -0.0402
+        },
+        {
+          "m": "de_ancient",
+          "o": "tie",
+          "d": "2026-10-01T21:57:50.000Z",
+          "s": "matchmaking",
+          "r": -0.0124
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-01T21:20:18.000Z",
+          "s": "matchmaking",
+          "r": -0.0512
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T20:31:08.000Z",
+          "s": "matchmaking",
+          "r": 0.0175
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-10-01T15:44:44.000Z",
+          "s": "matchmaking",
+          "r": 0.0403
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T15:13:20.000Z",
+          "s": "matchmaking",
+          "r": 0.0544
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T14:38:58.000Z",
+          "s": "matchmaking",
+          "r": 0.0965
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-10-01T01:22:39.000Z",
+          "s": "matchmaking",
+          "r": -0.0655
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-01T00:41:51.000Z",
+          "s": "matchmaking",
+          "r": -0.0421
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-10-01T00:13:34.000Z",
+          "s": "matchmaking",
+          "r": 0.0233
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-09-30T23:35:47.000Z",
+          "s": "matchmaking",
+          "r": -0.0192
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-09-30T22:31:38.000Z",
+          "s": "matchmaking",
+          "r": 0.0019
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-30T00:37:05.000Z",
+          "s": "matchmaking",
+          "r": -0.0749
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-09-29T23:57:19.000Z",
+          "s": "matchmaking",
+          "r": -0.051
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-09-29T23:25:23.000Z",
+          "s": "matchmaking",
+          "r": -0.0059
+        },
+        {
+          "m": "de_ancient",
+          "o": "win",
+          "d": "2026-09-29T22:25:55.000Z",
+          "s": "matchmaking",
+          "r": 0.02
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-29T00:44:29.000Z",
+          "s": "matchmaking",
+          "r": 0.1333
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-29T00:03:28.000Z",
+          "s": "matchmaking",
+          "r": 0.0424
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-09-28T00:08:36.000Z",
+          "s": "matchmaking",
+          "r": 0.0137
+        },
+        {
+          "m": "de_inferno",
+          "o": "win",
+          "d": "2026-09-27T23:19:19.000Z",
+          "s": "matchmaking",
+          "r": 0.0716
+        },
+        {
+          "m": "de_nuke",
+          "o": "loss",
+          "d": "2026-09-25T01:00:48.000Z",
+          "s": "matchmaking",
+          "r": -0.0724
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-24T23:38:11.000Z",
+          "s": "matchmaking",
+          "r": 0.0749
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-24T00:41:23.000Z",
+          "s": "matchmaking",
+          "r": -0.0374
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-24T00:03:33.000Z",
+          "s": "matchmaking",
+          "r": 0.0777
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-09-23T23:28:11.000Z",
+          "s": "matchmaking",
+          "r": -0.0745
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-23T22:40:04.000Z",
+          "s": "matchmaking",
+          "r": 0.0276
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-09-23T21:56:06.000Z",
+          "s": "matchmaking",
+          "r": -0.0043
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-23T20:57:32.000Z",
+          "s": "matchmaking",
+          "r": -0.016
+        },
+        {
+          "m": "de_inferno",
+          "o": "loss",
+          "d": "2026-09-23T00:57:25.000Z",
+          "s": "matchmaking",
+          "r": -0.0742
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-09-22T14:28:19.000Z",
+          "s": "matchmaking",
+          "r": -0.0592
+        },
+        {
+          "m": "de_dust2",
+          "o": "win",
+          "d": "2026-09-21T22:13:15.000Z",
+          "s": "matchmaking",
+          "r": 0.0418
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-21T21:38:48.000Z",
+          "s": "matchmaking",
+          "r": 0.051
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-18T00:42:41.000Z",
+          "s": "matchmaking",
+          "r": -0.0134
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-18T00:09:35.000Z",
+          "s": "matchmaking",
+          "r": -0.0241
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-16T23:22:20.000Z",
+          "s": "matchmaking",
+          "r": -0.0859
+        },
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-09-16T22:42:18.000Z",
+          "s": "matchmaking",
+          "r": 0.0156
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-16T22:03:36.000Z",
+          "s": "matchmaking",
+          "r": -0.0527
+        },
+        {
+          "m": "de_anubis",
+          "o": "loss",
+          "d": "2026-09-14T23:17:13.000Z",
+          "s": "matchmaking",
+          "r": -0.0751
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-14T22:43:43.000Z",
+          "s": "matchmaking",
+          "r": 0.0028
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-09-14T22:07:28.000Z",
+          "s": "matchmaking",
+          "r": -0.0708
+        },
+        {
+          "m": "de_mirage",
+          "o": "win",
+          "d": "2026-09-14T21:31:18.000Z",
+          "s": "matchmaking",
+          "r": -0.0118
+        },
+        {
+          "m": "de_dust2",
+          "o": "loss",
+          "d": "2026-09-13T00:51:17.000Z",
+          "s": "matchmaking",
+          "r": 0.0257
+        },
+        {
+          "m": "de_ancient",
+          "o": "loss",
+          "d": "2026-09-13T00:16:06.000Z",
+          "s": "matchmaking",
+          "r": 0.0078
+        }
+      ]
     }
   }
 }
