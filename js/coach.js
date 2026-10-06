@@ -68,15 +68,26 @@ const title=k=>t(k).replace(/~(.+?)~/g,'<span class=yellow>$1</span>');
 let DATA=null,TEAM=null;
 const root=document.getElementById('coach-root');
 
+function keepOrder(){
+  const s=document.getElementById('coach'),r=document.getElementById('roster');
+  if(s&&r&&s.nextElementSibling!==r)r.before(s);
+  const a=document.getElementById('nav-coach'),n=document.querySelector(`.nav-links a[href='#roster']`);
+  if(a&&n&&a.nextElementSibling!==n)n.before(a);
+}
+
 function renderHome(){
   const d=DATA;
   if(!d||!document.getElementById('roster'))return;
   let sec=document.getElementById('coach');
   if(!sec){
     sec=document.createElement('section');sec.className='section';sec.id='coach';
-    (document.getElementById('dashboard')||document.getElementById('roster')).before(sec);
-    const ref=document.getElementById('nav-dash')||document.querySelector(`.nav-links a[href='#roster']`);
-    if(ref){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';ref.before(a)}
+    document.getElementById('roster').before(sec);
+    const nl=document.querySelector(`.nav-links a[href='#roster']`);
+    if(nl){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';nl.before(a)}
+    const main=document.querySelector('main'),nav=document.querySelector('.nav-links');
+    const mo=new MutationObserver(keepOrder);
+    if(main)mo.observe(main,{childList:true});
+    if(nav)mo.observe(nav,{childList:true});
   }
   const na=document.getElementById('nav-coach');
   if(na)na.textContent=t('nav.coach');
@@ -92,6 +103,7 @@ function renderHome(){
       <div class='fun-grid'>${funTiles(d)}</div>
     </div>
   </article>`;
+  keepOrder();
   fixImages();observeReveals();
 }
 

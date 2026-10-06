@@ -6,20 +6,20 @@
   "steam": "https://steamcommunity.com/profiles/76561198163787733",
   "role": { "en": "Head Coach", "ro": "Antrenor principal", "hu": "Vezéredző" },
   "tagline": {
-    "en": "Calls the timeouts. Takes the blame. Shares the tea.",
-    "ro": "Cere timeout-urile. Își asumă vina. Împarte ceaiul.",
-    "hu": "Kéri az időkéréseket. Vállalja a felelőséget. Megosztja a teát."
+    "en": "Rush B enthusiast. CEO of Gabos Store. Zero pressure moments.",
+    "ro": "Pasionat de rush B. CEO la Gabos Store. Zero momente de presiune.",
+    "hu": "Rush B rajongó. A Gabos Store vezetője. Nulla nyomásos pillanat."
   },
   "bio": {
-    "en": "The brain behind Ciuc Navi. Rareselutul turns cold-weather chaos into a game plan, keeps the team calm when the rounds go wrong and makes sure the tea is always hot.",
-    "ro": "Creierul din spatele Ciuc Navi. Rareselutul transformă haosul de iarnă într-un plan de joc, păstrează calmul echipei când rundele merg prost și se asigură că ceaiul e mereu fierbinte.",
-    "hu": "A Ciuc Navi agya. Rareselutul a téli káoszból játékstratégiát csinál, nyugodtan tartja a csapatot, amikor rosszul mennek a körök, és gondoskodik róla, hogy a tea mindig forró legyen."
+    "en": "The brain behind Ciuc Navi. Rareselutul turns cold-weather chaos into a game plan, keeps the team calm when the rounds go wrong and still finds time to run Gabos Store on the side.",
+    "ro": "Creierul din spatele Ciuc Navi. Rareselutul transformă haosul de iarnă într-un plan de joc, păstrează calmul echipei când rundele merg prost și mai găsește timp să conducă și Gabos Store.",
+    "hu": "A Ciuc Navi agya. Rareselutul a téli káoszból játékstratégiát csinál, nyugodtan tartja a csapatot, amikor rosszul mennek a körök, és még a Gabos Store-t is vezeti mellékesen."
   },
   "fun": [
     {
       "v": "3×",
       "l": { "en": "Coach of the Year", "ro": "Antrenorul anului", "hu": "Az év edzője" },
-      "c": { "en": "Harghita Esports Awards (unofficial)", "ro": "Premiile Harghita Esports (neoficiale)", "hu": "Hargita Esport Díj (nem hivatalos)" }
+      "c": { "en": "Harghita Esports Awards", "ro": "Premiile Harghita Esports", "hu": "Hargita Esport Díj" }
     },
     {
       "v": "7×",
@@ -32,9 +32,19 @@
       "c": { "en": "Each one comes with a speech", "ro": "Fiecare vine cu discurs", "hu": "Mindegyikhez beszéd dukál" }
     },
     {
-      "v": "3.5",
-      "l": { "en": "Hot tea per match", "ro": "Ceai fierbinte pe meci", "hu": "Forró tea meccsenként" },
-      "c": { "en": "Blueberry liqueur not included", "ro": "Afinata nu e inclusă", "hu": "Az áfonyalikőr nincs benne" }
+      "v": "CEO",
+      "l": { "en": "Gabos Store", "ro": "Gabos Store", "hu": "Gabos Store" },
+      "c": { "en": "Runs his own business on the side", "ro": "Conduce propria afacere pe lângă", "hu": "Mellékesen a saját üzletét vezeti" }
+    },
+    {
+      "v": "812",
+      "l": { "en": "Rush B", "ro": "Rush B", "hu": "Rush B" },
+      "c": { "en": "Called with zero regrets", "ro": "Cerute fără nicio reținere", "hu": "Egy percnyi megbánás nélkül" }
+    },
+    {
+      "v": "0",
+      "l": { "en": "Pressure moments", "ro": "Momente de presiune", "hu": "Nyomásos pillanatok" },
+      "c": { "en": "Ice cold, just like Ciuc in January", "ro": "Răcește, ca în Ciuc în ianuarie", "hu": "Jéghideg, mint Csíkszereda januárban" }
     }
   ],
   "stats": { "ct": 58, "t": 52, "pistol": 61, "ot": 67 }
