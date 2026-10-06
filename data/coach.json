@@ -1,0 +1,41 @@
+{
+  "_note": "Edit anything here. The award and stat numbers are fun placeholders - replace them with your own. Leave a stat out (or set it to null) to hide it.",
+  "name": "Rareselutul",
+  "icon": "rares.png",
+  "steam64": "76561198163787733",
+  "steam": "https://steamcommunity.com/profiles/76561198163787733",
+  "role": { "en": "Head Coach", "ro": "Antrenor principal", "hu": "Vezéredző" },
+  "tagline": {
+    "en": "Calls the timeouts. Takes the blame. Shares the tea.",
+    "ro": "Cere timeout-urile. Își asumă vina. Împarte ceaiul.",
+    "hu": "Kéri az időkéréseket. Vállalja a felelőséget. Megosztja a teát."
+  },
+  "bio": {
+    "en": "The brain behind Ciuc Navi. Rareselutul turns cold-weather chaos into a game plan, keeps the team calm when the rounds go wrong and makes sure the tea is always hot.",
+    "ro": "Creierul din spatele Ciuc Navi. Rareselutul transformă haosul de iarnă într-un plan de joc, păstrează calmul echipei când rundele merg prost și se asigură că ceaiul e mereu fierbinte.",
+    "hu": "A Ciuc Navi agya. Rareselutul a téli káoszból játékstratégiát csinál, nyugodtan tartja a csapatot, amikor rosszul mennek a körök, és gondoskodik róla, hogy a tea mindig forró legyen."
+  },
+  "fun": [
+    {
+      "v": "3×",
+      "l": { "en": "Coach of the Year", "ro": "Antrenorul anului", "hu": "Az év edzője" },
+      "c": { "en": "Harghita Esports Awards (unofficial)", "ro": "Premiile Harghita Esports (neoficiale)", "hu": "Hargita Esport Díj (nem hivatalos)" }
+    },
+    {
+      "v": "7×",
+      "l": { "en": "Coach MVP", "ro": "MVP antrenor", "hu": "Edző MVP" },
+      "c": { "en": "Voted by the team, under pressure", "ro": "Votat de echipă, sub presiune", "hu": "A csapat szavazta meg, nyomás alatt" }
+    },
+    {
+      "v": "142",
+      "l": { "en": "Timeouts called", "ro": "Timeout-uri cerute", "hu": "Kért időkérések" },
+      "c": { "en": "Each one comes with a speech", "ro": "Fiecare vine cu discurs", "hu": "Mindegyikhez beszéd dukál" }
+    },
+    {
+      "v": "3.5",
+      "l": { "en": "Hot tea per match", "ro": "Ceai fierbinte pe meci", "hu": "Forró tea meccsenként" },
+      "c": { "en": "Blueberry liqueur not included", "ro": "Afinata nu e inclusă", "hu": "Az áfonyalikőr nincs benne" }
+    }
+  ],
+  "stats": { "ct": 58, "t": 52, "pistol": 61, "ot": 67 }
+}

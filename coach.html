@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Coach | Ciuc Navi</title>
+<link rel='icon' type='image/svg+xml' href='icons/favicon.svg?v=1'>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap' rel='stylesheet'>
+<link rel='stylesheet' href='css/style.css?v=20261005'>
+</head>
+<body>
+<canvas id='snow'></canvas>
+<div id='progress'></div>
+
+<header class='nav'>
+  <a href='index.html' class='brand'><span class='brand-mark'>CN</span><span class='brand-text'>CIUC <b>NAVI</b></span></a>
+  <nav class='nav-links'>
+    <a href='index.html#roster' data-i18n='player.back'></a>
+    <div class='lang'>
+      <button class='lang-btn' data-lang='en'>EN</button>
+      <button class='lang-btn' data-lang='ro'>RO</button>
+      <button class='lang-btn' data-lang='hu'>HU</button>
+    </div>
+    <a href='https://discord.gg/7jR3Qr9Znz' target='_blank' rel='noopener' class='btn btn-small' data-i18n='nav.discord'></a>
+  </nav>
+</header>
+
+<main class='section player-page' id='coach-root'>
+  <p class='empty' data-i18n='loading'></p>
+</main>
+
+<footer class='footer'>
+  <p><span id='stats-updated'></span>&copy; <span id='year'></span> Ciuc Navi. <span data-i18n='footer.text'></span></p>
+</footer>
+
+<script src='js/common.js?v=20261005'></script>
+<script src='js/charts.js?v=20261005'></script>
+<script src='js/coach.js?v=20261006'></script>
+</body>
+</html>
