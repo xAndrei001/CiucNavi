@@ -1,5 +1,8 @@
 (function(){
 function boot(){
+Object.assign(I18N.en,{'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
+Object.assign(I18N.ro,{'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
+Object.assign(I18N.hu,{'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
 const mainGrid=document.getElementById('main-grid');
 const benchGrid=document.getElementById('bench-grid');
 const benchEmpty=document.getElementById('bench-empty');
@@ -7,7 +10,7 @@ const heroStats=document.getElementById('hero-stats');
 const updatedEl=document.getElementById('stats-updated');
 let STATE=null;
 
-const statBox=(l,v)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class='stat'><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`;
+const statBox=(l,v,c)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class='stat'><strong>${esc(typeof v==='number'?v.toLocaleString():v)}</strong><span>${esc(l)}</span><em>${esc(c||'')}</em></div>`;
 
 function card(p){
   const s=p.stats||{};const l=p.links||{};
@@ -24,7 +27,7 @@ function card(p){
     <div class='card-body'>
       <h3 class='card-name'><a class='stretched' href='player.html?p=${slug(p.name)}'>${esc(p.name)}</a></h3>
       <p class='card-real'>${esc(p.tag||'')}</p>
-      <div class='card-stats'>${statBox(t('card.premier'),s.premier)}${statBox(t('card.hs'),s.hs)}${statBox(t('card.win'),s.winrate)}</div>
+      <div class='card-stats'>${statBox(t('card.premier'),s.premier,t('card.premierC'))}${statBox(t('card.hs'),s.hs,t('card.hsC'))}${statBox(t('card.win'),s.winrate,t('card.winC'))}${statBox(t('card.matches'),s.matches,t('card.matchesC'))}</div>
       <div class='card-links'>${links}</div>
       <span class='view'>${t('card.view')}</span>
     </div></article>`;
