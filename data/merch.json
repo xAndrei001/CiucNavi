@@ -1,0 +1,8 @@
+{
+  "_note": "Edit the price, the signed extra and the sizes here. One t-shirt is created for every player with status main in data/players.json.",
+  "currency": "RON",
+  "price": 350,
+  "signedExtra": 50,
+  "sizes": ["XS", "S", "M", "L", "XL"],
+  "maxQty": 10
+}
