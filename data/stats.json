@@ -487,52 +487,73 @@
       ]
     }
   },
-  "_updated": "2026-10-23 20:51 UTC",
+  "_updated": "2026-10-24 02:46 UTC",
   "76561198930064082": {
-    "premier": "23,539",
-    "hs": "19.9%",
+    "premier": "23,427",
+    "hs": "20.0%",
     "winrate": "43.3%",
-    "matches": 1604,
+    "matches": 1607,
     "detail": {
       "rating": {
-        "aim": 81.8589,
-        "positioning": 78.5236,
-        "utility": 68.6692,
-        "clutch": 0.1193,
-        "opening": 0.044,
-        "ct_leetify": 0.0607,
-        "t_leetify": 0.0508
+        "aim": 81.3267,
+        "positioning": 80.785,
+        "utility": 68.0536,
+        "clutch": 0.1176,
+        "opening": 0.0517,
+        "ct_leetify": 0.0647,
+        "t_leetify": 0.0488
       },
       "stats": {
-        "accuracy_enemy_spotted": 38.077,
-        "accuracy_head": 19.8612,
-        "counter_strafing_good_shots_ratio": 68.47,
-        "ct_opening_aggression_success_rate": 76.1332,
-        "ct_opening_duel_success_percentage": 55.4242,
-        "flashbang_hit_foe_avg_duration": 2.8629,
-        "flashbang_hit_foe_per_flashbang": 0.5793,
-        "flashbang_hit_friend_per_flashbang": 0.3166,
-        "flashbang_leading_to_kill": 10.6562,
-        "flashbang_thrown": 10.0568,
-        "he_foes_damage_avg": 13.737,
-        "he_friends_damage_avg": 0.2943,
-        "preaim": 8.3999,
-        "reaction_time_ms": 487.3511,
-        "spray_accuracy": 40.101,
-        "t_opening_aggression_success_rate": 61.704,
-        "t_opening_duel_success_percentage": 51.9882,
-        "traded_deaths_success_percentage": 54.3546,
-        "trade_kill_opportunities_per_round": 0.327,
-        "trade_kills_success_percentage": 52.3111,
-        "utility_on_death_avg": 378.7022
+        "accuracy_enemy_spotted": 37.9608,
+        "accuracy_head": 19.98,
+        "counter_strafing_good_shots_ratio": 68.3845,
+        "ct_opening_aggression_success_rate": 76.3369,
+        "ct_opening_duel_success_percentage": 57.6475,
+        "flashbang_hit_foe_avg_duration": 2.847,
+        "flashbang_hit_foe_per_flashbang": 0.5598,
+        "flashbang_hit_friend_per_flashbang": 0.3209,
+        "flashbang_leading_to_kill": 10.4013,
+        "flashbang_thrown": 10.1877,
+        "he_foes_damage_avg": 13.7306,
+        "he_friends_damage_avg": 0.289,
+        "preaim": 8.4735,
+        "reaction_time_ms": 492.3379,
+        "spray_accuracy": 39.9974,
+        "t_opening_aggression_success_rate": 65.1024,
+        "t_opening_duel_success_percentage": 55.4695,
+        "traded_deaths_success_percentage": 55.199,
+        "trade_kill_opportunities_per_round": 0.3294,
+        "trade_kills_success_percentage": 52.9911,
+        "utility_on_death_avg": 381.2304
       },
       "ranks": {
-        "leetify": 5.54,
-        "premier": 23539,
+        "leetify": 5.609999999999999,
+        "premier": 23427,
         "faceit_elo": 2044,
         "wingman": 13
       },
       "recent": [
+        {
+          "m": "de_nuke",
+          "o": "win",
+          "d": "2026-10-24T00:35:24.000Z",
+          "s": "matchmaking_wingman",
+          "r": 0.2553
+        },
+        {
+          "m": "de_mirage",
+          "o": "loss",
+          "d": "2026-10-23T23:51:52.000Z",
+          "s": "matchmaking",
+          "r": 0.1047
+        },
+        {
+          "m": "de_inferno",
+          "o": "tie",
+          "d": "2026-10-23T23:24:30.000Z",
+          "s": "matchmaking_wingman",
+          "r": 0.0609
+        },
         {
           "m": "de_ancient",
           "o": "win",
@@ -861,27 +882,6 @@
           "d": "2026-10-12T23:31:06.000Z",
           "s": "matchmaking",
           "r": 0.1828
-        },
-        {
-          "m": "de_cache",
-          "o": "win",
-          "d": "2026-10-12T22:50:50.000Z",
-          "s": "matchmaking",
-          "r": 0.0271
-        },
-        {
-          "m": "de_mirage",
-          "o": "loss",
-          "d": "2026-10-12T22:04:06.000Z",
-          "s": "matchmaking",
-          "r": -0.015
-        },
-        {
-          "m": "de_cache",
-          "o": "loss",
-          "d": "2026-10-12T18:22:10.000Z",
-          "s": "matchmaking",
-          "r": 0.0558
         }
       ]
     }
