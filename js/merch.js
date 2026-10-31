@@ -41,9 +41,9 @@ sty.textContent=`
 .mc-item:hover,.mp:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:0 16px 40px rgba(255,230,0,.12)}
 .mc-img{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#1b1b20,#0c0c0f);overflow:hidden}
 .mc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .4s,transform .5s}
-.mc-img img.b{opacity:0}
-.mc-item:hover .mc-img img.b,.mp:hover .mc-img img.b{opacity:1}
-.mc-item:hover .mc-img img.f,.mp:hover .mc-img img.f{opacity:0}
+.mc-img img.f{opacity:0}
+.mc-item:hover .mc-img img.f,.mp:hover .mc-img img.f{opacity:1}
+.mc-item:hover .mc-img img.b,.mp:hover .mc-img img.b{opacity:0}
 .mc-tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--yellow);color:#000;font-weight:800;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:5px}
 .mc-info{padding:14px 16px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
 .mc-info h3{font-family:'Rajdhani',sans-serif;font-size:1.3rem;letter-spacing:1px;line-height:1.15;overflow-wrap:anywhere}
