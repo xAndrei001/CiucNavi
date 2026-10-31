@@ -79,9 +79,9 @@ const root=document.getElementById('coach-root');
 
 function keepOrder(){
   const s=document.getElementById('coach'),b=document.getElementById('bench');
-  if(s&&b&&s.nextElementSibling!==b)b.before(s);
+  if(s&&b&&b.nextElementSibling!==s)b.after(s);
   const a=document.getElementById('nav-coach'),n=document.querySelector(`.nav-links a[href='#bench']`);
-  if(a&&n&&a.nextElementSibling!==n)n.before(a);
+  if(a&&n&&n.nextElementSibling!==a)n.after(a);
 }
 
 function renderHome(){
@@ -90,9 +90,9 @@ function renderHome(){
   let sec=document.getElementById('coach');
   if(!sec){
     sec=document.createElement('section');sec.className='section';sec.id='coach';
-    document.getElementById('bench').before(sec);
+    document.getElementById('bench').after(sec);
     const nl=document.querySelector(`.nav-links a[href='#bench']`);
-    if(nl){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';nl.before(a)}
+    if(nl){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';nl.after(a)}
     const main=document.querySelector('main'),nav=document.querySelector('.nav-links');
     const mo=new MutationObserver(keepOrder);
     if(main)mo.observe(main,{childList:true});

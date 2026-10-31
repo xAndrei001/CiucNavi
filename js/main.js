@@ -99,8 +99,8 @@ function renderDash(){
   let d=document.getElementById('dashboard');
   if(!d){
     d=document.createElement('section');d.className='section';d.id='dashboard';
-    document.getElementById('roster').before(d);
-    const nl=document.querySelector(`.nav-links a[href='#roster']`);
+    document.getElementById('merch').before(d);
+    const nl=document.querySelector(`.nav-links a[href='#merch']`);
     if(nl){const a=document.createElement('a');a.href='#dashboard';a.id='nav-dash';nl.before(a)}
   }
   const na=document.getElementById('nav-dash');
