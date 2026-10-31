@@ -17,10 +17,11 @@
       "links": { "steam": "https://steamcommunity.com/id/ceontixx/" }
     },
     {
-      "name": "New player incoming", "tag": "", "role": "TBA",
-      "status": "main", "icon": "",
+      "name": "radutnt", "tag": "radutnt", "role": "TBA",
+      "status": "main", "icon": "radutnt.jpg",
+      "steam64": "76561198104035754",
       "stats": { "premier": "-" },
-      "links": {}
+      "links": { "steam": "https://steamcommunity.com/profiles/76561198104035754" }
     },
     {
       "name": "REGELE", "tag": "xAndrei001 | REGELE", "role": "IGL",
