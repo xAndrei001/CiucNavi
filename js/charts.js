@@ -58,8 +58,9 @@ add('hu',{
 const sty=document.createElement('style');
 sty.textContent=`
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px;margin-bottom:22px}
-.dash-toggle{text-align:center;margin-bottom:22px}
-.dash-more[hidden]{display:none}
+.link-btn{background:none;border:none;padding:0;margin-top:14px;color:var(--muted);font-size:.8rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.link-btn:hover{color:var(--text)}
+#dash-more[hidden]{display:none}
 .dash-grid .panel{margin-bottom:0}
 .dash-grid .wide{grid-column:1/-1}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}

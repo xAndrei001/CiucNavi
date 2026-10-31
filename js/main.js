@@ -47,7 +47,7 @@ function dashHTML(){
   const ap=avg(r=>r.prem),ah=avg(r=>r.hs),aw=avg(r=>r.win);
   const tm=rows.reduce((a,r)=>a+(r.m||0),0);
   const kpi=(v,l)=>v==null?'':`<div class='kpi reveal'><strong>${v}</strong><span>${l}</span></div>`;
-  let h=`<div class='kpis'>${kpi(ap?Math.round(ap).toLocaleString():null,t('dash.avgPremier'))}${kpi(ah?ah.toFixed(1)+'%':null,t('dash.avgHs'))}${kpi(aw?aw.toFixed(1)+'%':null,t('dash.avgWin'))}${kpi(tm?tm.toLocaleString():null,t('dash.matches'))}</div><div class='dash-more' id='dash-more'${dashOpen?'':' hidden'}><div class='dash-grid'>`;
+  let h=`<div class='kpis'>${kpi(ap?Math.round(ap).toLocaleString():null,t('dash.avgPremier'))}${kpi(ah?ah.toFixed(1)+'%':null,t('dash.avgHs'))}${kpi(aw?aw.toFixed(1)+'%':null,t('dash.avgWin'))}${kpi(tm?tm.toLocaleString():null,t('dash.matches'))}</div><div class='dash-grid'>`;
   const pr=rows.filter(r=>r.prem);
   if(pr.length){
     const mx=Math.max(...pr.map(r=>r.prem))*1.15;
@@ -87,11 +87,11 @@ function dashHTML(){
   if(mr.length){
     const best=mr[0],worst=mr[mr.length-1];
     const co=(cls,lab,r)=>`<div class='co ${cls}'><span>${lab}</span><strong>${esc(C.mapName(r.map))}</strong><em>${r.wr.toFixed(0)}%</em></div>`;
-    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><div class='callouts'>${co('good',t('dash.best'),best)}${mr.length>1?co('bad',t('dash.worst'),worst):''}</div>${C.mapMeters(mr)}<p class='note' style='margin-top:14px'>${t('dash.mapsNote')}</p></div>`;
+    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><div class='callouts'>${co('good',t('dash.best'),best)}${mr.length>1?co('bad',t('dash.worst'),worst):''}</div><div id='dash-more' ${dashOpen?'':'hidden'}>${C.mapMeters(mr)}<p class='note' style='margin-top:14px'>${t('dash.mapsNote')}</p></div><button type='button' class='link-btn' id='dash-toggle' aria-expanded='${dashOpen}' aria-controls='dash-more'>${t(dashOpen?'dash.less':'dash.more')}</button></div>`;
   }else{
     h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><p class='note'>${t('dash.nomaps')}</p></div>`;
   }
-  return h+`</div></div><div class='dash-toggle'><button type='button' class='btn' id='dash-toggle' aria-expanded='${dashOpen}' aria-controls='dash-more'>${t(dashOpen?'dash.less':'dash.more')}</button></div>`;
+  return h+'</div>';
 }
 
 let dashOpen=false;
