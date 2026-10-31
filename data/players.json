@@ -2,7 +2,7 @@
   "players": [
     {
       "name": "GHEOPARD", "tag": "✪ studios.GHEOPARD", "role": "AWPer",
-      "status": "main", "icon": "gheopard.png",
+      "status": "main", "icon": "gheopard.jpg",
       "steam64": "76561198930064082",
       "vanity": "stoodios",
       "stats": { "premier": "-" },
@@ -10,14 +10,14 @@
     },
     {
       "name": "Ceontixx", "tag": "™Ceontixx™", "role": "Support",
-      "status": "main", "icon": "ceontixx.png",
+      "status": "main", "icon": "ceontixx.jpg",
       "steam64": "76561198157122706",
       "vanity": "ceontixx",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/id/ceontixx/" }
     },
     {
-      "name": "radutnt", "tag": "radutnt", "role": "Entry",
+      "name": "raduTNT", "tag": "raduTNT", "role": "Entry",
       "status": "main", "icon": "radutnt.jpg",
       "steam64": "76561198104035754",
       "stats": { "premier": "-" },
@@ -25,14 +25,14 @@
     },
     {
       "name": "REGELE", "tag": "xAndrei001 | REGELE", "role": "IGL",
-      "status": "main", "icon": "regele.png",
+      "status": "main", "icon": "regele.jpg",
       "steam64": "76561199046007584",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199046007584/" }
     },
     {
       "name": "teaca", "tag": "teaca", "role": "Rifler",
-      "status": "main", "icon": "teaca.png",
+      "status": "main", "icon": "teaca.jpg",
       "steam64": "76561199243387378",
       "vanity": "keyboardgremlin",
       "stats": { "premier": "-" },
@@ -40,21 +40,21 @@
     },
     {
       "name": "Viccash", "tag": "", "role": "Substitute",
-      "status": "bench", "icon": "viccash.png",
+      "status": "bench", "icon": "viccash.jpg",
       "steam64": "76561199846135632",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199846135632" }
     },
     {
       "name": "cata2PEU", "tag": "", "role": "Substitute",
-      "status": "bench", "icon": "cata.png",
+      "status": "bench", "icon": "cata.jpg",
       "steam64": "76561199046293468",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199046293468" }
     },
     {
       "name": "stfandrei", "tag": "stfandrei", "role": "Substitute",
-      "status": "bench", "icon": "stfandrei.png",
+      "status": "bench", "icon": "stfandrei.jpg",
       "steam64": "76561199106120931",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199106120931/" }
