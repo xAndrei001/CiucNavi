@@ -8,7 +8,7 @@ add('en',{
 'dash.radar':`Team skill radar`,'dash.radarTeam':`Team average`,
 'dash.nodata':`Charts appear as soon as players register on Leetify.`,
 'dash.maps':`Team strengths by map`,'dash.mapsNote':`Win rate across the recent matches of every registered player. Maps with fewer than 3 games are hidden.`,
-'dash.best':`Strongest map`,'dash.worst':`Weakest map`,'dash.games':`games`,'dash.nomaps':`Map data appears after the next stats update.`,
+'dash.more':`Show more`,'dash.less':`Show less`,'dash.best':`Strongest map`,'dash.worst':`Weakest map`,'dash.games':`games`,'dash.nomaps':`Map data appears after the next stats update.`,
 'chart.perf':`Performance`,'chart.winrate':`Win rate`,'chart.hs':`Headshot accuracy`,'chart.spray':`Spray control`,'chart.cs':`Counter-strafing`,'chart.open':`Opening duels`,'chart.trade':`Trading`,'chart.radar':`Skill profile`,
 'axis.aim':`Aim`,'axis.positioning':`Positioning`,'axis.utility':`Utility`,'axis.cs':`Counter-strafing`,'axis.spray':`Spray control`,'axis.trade':`Trading`,'axis.open':`Opening duels`,
 'grp.aim':`Aim & mechanics`,'grp.util':`Utility`,'grp.open':`Opening duels`,'grp.trade':`Trading`,'grp.other':`Other`,
@@ -26,7 +26,7 @@ add('ro',{
 'dash.radar':`Radar abilități echipă`,'dash.radarTeam':`Media echipei`,
 'dash.nodata':`Graficele apar imediat ce jucătorii se înregistrează pe Leetify.`,
 'dash.maps':`Punctele forte ale echipei pe hărți`,'dash.mapsNote':`Rată de victorii în meciurile recente ale fiecărui jucător înregistrat. Hărțile cu mai puțin de 3 meciuri sunt ascunse.`,
-'dash.best':`Cea mai bună hartă`,'dash.worst':`Cea mai slabă hartă`,'dash.games':`meciuri`,'dash.nomaps':`Datele pe hărți apar după următoarea actualizare a statisticilor.`,
+'dash.more':`Arată mai mult`,'dash.less':`Arată mai puțin`,'dash.best':`Cea mai bună hartă`,'dash.worst':`Cea mai slabă hartă`,'dash.games':`meciuri`,'dash.nomaps':`Datele pe hărți apar după următoarea actualizare a statisticilor.`,
 'chart.perf':`Performanță`,'chart.winrate':`Rată victorii`,'chart.hs':`Precizie headshot`,'chart.spray':`Control spray`,'chart.cs':`Counter-strafing`,'chart.open':`Dueluri de deschidere`,'chart.trade':`Trade-uri`,'chart.radar':`Profil de abilități`,
 'axis.aim':`Aim`,'axis.positioning':`Poziționare`,'axis.utility':`Utilitare`,'axis.cs':`Counter-strafing`,'axis.spray':`Control spray`,'axis.trade':`Trade-uri`,'axis.open':`Dueluri de deschidere`,
 'grp.aim':`Aim și mecanică`,'grp.util':`Utilitare`,'grp.open':`Dueluri de deschidere`,'grp.trade':`Trade-uri`,'grp.other':`Altele`,
@@ -44,7 +44,7 @@ add('hu',{
 'dash.radar':`Csapat képességradar`,'dash.radarTeam':`Csapatátlag`,
 'dash.nodata':`A diagramok megjelennek, amint a játékosok regisztrálnak a Leetify-on.`,
 'dash.maps':`A csapat erősségei pályánként`,'dash.mapsNote':`Győzelmi arány minden regisztrált játékos legutóbbi meccsei alapján. A 3-nál kevesebb meccses pályák rejtve vannak.`,
-'dash.best':`Legerősebb pálya`,'dash.worst':`Leggyengébb pálya`,'dash.games':`meccs`,'dash.nomaps':`A pályaadatok a következő statisztikafrissítés után jelennek meg.`,
+'dash.more':`Több mutatása`,'dash.less':`Kevesebb mutatása`,'dash.best':`Legerősebb pálya`,'dash.worst':`Leggyengébb pálya`,'dash.games':`meccs`,'dash.nomaps':`A pályaadatok a következő statisztikafrissítés után jelennek meg.`,
 'chart.perf':`Teljesítmény`,'chart.winrate':`Győzelmi arány`,'chart.hs':`Fejlövés pontosság`,'chart.spray':`Spray kontroll`,'chart.cs':`Counter-strafe`,'chart.open':`Nyitó párharcok`,'chart.trade':`Trade`,'chart.radar':`Képességprofil`,
 'axis.aim':`Célzás`,'axis.positioning':`Pozícionálás`,'axis.utility':`Utility`,'axis.cs':`Counter-strafe`,'axis.spray':`Spray kontroll`,'axis.trade':`Trade`,'axis.open':`Nyitó párharcok`,
 'grp.aim':`Célzás és mechanika`,'grp.util':`Utility`,'grp.open':`Nyitó párharcok`,'grp.trade':`Trade`,'grp.other':`Egyéb`,
@@ -58,6 +58,8 @@ add('hu',{
 const sty=document.createElement('style');
 sty.textContent=`
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px;margin-bottom:22px}
+.dash-toggle{text-align:center;margin-bottom:22px}
+.dash-more[hidden]{display:none}
 .dash-grid .panel{margin-bottom:0}
 .dash-grid .wide{grid-column:1/-1}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}

@@ -47,7 +47,7 @@ function dashHTML(){
   const ap=avg(r=>r.prem),ah=avg(r=>r.hs),aw=avg(r=>r.win);
   const tm=rows.reduce((a,r)=>a+(r.m||0),0);
   const kpi=(v,l)=>v==null?'':`<div class='kpi reveal'><strong>${v}</strong><span>${l}</span></div>`;
-  let h=`<div class='kpis'>${kpi(ap?Math.round(ap).toLocaleString():null,t('dash.avgPremier'))}${kpi(ah?ah.toFixed(1)+'%':null,t('dash.avgHs'))}${kpi(aw?aw.toFixed(1)+'%':null,t('dash.avgWin'))}${kpi(tm?tm.toLocaleString():null,t('dash.matches'))}</div><div class='dash-grid'>`;
+  let h=`<div class='kpis'>${kpi(ap?Math.round(ap).toLocaleString():null,t('dash.avgPremier'))}${kpi(ah?ah.toFixed(1)+'%':null,t('dash.avgHs'))}${kpi(aw?aw.toFixed(1)+'%':null,t('dash.avgWin'))}${kpi(tm?tm.toLocaleString():null,t('dash.matches'))}</div><div class='dash-more' id='dash-more'${dashOpen?'':' hidden'}><div class='dash-grid'>`;
   const pr=rows.filter(r=>r.prem);
   if(pr.length){
     const mx=Math.max(...pr.map(r=>r.prem))*1.15;
@@ -91,9 +91,10 @@ function dashHTML(){
   }else{
     h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><p class='note'>${t('dash.nomaps')}</p></div>`;
   }
-  return h+'</div>';
+  return h+`</div></div><div class='dash-toggle'><button type='button' class='btn' id='dash-toggle' aria-expanded='${dashOpen}' aria-controls='dash-more'>${t(dashOpen?'dash.less':'dash.more')}</button></div>`;
 }
 
+let dashOpen=false;
 function renderDash(){
   let d=document.getElementById('dashboard');
   if(!d){
@@ -105,6 +106,8 @@ function renderDash(){
   const na=document.getElementById('nav-dash');
   if(na)na.textContent=t('nav.dashboard');
   d.innerHTML=`<h2 class='section-title reveal'>${t('dash.title').replace(/~(.+?)~/g,'<span class=yellow>$1</span>')}</h2>`+dashHTML();
+  const b=document.getElementById('dash-toggle');
+  if(b)b.onclick=()=>{dashOpen=!dashOpen;document.getElementById('dash-more').hidden=!dashOpen;b.setAttribute('aria-expanded',dashOpen);b.textContent=t(dashOpen?'dash.less':'dash.more')};
 }
 
 function render(){
