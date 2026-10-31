@@ -17,11 +17,10 @@
       "links": { "steam": "https://steamcommunity.com/id/ceontixx/" }
     },
     {
-      "name": "stfandrei", "tag": "stfandrei", "role": "Entry",
-      "status": "main", "icon": "stfandrei.png",
-      "steam64": "76561199106120931",
+      "name": "New player incoming", "tag": "", "role": "TBA",
+      "status": "main", "icon": "",
       "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/profiles/76561199106120931/" }
+      "links": {}
     },
     {
       "name": "REGELE", "tag": "xAndrei001 | REGELE", "role": "IGL",
@@ -46,18 +45,18 @@
       "links": { "steam": "https://steamcommunity.com/profiles/76561199846135632" }
     },
     {
-      "name": "MikaHell Jacksone", "tag": "", "role": "Substitute",
-      "status": "bench", "icon": "mihut.png",
-      "steam64": "76561198177258210",
-      "stats": { "premier": "-" },
-      "links": { "steam": "https://steamcommunity.com/profiles/76561198177258210" }
-    },
-    {
       "name": "cata2PEU", "tag": "", "role": "Substitute",
       "status": "bench", "icon": "cata.png",
       "steam64": "76561199046293468",
       "stats": { "premier": "-" },
       "links": { "steam": "https://steamcommunity.com/profiles/76561199046293468" }
+    },
+    {
+      "name": "stfandrei", "tag": "stfandrei", "role": "Substitute",
+      "status": "bench", "icon": "stfandrei.png",
+      "steam64": "76561199106120931",
+      "stats": { "premier": "-" },
+      "links": { "steam": "https://steamcommunity.com/profiles/76561199106120931/" }
     }
   ]
 }

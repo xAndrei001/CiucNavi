@@ -25,11 +25,11 @@ function card(p){
   return `<article class='card reveal'>
     <div class='card-img'><span class='role'>${esc(p.role)}</span>${img}</div>
     <div class='card-body'>
-      <h3 class='card-name'><a class='stretched' href='player.html?p=${slug(p.name)}'>${esc(p.name)}</a></h3>
+      <h3 class='card-name'>${p.steam64?`<a class='stretched' href='player.html?p=${slug(p.name)}'>${esc(p.name)}</a>`:esc(p.name)}</h3>
       <p class='card-real'>${esc(p.tag||'')}</p>
       <div class='card-stats'>${statBox(t('card.premier'),s.premier,t('card.premierC'))}${statBox(t('card.hs'),s.hs,t('card.hsC'))}${statBox(t('card.win'),s.winrate,t('card.winC'))}${statBox(t('card.matches'),s.matches,t('card.matchesC'))}</div>
       <div class='card-links'>${links}</div>
-      <span class='view'>${t('card.view')}</span>
+      ${p.steam64?`<span class='view'>${t('card.view')}</span>`:''}
     </div></article>`;
 }
 

@@ -241,7 +241,7 @@ function draw(){renderPreview();renderShop()}
 
 Promise.all([getJson('data/players.json'),getJson('data/merch.json').catch(()=>({}))]).then(([data,cfg])=>{
   CFG={...CFG,...cfg};
-  ITEMS=(data.players||[]).filter(p=>p.status==='main').map(p=>({name:p.name,slug:slug(p.name)}));
+  ITEMS=(data.players||[]).filter(p=>p.status==='main'&&p.steam64).map(p=>({name:p.name,slug:slug(p.name)}));
   draw();
 }).catch(err=>{
   const r=document.getElementById('merch-root');
