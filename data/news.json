@@ -1,5 +1,5 @@
 {
-  "_note": "Newest first or any order, the site sorts by date. type is one of: new-player, transfer, promotion, demotion, announcement. image is a file name inside newsphotos/ (leave it out or missing to show the placeholder). The three entries below are examples.",
+  "_note": "Newest first or any order, the site sorts by date. type is one of: new-player, transfer, promotion, demotion, announcement. image is a file name inside img/news/ (leave it out or missing to show the placeholder). The three entries below are examples.",
   "news": [
     {
       "id": "welcome-radutnt",
