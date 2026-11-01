@@ -1,0 +1,53 @@
+{
+  "_note": "Newest first or any order, the site sorts by date. type is one of: new-player, transfer, promotion, demotion, announcement. image is a file name inside newsphotos/ (leave it out or missing to show the placeholder). The three entries below are examples.",
+  "news": [
+    {
+      "id": "welcome-radutnt",
+      "date": "2026-11-01",
+      "type": "new-player",
+      "image": "radutnt-welcome.jpg",
+      "title": {
+        "en": "Welcome to the team, raduTNT!",
+        "ro": "Bun venit în echipă, raduTNT!",
+        "hu": "Üdv a csapatban, raduTNT!"
+      },
+      "text": {
+        "en": "raduTNT joins the main roster as our new Entry fragger. He arrives with years of experience and a very loud mouse click. Say hi on Discord and show him how we play in -20°C.",
+        "ro": "raduTNT se alătură echipei principale ca noul nostru Entry. Vine cu ani de experiență și un click de mouse foarte zgomotos. Salută-l pe Discord și arată-i cum jucăm la -20°C.",
+        "hu": "raduTNT csatlakozik a főcsapathoz, mint új Entry játékosunk. Évek tapasztalatával és nagyon hangos egérkattintással érkezik. Köszöntsd Discordon, és mutasd meg neki, hogyan játszunk -20°C-ban."
+      }
+    },
+    {
+      "id": "viccash-promoted",
+      "date": "2026-10-28",
+      "type": "promotion",
+      "image": "viccash-promoted.jpg",
+      "title": {
+        "en": "Viccash moves up to first substitute",
+        "ro": "Viccash devine prima rezervă",
+        "hu": "Viccash lett az első cserejátékos"
+      },
+      "text": {
+        "en": "After a strong run of practice matches, Viccash is now first in line to step in whenever one of the five needs a rest. Well deserved.",
+        "ro": "După o serie puternică de meciuri de antrenament, Viccash este acum primul la rând când unul dintre cei cinci are nevoie de pauză. Meritat.",
+        "hu": "Az erős edzőmeccsek után Viccash az első, aki beugrik, ha az öt játékos valamelyikének pihennie kell. Megérdemelt."
+      }
+    },
+    {
+      "id": "stfandrei-bench",
+      "date": "2026-10-20",
+      "type": "demotion",
+      "image": "stfandrei-bench.jpg",
+      "title": {
+        "en": "stfandrei moves to the bench",
+        "ro": "stfandrei trece pe banca de rezerve",
+        "hu": "stfandrei a kispadra kerül"
+      },
+      "text": {
+        "en": "stfandrei steps back from the main five to make room for a new face. He stays with the squad as a substitute and will be back in the rotation soon.",
+        "ro": "stfandrei se retrage din primii cinci pentru a face loc unei fețe noi. Rămâne în echipă ca rezervă și va reveni curând în rotație.",
+        "hu": "stfandrei kilép az első ötből, hogy helyet adjon egy új arcnak. Cserejátékosként marad a csapatnál, és hamarosan visszatér a rotációba."
+      }
+    }
+  ]
+}
