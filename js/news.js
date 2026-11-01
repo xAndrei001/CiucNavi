@@ -20,8 +20,10 @@ sty.textContent=`
 .news-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 a.news-card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:0 16px 40px rgba(255,230,0,.12)}
 .news-card.sel{border-color:var(--yellow);box-shadow:0 0 0 1px var(--yellow),0 16px 40px rgba(255,230,0,.15)}
-.news-img{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,#1b1b20,#0c0c0f);overflow:hidden}
-.news-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.news-img{position:relative;background:linear-gradient(160deg,#1b1b20,#0c0c0f);overflow:hidden}
+.news-img:not(:has(img)){aspect-ratio:16/10}
+.news-img:has(img) .news-ph{display:none}
+.news-img img{display:block;width:100%;height:auto}
 .news-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:3.4rem;letter-spacing:4px;color:var(--yellow);opacity:.35}
 .news-tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--yellow);color:#000;font-weight:800;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:5px}
 .news-body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px}
