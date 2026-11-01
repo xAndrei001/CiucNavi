@@ -71,7 +71,7 @@ sty.textContent=`
 document.head.appendChild(sty);
 
 const L=o=>(o&&typeof o==='object')?(o[LANG]||o.en||''):(o==null?'':o);
-const imgTag=d=>d.icon?`<img src='icons/${encodeURIComponent(d.icon)}' alt='${esc(d.name)}' data-ini='${esc(initials(d.name))}'>`:`<span class='initials'>${esc(initials(d.name))}</span>`;
+const imgTag=d=>d.icon?`<img src='img/players/${encodeURIComponent(d.icon)}' alt='${esc(d.name)}' data-ini='${esc(initials(d.name))}'>`:`<span class='initials'>${esc(initials(d.name))}</span>`;
 const funTiles=d=>(d.fun||[]).map(f=>`<div class='fs'><strong>${esc(f.v)}</strong><span>${esc(L(f.l))}</span><em>${esc(L(f.c))}</em></div>`).join('');
 const title=k=>t(k).replace(/~(.+?)~/g,'<span class=yellow>$1</span>');
 let DATA=null,TEAM=null;

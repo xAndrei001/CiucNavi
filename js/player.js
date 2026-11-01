@@ -72,7 +72,7 @@ function render(){
   const {p,s,info}=ST;
   if(!p){root.innerHTML=`<a class='back' href='index.html#roster'>${t('player.back')}</a><p class='empty'>${t('player.notfound')}</p>`;return}
   document.title=p.name+' | Ciuc Navi';
-  const img=p.icon?`<img src='icons/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}'>`:`<span class='initials'>${esc(initials(p.name))}</span>`;
+  const img=p.icon?`<img src='img/players/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}'>`:`<span class='initials'>${esc(initials(p.name))}</span>`;
   const l=p.links||{};
   const leet=p.steam64?`https://leetify.com/app/profile/${encodeURIComponent(p.steam64)}`:'';
   const links=(l.steam?`<a class='btn btn-ghost btn-small' href='${esc(l.steam)}' target='_blank' rel='noopener'>Steam</a>`:'')+(leet?`<a class='btn btn-ghost btn-small' href='${esc(leet)}' target='_blank' rel='noopener'>Leetify</a>`:'');

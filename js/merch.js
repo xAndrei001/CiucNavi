@@ -117,13 +117,13 @@ function ph(name,side){
   const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 440'><rect width='400' height='440' fill='#141418'/><path d='M120 60 L56 104 L90 166 L120 144 L120 384 L280 384 L280 144 L310 166 L344 104 L280 60 Q200 112 120 60Z' fill='#0e0e11' stroke='#ffe600' stroke-width='3'/><text x='200' y='${big?200:190}' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='${big?(n.length>8?30:40):22}' fill='#ffe600'>${big?n:'CIUC NAVI'}</text><text x='200' y='${big?236:224}' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='15' fill='#9a9aa5'>${big?'CIUC NAVI':n}</text><text x='200' y='416' text-anchor='middle' font-family='Arial,sans-serif' font-size='13' fill='#5d5d68' letter-spacing='3'>${side.toUpperCase()}</text></svg>`;
   return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
-const imgTag=(p,side,cls)=>`<img class='${cls||''}' src='merchphotos/${p.slug}-${side}.jpg' data-slug='${p.slug}' data-side='${side}' data-ext='0' data-name='${esc(p.name)}' alt='${esc(itemName(p))} - ${side}' loading='lazy'>`;
+const imgTag=(p,side,cls)=>`<img class='${cls||''}' src='img/merch/${p.slug}-${side}.jpg' data-slug='${p.slug}' data-side='${side}' data-ext='0' data-name='${esc(p.name)}' alt='${esc(itemName(p))} - ${side}' loading='lazy'>`;
 function wireImgs(scope){
   (scope||document).querySelectorAll('img[data-side]').forEach(i=>{
     if(i._w)return;i._w=1;
     i.addEventListener('error',()=>{
       const n=Number(i.dataset.ext)+1;
-      if(n<EXTS.length){i.dataset.ext=n;i.src='merchphotos/'+i.dataset.slug+'-'+i.dataset.side+'.'+EXTS[n]}
+      if(n<EXTS.length){i.dataset.ext=n;i.src='img/merch/'+i.dataset.slug+'-'+i.dataset.side+'.'+EXTS[n]}
       else{i.src=ph(i.dataset.name,i.dataset.side)}
     });
   });

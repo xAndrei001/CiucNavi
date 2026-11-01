@@ -46,7 +46,7 @@ const L=o=>o&&typeof o==='object'?(o[LANG]||o.en||''):(o||'');
 
 function card(n){
   const tag=`<span class='news-tag'>${esc(t('news.type.'+n.type))}</span>`;
-  const img=n.image?`<img src='newsphotos/${encodeURIComponent(n.image)}' alt='${esc(L(n.title))}' loading='lazy'>`:'';
+  const img=n.image?`<img src='img/news/${encodeURIComponent(n.image)}' alt='${esc(L(n.title))}' loading='lazy'>`:'';
   const date=n.date?new Date(n.date+'T00:00:00').toLocaleDateString(LANG,{year:'numeric',month:'long',day:'numeric'}):'';
   const inner=`<div class='news-img'><span class='news-ph'>CN</span>${img}${tag}</div>
     <div class='news-body'><span class='news-date'>${esc(date)}</span><h3>${esc(L(n.title))}</h3><p>${esc(L(n.text))}</p></div>`;

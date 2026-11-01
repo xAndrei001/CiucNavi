@@ -15,7 +15,7 @@ const statBox=(l,v,c)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class
 function card(p){
   const s=p.stats||{};const l=p.links||{};
   const img=p.icon
-    ?`<img src='icons/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}' loading='lazy'>`
+    ?`<img src='img/players/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}' loading='lazy'>`
     :`<span class='initials'>${esc(initials(p.name))}</span>`;
   const leet=p.steam64?`https://leetify.com/app/profile/${encodeURIComponent(p.steam64)}`:'';
   const links=[
