@@ -1,8 +1,8 @@
 (function(){
 function boot(){
-Object.assign(I18N.en,{'nav.dashboard':`Dashboard`,'dash.title':`Team ~Dashboard~`,'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
-Object.assign(I18N.ro,{'nav.dashboard':`Panou`,'dash.title':`Panou ~echipă~`,'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
-Object.assign(I18N.hu,{'nav.dashboard':`Irányítópult`,'dash.title':`Csapat ~irányítópult~`,'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
+Object.assign(I18N.en,{'nav.dashboard':`Dashboard`,'dash.title':`Team ~Dashboard~`,'cmp.link':`Compare players →`,'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
+Object.assign(I18N.ro,{'nav.dashboard':`Panou`,'dash.title':`Panou ~echipă~`,'cmp.link':`Compară jucătorii →`,'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
+Object.assign(I18N.hu,{'nav.dashboard':`Irányítópult`,'dash.title':`Csapat ~irányítópult~`,'cmp.link':`Játékosok összehasonlítása →`,'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
 const mainGrid=document.getElementById('main-grid');
 const benchGrid=document.getElementById('bench-grid');
 const benchEmpty=document.getElementById('bench-empty');
@@ -11,7 +11,17 @@ const updatedEl=document.getElementById('stats-updated');
 let STATE=null;
 mainGrid.innerHTML='<div class="skel" style="aspect-ratio:3/4"></div>'.repeat(5);
 
-const statBox=(l,v,c)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class='stat'><strong>${esc(typeof v==='number'?v.toLocaleString():v)}</strong><span>${esc(l)}</span><em>${esc(c||'')}</em></div>`;
+const statBox=(l,v,c,cls,tr)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class='stat'><strong${cls?` class='${cls}'`:''}>${esc(typeof v==='number'?v.toLocaleString():v)}${tr||''}</strong><span>${esc(l)}</span><em>${esc(c||'')}</em></div>`;
+
+// arrow next to a number when it changed since the previous update; hover shows the old value
+const trend=(k,cur,prev)=>{
+  if(prev==null||cur==null)return '';
+  const a=numOf(cur),b=numOf(prev);
+  if(isNaN(a)||isNaN(b)||a===b)return '';
+  const d=a-b,txt=(d>0?'+':'')+(k==='premier'?Math.round(d).toLocaleString():d.toFixed(1)+' pts');
+  return `<i class='tr ${d>0?'up':'dn'}' title='${esc(t('card.was'))}: ${esc(prev)} (${txt})'>${d>0?'▲':'▼'}</i>`;
+};
+const hlBox=h=>h&&h.k?`<div class='stat stat-hl'><span>${esc(t('hl.'+h.k))}</span><strong>${h.v.toLocaleString(LANG,{maximumFractionDigits:1})}${h.k==='he'||h.k==='utility'?'':'%'}</strong></div>`:'';
 
 function card(p){
   const s=p.stats||{};const l=p.links||{};
@@ -28,7 +38,7 @@ function card(p){
     <div class='card-body'>
       <h3 class='card-name'>${p.steam64?`<a class='stretched' href='player.html?p=${slug(p.name)}'>${esc(p.name)}</a>`:esc(p.name)}</h3>
       <p class='card-real'>${esc(p.tag||'')}</p>
-      <div class='card-stats'>${statBox(t('card.premier'),s.premier,t('card.premierC'))}${statBox(t('card.hs'),s.hs,t('card.hsC'))}${statBox(t('card.win'),s.winrate,t('card.winC'))}${statBox(t('card.matches'),s.matches,t('card.matchesC'))}</div>
+      <div class='card-stats'>${statBox(t('card.premier'),s.premier,t('card.premierC'),'tier-'+tierOf(numOf(s.premier)),trend('premier',s.premier,(s.prev||{}).premier))}${statBox(t('card.hs'),s.hs,t('card.hsC'),'',trend('hs',s.hs,(s.prev||{}).hs))}${statBox(t('card.win'),s.winrate,t('card.winC'),'',trend('winrate',s.winrate,(s.prev||{}).winrate))}${statBox(t('card.matches'),s.matches,t('card.matchesC'))}${hlBox(s.hl)}</div>
       <div class='card-links'>${links}</div>
       ${p.steam64?`<span class='view'>${t('card.view')}</span>`:''}
     </div></article>`;
@@ -84,11 +94,18 @@ function dashHTML(){
     h+=`<div class='panel reveal'><h3>${t('dash.radar')}</h3>${C.radar(keys,series)}${C.legend(leg)}</div>`;
   }
   const all=[];rows.forEach(r=>r.recent.forEach(x=>all.push(x)));
+  // the same match appears in several players' history; merge by finish time and map
+  const seen={};
+  rows.forEach(r=>r.recent.forEach(x=>{
+    const k=x.d+'|'+x.m,m=seen[k]=seen[k]||{...x,names:[]};
+    m.names.push({n:r.p.name,c:r.col});
+  }));
+  const teamFeed=Object.values(seen);
   const mr=C.mapRows(all).filter(x=>x.n>=3).sort((a,b)=>b.wr-a.wr||b.n-a.n);
   if(mr.length){
     const best=mr[0],worst=mr[mr.length-1];
     const co=(cls,lab,r)=>`<div class='co ${cls}'><span>${lab}</span><strong>${esc(C.mapName(r.map))}</strong><em>${r.wr.toFixed(0)}%</em></div>`;
-    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><div class='callouts'>${co('good',t('dash.best'),best)}${mr.length>1?co('bad',t('dash.worst'),worst):''}</div><div id='dash-more' ${dashOpen?'':'hidden'}>${C.mapMeters(mr)}<p class='note' style='margin-top:14px'>${t('dash.mapsNote')}</p></div><button type='button' class='link-btn' id='dash-toggle' aria-expanded='${dashOpen}' aria-controls='dash-more'>${t(dashOpen?'dash.less':'dash.more')}</button></div>`;
+    h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><div class='callouts'>${co('good',t('dash.best'),best)}${mr.length>1?co('bad',t('dash.worst'),worst):''}</div><div id='dash-more' ${dashOpen?'':'hidden'}>${C.mapMeters(mr)}<p class='note' style='margin-top:14px'>${t('dash.mapsNote')}</p><h3 style='margin:28px 0 14px'>${t('feed.team')}</h3>${C.matchFeed(teamFeed,10)}</div><button type='button' class='link-btn' id='dash-toggle' aria-expanded='${dashOpen}' aria-controls='dash-more'>${t(dashOpen?'dash.less':'dash.more')}</button></div>`;
   }else{
     h+=`<div class='panel wide reveal'><h3>${t('dash.maps')}</h3><p class='note'>${t('dash.nomaps')}</p></div>`;
   }
@@ -100,7 +117,7 @@ let dashOpen=false,dashReady=false,dashWatching=false;
 const dashSkel=()=>`<div class='kpis'>${'<div class="kpi skel" style="height:98px"></div>'.repeat(4)}</div><div class='dash-grid'>${'<div class="panel skel" style="height:300px"></div>'.repeat(4)}</div>`;
 
 function loadDash(){
-  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261117';s.onload=s.onerror=res;document.head.appendChild(s)});
+  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261122';s.onload=s.onerror=res;document.head.appendChild(s)});
   const details=Promise.all(STATE.main.map(p=>p.stats.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>x.detail||null).catch(()=>null):null));
   Promise.all([charts,details]).then(([,ds])=>{STATE.main.forEach((p,i)=>{p.detail=ds[i]});dashReady=true;renderDash();observeReveals()});
 }
@@ -135,6 +152,7 @@ function render(){
   mainGrid.innerHTML=main.map(card).join('');
   benchGrid.innerHTML=bench.map(card).join('');
   benchEmpty.hidden=bench.length>0;
+  document.getElementById('cmp-link').innerHTML=`<a class='btn btn-ghost' href='compare.html'>${t('cmp.link')}</a>`;
   const avg=average(main.map(p=>p.stats.premier));
   heroStats.innerHTML=`
     <div class='hero-stat'><strong>${main.length}</strong><span>${t('hero.main')}</span></div>

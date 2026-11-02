@@ -63,8 +63,32 @@ def recent_list(data):
     out = []
     for x in (data.get('recent_matches') or []):
         if isinstance(x, dict):
-            out.append({'m': x.get('map_name'), 'o': x.get('outcome'), 'd': x.get('finished_at'), 's': x.get('data_source'), 'r': x.get('leetify_rating')})
+            item = {'m': x.get('map_name'), 'o': x.get('outcome'), 'd': x.get('finished_at'), 's': x.get('data_source'), 'r': x.get('leetify_rating')}
+            # score and id are kept when the API returns them (the site shows the score only if present)
+            if isinstance(x.get('score'), (list, tuple)) and len(x['score']) == 2:
+                item['sc'] = x['score']
+            out.append(item)
     return out[:50]
+
+
+def highlight(role, detail):
+    """One extra stat that matters for the player's role, shown on the home page card."""
+    st, rt = detail.get('stats') or {}, detail.get('rating') or {}
+    role = str(role or '').strip().lower()
+
+    def num(v):
+        return v if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+
+    if role == 'awper':
+        v = [num(st.get('ct_opening_duel_success_percentage')), num(st.get('t_opening_duel_success_percentage'))]
+        v = [x for x in v if x is not None]
+        return {'k': 'opening', 'v': round(sum(v) / len(v), 1)} if v else None
+    pick = {'entry': ('entry', 't_opening_aggression_success_rate', st), 'support': ('he', 'he_foes_damage_avg', st),
+            'rifler': ('trade', 'trade_kills_success_percentage', st), 'igl': ('utility', 'utility', rt)}.get(role)
+    if not pick:
+        return None
+    v = num(pick[2].get(pick[1]))
+    return {'k': pick[0], 'v': round(v, 1)} if v is not None else None
 
 
 with open('data/players.json', encoding='utf-8') as f:
@@ -130,8 +154,18 @@ for p in players:
         with open('data/stats/' + key + '.json', 'w', encoding='utf-8') as f:
             json.dump({'detail': detail}, f, indent=2, ensure_ascii=False)
         entry['hasDetail'] = True
+        hl = highlight(p.get('role'), detail)
+        if hl:
+            entry['hl'] = hl
 
     if entry:
+        # prev = the numbers before the most recent change, so the site can show trend arrows
+        old = out.get(key) or {}
+        prev = {k: old[k] for k in ('premier', 'hs', 'winrate', 'matches') if k in old and k in entry and old[k] != entry[k]}
+        if prev:
+            entry['prev'] = prev
+        elif old.get('prev'):
+            entry['prev'] = old['prev']
         out[key] = entry
         print('OK ' + p['name'] + ': ' + str(entry) + ' recent=' + str(len(detail['recent'])))
     else:
