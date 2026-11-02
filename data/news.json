@@ -3,7 +3,7 @@
   "news": [
     {
       "id": "welcome-radutnt",
-      "date": "2026-11-01",
+      "date": "2026-11-02",
       "type": "new-player",
       "image": "radutnt-welcome.jpg",
       "title": {
@@ -11,22 +11,22 @@
         "ro": "Bun venit în echipă, raduTNT!",
         "hu": "Üdv a csapatban, raduTNT!"
       },
-      "text": "Un nou capitol începe astăzi! Îi urăm bun venit lui RaduTNT în familia Ciuc Navi! Suntem pregătiți să facem ravagii pe serverele de CS2 împreună.\n\n#CiucNavi #CS2 #WelcomeRaduTNT #Esports",
+      "text": "Ciuc Navi welcomes a new face to its active Counter-Strike 2 roster!\n\nFollowing the recent departure of stfandrei from the starting lineup, we're pleased to announce that RADUTNT has officially passed his trials and earned his place among the main five.\n\nAfter proving his abilities during the trial period, RADUTNT has shown that he has what it takes to represent the team. More importantly, he's arriving with the right mentality: commitment, determination and a willingness to fight with his life for Ciuc Navi. Whether that means winning a 1v3 clutch or defending the honour of the team in Premier, we expect nothing less.\n\nWe're excited to see what he brings to the roster and look forward to the games, challenges and questionable tactical decisions ahead.\n\nWelcome to Ciuc Navi, RADUTNT! Your trial is over. Now the real grind begins.\n\nOnce NAVI, always NAVI.",
       "players": [
         "raduTNT"
       ]
     },
     {
       "id": "vac-cooldown",
-      "date": "2026-11-02",
+      "date": "2026-10-29",
       "type": "breaking",
       "image": "breakingnews1.jpg",
       "title": {
-        "en": "Breaking news: GHEOPARD and Ceontixx hit with a 7-day VAC cooldown",
+        "en": "Breaking News: Ciuc Navi Hit by VAC Cooldowns!",
         "ro": "Breaking news: GHEOPARD și Ceontixx, cooldown VAC de 7 zile",
         "hu": "Friss hír: GHEOPARD és Ceontixx 7 napos VAC cooldownt kapott"
       },
-      "text": "Unexpected trouble has hit the Ciuc Navi main roster! Two of our players have received VAC cooldowns after queuing alongside someone they believed to be a legitimate player. Unfortunately, it later turned out that their teammate wasn't quite as innocent as everyone thought, leaving our players caught in the crossfire. To be clear, our players were not knowingly playing with a cheater, nor were they accused of hacking themselves. Nevertheless, the consequences have arrived, and the server is now missing two familiar faces for the next 7 days. We stand by our players and hope this situation gets resolved soon. Until then, consider this an unexpected team bootcamp... sponsored by Valve.\n\n#JusticeForCiucNavi #ValvePlsFix",
+      "text": "An unexpected incident has left two members of the Ciuc Navi main roster temporarily sidelined, following a controversial series of events involving a third-party player.\n\nCiuc Navi has found itself facing an unexpected setback after two of its main roster players received seven-day VAC cooldowns. The situation came as a surprise to the team, especially considering that neither player was knowingly involved in any cheating activity.\n\nSo, what exactly happened?\n\nDuring their recent Premier sessions, our players queued alongside another individual whom they believed to be a completely legitimate Counter-Strike player. At the time, there was no apparent reason to suspect anything unusual. However, it later became clear that this individual had been using cheats, turning what seemed like an ordinary gaming session into an unfortunate situation for everyone involved.\n\nAs a consequence, two of our players ended up receiving VAC cooldowns, despite not knowingly playing with a cheater. While we cannot change what has happened, we want to make one thing clear: our players' intention was simply to play the game, compete and enjoy their time on the server. They were not knowingly teaming up with someone using cheats, and this incident has certainly not been part of any team strategy.\n\nTwo Players Sidelined, One Team Still Standing\n\nThe seven-day cooldowns mean that two members of our main roster will temporarily be unable to participate in Premier matches. Naturally, this creates an unexpected challenge for the team, which will have to adjust its plans until the cooldowns expire.\n\nNevertheless, Ciuc Navi remains united. We stand behind our teammates and hope that this situation can be resolved fairly. Nobody expected the team's next roster adjustment to come from a Valve cooldown rather than an actual tactical decision.\n\nFor the time being, the affected players have been assigned an unexpected break from competitive Counter-Strike. Whether they'll use this time to touch grass, improve their aim in another game or simply stare at the VAC cooldown timer is yet to be confirmed.\n\nA Message to Valve\n\nWe understand that maintaining fair play and protecting Counter-Strike from cheaters is important. However, situations like this are frustrating for legitimate players who find themselves caught up in the consequences of someone else's actions.\n\nWe hope Valve can take a closer look at situations of this nature and ensure that innocent players are not unfairly affected.\n\nUntil then, we will continue doing what we do best: playing together, supporting our teammates and patiently waiting for the server to welcome everyone back.\n\nSeven days. Two players. One very unfortunate matchmaking experience.\n\nCiuc Navi will return to full strength soon. In the meantime, our unofficial training camp is temporarily sponsored by Valve.\n\n#JusticeForCiucNavi #ValvePlsFix\n\nOnce NAVI, always NAVI.",
       "players": [
         "GHEOPARD",
         "Ceontixx"
@@ -34,7 +34,7 @@
     },
     {
       "id": "stfandrei-bench",
-      "date": "2026-10-20",
+      "date": "2026-10-31",
       "type": "demotion",
       "image": "stfandrei-bench.jpg",
       "title": {
