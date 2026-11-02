@@ -1,5 +1,5 @@
 {
-  "_note": "Newest first or any order, the site sorts by date. type is one of: new-player, transfer, promotion, demotion, announcement. image is a file name inside img/news/ (leave it out or missing to show the placeholder). The three entries below are examples.",
+  "_note": "The site sorts by date, newest first. type is one of: breaking, new-player, transfer, promotion, demotion, announcement. image is a file name inside img/news/ (leave it out or missing to show the placeholder). title and text can be a plain string or {en, ro, hu}. Use a blank line (\n\n) in text to start a new paragraph. players lists player names to show as links on the full article.",
   "news": [
     {
       "id": "welcome-radutnt",
@@ -11,27 +11,26 @@
         "ro": "Bun venit în echipă, raduTNT!",
         "hu": "Üdv a csapatban, raduTNT!"
       },
-      "text": {
-        "en": "raduTNT joins the main roster as our new Entry fragger. He arrives with years of experience and a very loud mouse click. Say hi on Discord and show him how we play in -20°C.",
-        "ro": "raduTNT se alătură echipei principale ca noul nostru Entry. Vine cu ani de experiență și un click de mouse foarte zgomotos. Salută-l pe Discord și arată-i cum jucăm la -20°C.",
-        "hu": "raduTNT csatlakozik a főcsapathoz, mint új Entry játékosunk. Évek tapasztalatával és nagyon hangos egérkattintással érkezik. Köszöntsd Discordon, és mutasd meg neki, hogyan játszunk -20°C-ban."
-      }
+      "text": "Un nou capitol începe astăzi! Îi urăm bun venit lui RaduTNT în familia Ciuc Navi! Suntem pregătiți să facem ravagii pe serverele de CS2 împreună.\n\n#CiucNavi #CS2 #WelcomeRaduTNT #Esports",
+      "players": [
+        "raduTNT"
+      ]
     },
     {
-      "id": "viccash-promoted",
-      "date": "2026-10-28",
-      "type": "promotion",
-      "image": "viccash-promoted.jpg",
+      "id": "vac-cooldown",
+      "date": "2026-11-02",
+      "type": "breaking",
+      "image": "breakingnews1.jpg",
       "title": {
-        "en": "Viccash moves up to first substitute",
-        "ro": "Viccash devine prima rezervă",
-        "hu": "Viccash lett az első cserejátékos"
+        "en": "Breaking news: GHEOPARD and Ceontixx hit with a 7-day VAC cooldown",
+        "ro": "Breaking news: GHEOPARD și Ceontixx, cooldown VAC de 7 zile",
+        "hu": "Friss hír: GHEOPARD és Ceontixx 7 napos VAC cooldownt kapott"
       },
-      "text": {
-        "en": "After a strong run of practice matches, Viccash is now first in line to step in whenever one of the five needs a rest. Well deserved.",
-        "ro": "După o serie puternică de meciuri de antrenament, Viccash este acum primul la rând când unul dintre cei cinci are nevoie de pauză. Meritat.",
-        "hu": "Az erős edzőmeccsek után Viccash az első, aki beugrik, ha az öt játékos valamelyikének pihennie kell. Megérdemelt."
-      }
+      "text": "Unexpected trouble has hit the Ciuc Navi main roster! Two of our players have received VAC cooldowns after queuing alongside someone they believed to be a legitimate player. Unfortunately, it later turned out that their teammate wasn't quite as innocent as everyone thought, leaving our players caught in the crossfire. To be clear, our players were not knowingly playing with a cheater, nor were they accused of hacking themselves. Nevertheless, the consequences have arrived, and the server is now missing two familiar faces for the next 7 days. We stand by our players and hope this situation gets resolved soon. Until then, consider this an unexpected team bootcamp... sponsored by Valve.\n\n#JusticeForCiucNavi #ValvePlsFix",
+      "players": [
+        "GHEOPARD",
+        "Ceontixx"
+      ]
     },
     {
       "id": "stfandrei-bench",
@@ -43,11 +42,10 @@
         "ro": "stfandrei trece pe banca de rezerve",
         "hu": "stfandrei a kispadra kerül"
       },
-      "text": {
-        "en": "stfandrei steps back from the main five to make room for a new face. He stays with the squad as a substitute and will be back in the rotation soon.",
-        "ro": "stfandrei se retrage din primii cinci pentru a face loc unei fețe noi. Rămâne în echipă ca rezervă și va reveni curând în rotație.",
-        "hu": "stfandrei kilép az első ötből, hogy helyet adjon egy új arcnak. Cserejátékosként marad a csapatnál, és hamarosan visszatér a rotációba."
-      }
+      "text": "After careful consideration, Ciuc Navi has decided to make a change to the active roster, moving stfandrei to the bench. Following nearly a month of inactivity, we felt it was time to make a change and give the team a fresh start moving forward. However, this decision doesn't take away from everything he has contributed to the team. We would like to thank stfandrei for his time, effort, unforgettable moments and all the games we've shared together. His place in the Ciuc Navi story is secured, even if his mouse needs a little rest. We wish him all the best, and who knows... perhaps this isn't the last time we'll see him on the server!",
+      "players": [
+        "stfandrei"
+      ]
     }
   ]
 }
