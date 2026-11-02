@@ -71,7 +71,7 @@ sty.textContent=`
 document.head.appendChild(sty);
 
 const L=o=>(o&&typeof o==='object')?(o[LANG]||o.en||''):(o==null?'':o);
-const imgTag=d=>d.icon?`<img src='icons/${encodeURIComponent(d.icon)}' alt='${esc(d.name)}' data-ini='${esc(initials(d.name))}'>`:`<span class='initials'>${esc(initials(d.name))}</span>`;
+const imgTag=d=>d.icon?`<img src='img/players/${encodeURIComponent(d.icon)}' width='600' height='600' alt='${esc(d.name)}' data-ini='${esc(initials(d.name))}'>`:`<span class='initials'>${esc(initials(d.name))}</span>`;
 const funTiles=d=>(d.fun||[]).map(f=>`<div class='fs'><strong>${esc(f.v)}</strong><span>${esc(L(f.l))}</span><em>${esc(L(f.c))}</em></div>`).join('');
 const title=k=>t(k).replace(/~(.+?)~/g,'<span class=yellow>$1</span>');
 let DATA=null,TEAM=null;
@@ -79,9 +79,9 @@ const root=document.getElementById('coach-root');
 
 function keepOrder(){
   const s=document.getElementById('coach'),b=document.getElementById('bench');
-  if(s&&b&&s.nextElementSibling!==b)b.before(s);
+  if(s&&b&&b.nextElementSibling!==s)b.after(s);
   const a=document.getElementById('nav-coach'),n=document.querySelector(`.nav-links a[href='#bench']`);
-  if(a&&n&&a.nextElementSibling!==n)n.before(a);
+  if(a&&n&&n.nextElementSibling!==a)n.after(a);
 }
 
 function renderHome(){
@@ -90,9 +90,9 @@ function renderHome(){
   let sec=document.getElementById('coach');
   if(!sec){
     sec=document.createElement('section');sec.className='section';sec.id='coach';
-    document.getElementById('bench').before(sec);
+    document.getElementById('bench').after(sec);
     const nl=document.querySelector(`.nav-links a[href='#bench']`);
-    if(nl){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';nl.before(a)}
+    if(nl){const a=document.createElement('a');a.href='#coach';a.id='nav-coach';nl.after(a)}
     const main=document.querySelector('main'),nav=document.querySelector('.nav-links');
     const mo=new MutationObserver(keepOrder);
     if(main)mo.observe(main,{childList:true});
@@ -157,15 +157,11 @@ const jobs=[getJson('data/coach.json')];
 if(root){jobs.push(getJson('data/players.json'),getJson('data/stats.json').catch(()=>({})))}
 Promise.all(jobs).then(([coach,players,live])=>{
   DATA=coach;
-  if(root){
-    const all=[];
-    (players.players||[]).filter(p=>p.status==='main').forEach(p=>{
-      const a=live[p.steam64]||live[p.vanity]||{};
-      ((a.detail||{}).recent||[]).forEach(x=>all.push(x));
-    });
-    TEAM=all;
-  }
-  draw();
-}).catch(err=>{if(root)root.innerHTML=`<p class='empty'>${esc(err.message)}</p>`});
+  if(!root)return;
+  return Promise.all((players.players||[]).filter(p=>p.status==='main').map(p=>{
+    const a=live[p.steam64]||live[p.vanity]||{};
+    return a.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>(x.detail||{}).recent||[]).catch(()=>[]):[];
+  })).then(l=>{TEAM=[].concat(...l)});
+}).then(draw).catch(err=>{if(root)root.innerHTML=`<p class='empty'>${esc(err.message)}</p>`});
 document.addEventListener('langchange',()=>{if(DATA)draw()});
 })();

@@ -41,9 +41,9 @@ sty.textContent=`
 .mc-item:hover,.mp:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:0 16px 40px rgba(255,230,0,.12)}
 .mc-img{position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#1b1b20,#0c0c0f);overflow:hidden}
 .mc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .4s,transform .5s}
-.mc-img img.b{opacity:0}
-.mc-item:hover .mc-img img.b,.mp:hover .mc-img img.b{opacity:1}
-.mc-item:hover .mc-img img.f,.mp:hover .mc-img img.f{opacity:0}
+.mc-img img.f{opacity:0}
+.mc-item:hover .mc-img img.f,.mp:hover .mc-img img.f{opacity:1}
+.mc-item:hover .mc-img img.b,.mp:hover .mc-img img.b{opacity:0}
 .mc-tag{position:absolute;top:12px;left:12px;z-index:2;background:var(--yellow);color:#000;font-weight:800;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:5px}
 .mc-info{padding:14px 16px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
 .mc-info h3{font-family:'Rajdhani',sans-serif;font-size:1.3rem;letter-spacing:1px;line-height:1.15;overflow-wrap:anywhere}
@@ -106,7 +106,7 @@ document.head.appendChild(sty);
 let CFG={currency:'RON',price:350,signedExtra:50,sizes:['XS','S','M','L','XL'],maxQty:10};
 let ITEMS=[];
 const ST={size:null,signed:false,qty:1,side:'front'};
-const EXTS=['png','jpg','jpeg','webp'];
+const EXTS=['jpg'];
 const money=n=>n+' '+CFG.currency;
 const itemName=p=>p.name+' '+t('merch.teeSuffix');
 const x=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -117,13 +117,13 @@ function ph(name,side){
   const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 440'><rect width='400' height='440' fill='#141418'/><path d='M120 60 L56 104 L90 166 L120 144 L120 384 L280 384 L280 144 L310 166 L344 104 L280 60 Q200 112 120 60Z' fill='#0e0e11' stroke='#ffe600' stroke-width='3'/><text x='200' y='${big?200:190}' text-anchor='middle' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='${big?(n.length>8?30:40):22}' fill='#ffe600'>${big?n:'CIUC NAVI'}</text><text x='200' y='${big?236:224}' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='15' fill='#9a9aa5'>${big?'CIUC NAVI':n}</text><text x='200' y='416' text-anchor='middle' font-family='Arial,sans-serif' font-size='13' fill='#5d5d68' letter-spacing='3'>${side.toUpperCase()}</text></svg>`;
   return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 }
-const imgTag=(p,side,cls)=>`<img class='${cls||''}' src='merchphotos/${p.slug}-${side}.png' data-slug='${p.slug}' data-side='${side}' data-ext='0' data-name='${esc(p.name)}' alt='${esc(itemName(p))} - ${side}' loading='lazy'>`;
+const imgTag=(p,side,cls)=>`<img class='${cls||''}' src='img/merch/${p.slug}-${side}.jpg' data-slug='${p.slug}' data-side='${side}' data-ext='0' data-name='${esc(p.name)}' alt='${esc(itemName(p))} - ${side}' loading='lazy'>`;
 function wireImgs(scope){
   (scope||document).querySelectorAll('img[data-side]').forEach(i=>{
     if(i._w)return;i._w=1;
     i.addEventListener('error',()=>{
       const n=Number(i.dataset.ext)+1;
-      if(n<EXTS.length){i.dataset.ext=n;i.src='merchphotos/'+i.dataset.slug+'-'+i.dataset.side+'.'+EXTS[n]}
+      if(n<EXTS.length){i.dataset.ext=n;i.src='img/merch/'+i.dataset.slug+'-'+i.dataset.side+'.'+EXTS[n]}
       else{i.src=ph(i.dataset.name,i.dataset.side)}
     });
   });
@@ -241,7 +241,7 @@ function draw(){renderPreview();renderShop()}
 
 Promise.all([getJson('data/players.json'),getJson('data/merch.json').catch(()=>({}))]).then(([data,cfg])=>{
   CFG={...CFG,...cfg};
-  ITEMS=(data.players||[]).filter(p=>p.status==='main').map(p=>({name:p.name,slug:slug(p.name)}));
+  ITEMS=(data.players||[]).filter(p=>p.status==='main'&&p.steam64).map(p=>({name:p.name,slug:slug(p.name)}));
   draw();
 }).catch(err=>{
   const r=document.getElementById('merch-root');

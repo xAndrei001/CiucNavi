@@ -148,15 +148,18 @@ window.addEventListener('scroll',()=>{
   const size=()=>{w=c.width=innerWidth;h=c.height=innerHeight};
   size();addEventListener('resize',size);
   for(let i=0;i<70;i++)f.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+.6,s:Math.random()*.7+.25,d:Math.random()*Math.PI*2});
-  (function tick(){
+  let raf;
+  function tick(){
     x.clearRect(0,0,w,h);x.fillStyle='rgba(255,255,255,.55)';
     f.forEach(p=>{
       p.y+=p.s;p.d+=.01;p.x+=Math.sin(p.d)*.35;
       if(p.y>h){p.y=-5;p.x=Math.random()*w}
       x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fill();
     });
-    requestAnimationFrame(tick);
-  })();
+    raf=requestAnimationFrame(tick);
+  }
+  document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden)tick()});
+  tick();
 })();
 
 const yearEl=document.getElementById('year');
@@ -167,5 +170,16 @@ if(footerEl){
   cr.innerHTML='Data Provided by <a href="https://leetify.com" target="_blank" rel="noopener" style="color:#ffe600">Leetify</a>';
   footerEl.appendChild(cr);
 }
+Object.assign(I18N.en,{'totop':`Back to top`});
+Object.assign(I18N.ro,{'totop':`Înapoi sus`});
+Object.assign(I18N.hu,{'totop':`Vissza a tetejére`});
+const toTop=document.createElement('button');
+toTop.type='button';toTop.className='to-top';toTop.textContent='↑';
+toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+document.body.appendChild(toTop);
+const syncTop=()=>{toTop.classList.toggle('show',scrollY>700)};
+addEventListener('scroll',syncTop,{passive:true});
+document.addEventListener('langchange',()=>{toTop.setAttribute('aria-label',t('totop'))});
+syncTop();
 applyLang();
 observeReveals();

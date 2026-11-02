@@ -5,11 +5,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>Ciuc Navi | CS2 Team from Miercurea Ciuc</title>
 <meta name='description' content='Ciuc Navi - a CS2 Premier team from Miercurea Ciuc.'>
-<link rel='icon' type='image/svg+xml' href='icons/favicon.svg?v=1'>
-<link rel='preconnect' href='https://fonts.googleapis.com'>
-<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-<link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/style.css?v=20261008'>
+<link rel='icon' type='image/svg+xml' href='img/favicon.svg?v=1'>
+<link rel='preload' href='fonts/inter-latin.woff2' as='font' type='font/woff2' crossorigin>
+<link rel='preload' href='fonts/rajdhani-700-latin.woff2' as='font' type='font/woff2' crossorigin>
+<link rel='stylesheet' href='fonts/fonts.css'>
+<link rel='stylesheet' href='css/style.css?v=20261116'>
 </head>
 <body data-title='title'>
 <canvas id='snow'></canvas>
@@ -18,6 +18,7 @@
 <header class='nav'>
   <a href='#home' class='brand'><span class='brand-mark'>CN</span><span class='brand-text'>CIUC <b>NAVI</b></span></a>
   <nav class='nav-links'>
+    <a href='#news' data-i18n='nav.news'>News</a>
     <a href='#about' data-i18n='nav.about'>About</a>
     <a href='#roster' data-i18n='nav.roster'>Roster</a>
     <a href='#bench' data-i18n='nav.bench'>Bench</a>
@@ -42,6 +43,12 @@
       <a href='https://discord.gg/7jR3Qr9Znz' target='_blank' rel='noopener' class='btn btn-ghost' data-i18n='hero.cta2'></a>
     </div>
     <div class='hero-stats' id='hero-stats'></div>
+  </section>
+
+  <section class='section' id='news'>
+    <h2 class='section-title' data-i18n='news.title'></h2>
+    <div id='news-list'><p class='empty' data-i18n='loading'></p></div>
+    <p class='news-all'><a href='news.html' data-i18n='news.all'></a></p>
   </section>
 
   <section class='section reveal' id='about'>
@@ -88,10 +95,10 @@
   <p><span id='stats-updated'></span>&copy; <span id='year'></span> Ciuc Navi. <span data-i18n='footer.text'></span></p>
 </footer>
 
-<script src='js/common.js?v=20261005'></script>
-<script src='js/charts.js?v=20261005'></script>
-<script src='js/coach.js?v=20261008'></script>
-<script src='js/merch.js?v=20261009'></script>
-<script src='js/main.js?v=20261008'></script>
+<script defer src='js/common.js?v=20261116'></script>
+<script defer src='js/coach.js?v=20261116'></script>
+<script defer src='js/merch.js?v=20261116'></script>
+<script defer src='js/news.js?v=20261116'></script>
+<script defer src='js/main.js?v=20261116'></script>
 </body>
 </html>
