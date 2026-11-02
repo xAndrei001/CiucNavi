@@ -48,17 +48,6 @@
       ]
     },
     {
-      "id": "coming-soon",
-      "date": "2026-10-15",
-      "type": "announcement",
-      "title": {
-        "en": "More news coming soon",
-        "ro": "Mai multe noutăți în curând",
-        "hu": "Hamarosan további hírek"
-      },
-      "text": "This is an empty example card, used to check the layout with four items. Delete it from data/news.json when you have real news."
-    },
-    {
       "id": "ciucnavi-launch",
       "date": "2026-09-24",
       "type": "breaking",
