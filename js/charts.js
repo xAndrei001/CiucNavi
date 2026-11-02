@@ -301,5 +301,39 @@ function formPanel(recent){
   return `<div class='panel reveal'><h3>${t('map.form')}</h3><div class='form'>${sq}</div><p class='note' style='margin-top:12px'>${t('map.formNote')}</p></div>`;
 }
 
-window.Charts={num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
+Object.assign(I18N.en,{'feed.title':`Recent matches`,'feed.team':`Team match feed`,'feed.wingman':`Wingman`,'feed.none':`No recent matches yet.`});
+Object.assign(I18N.ro,{'feed.title':`Meciuri recente`,'feed.team':`Meciurile echipei`,'feed.wingman':`Wingman`,'feed.none':`Încă nu există meciuri recente.`});
+Object.assign(I18N.hu,{'feed.title':`Legutóbbi meccsek`,'feed.team':`A csapat meccsei`,'feed.wingman':`Wingman`,'feed.none':`Még nincsenek friss meccsek.`});
+const fsty=document.createElement('style');
+fsty.textContent=`
+.feed{list-style:none;display:flex;flex-direction:column;gap:8px}
+.feed li{display:grid;grid-template-columns:auto 34px 1fr auto;align-items:center;gap:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:9px 14px}
+.fd{color:var(--muted);font-size:.78rem;white-space:nowrap;min-width:92px}
+.fb{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:#000}
+.fb.w{background:#7ae582}.fb.l{background:#f25f5c}.fb.t{background:#ffe600}
+.fm2{display:flex;align-items:center;gap:10px;min-width:0;flex-wrap:wrap}
+.fm2 b{font-family:'Rajdhani',sans-serif;font-size:1.15rem;letter-spacing:1px}
+.fsc{color:var(--text);font-weight:700;font-size:.95rem}
+.fmode{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:2px 8px}
+.fpl{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.fpl i{font-style:normal;font-size:.72rem;border:1px solid;border-radius:99px;padding:2px 9px}
+@media(max-width:600px){.feed li{grid-template-columns:34px 1fr;row-gap:4px}.fd{grid-column:2;grid-row:1}.fm2{grid-column:2}.fpl{grid-column:1/-1;justify-content:flex-start}.fb{grid-row:1/3}}
+`;
+document.head.appendChild(fsty);
+// rows: {d,m,o,sc,s,names:[{n,c}]}, newest first, only maps in the Active Duty pool
+function matchFeed(rows,limit){
+  const list=(rows||[]).filter(x=>x&&x.o&&ACTIVE_POOL.includes(x.m)).sort((a,b)=>(Date.parse(b.d)||0)-(Date.parse(a.d)||0)).slice(0,limit||10);
+  if(!list.length)return `<p class='note'>${t('feed.none')}</p>`;
+  return `<ul class='feed'>${list.map(x=>{
+    const c=x.o==='win'?'w':(x.o==='loss'?'l':'t');
+    const when=x.d?new Date(x.d).toLocaleString(LANG,{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+    const sc=Array.isArray(x.sc)?`<span class='fsc'>${esc(x.sc[0])} - ${esc(x.sc[1])}</span>`:'';
+    const mode=/wingman/.test(x.s||'')?`<span class='fmode'>${t('feed.wingman')}</span>`:'';
+    const pl=(x.names||[]).map(p=>`<i style='color:${p.c};border-color:${p.c}55'>${esc(p.n)}</i>`).join('');
+    return `<li><span class='fd'>${esc(when)}</span><span class='fb ${c}' title='${esc(t(c==='w'?'map.win':(c==='l'?'map.loss':'map.tie')))}'>${c==='w'?'W':(c==='l'?'L':'T')}</span><span class='fm2'><b>${esc(mapName(x.m))}</b>${sc}${mode}</span>${pl?`<span class='fpl'>${pl}</span>`:'<span></span>'}</li>`;
+  }).join('')}</ul>`;
+}
+const feedPanel=(recent,title)=>`<div class='panel reveal'><h3>${t(title||'feed.title')}</h3>${matchFeed(recent,10)}</div>`;
+
+window.Charts={matchFeed,feedPanel,num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
 })();

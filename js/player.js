@@ -62,6 +62,7 @@ function statsTab(){
   h+=C.ranksPanel(d.ranks,s.premier);
   h+=C.playerMaps(d.recent);
   h+=C.formPanel(d.recent);
+  h+=C.feedPanel(d.recent);
   h+=C.ratingsPanel(d.rating);
   h+=C.statGroups(st);
   return h;
@@ -75,7 +76,7 @@ function render(){
   const img=p.icon?`<img src='img/players/${encodeURIComponent(p.icon)}' width='600' height='600' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}'>`:`<span class='initials'>${esc(initials(p.name))}</span>`;
   const l=p.links||{};
   const leet=p.steam64?`https://leetify.com/app/profile/${encodeURIComponent(p.steam64)}`:'';
-  const links=(l.steam?`<a class='btn btn-ghost btn-small' href='${esc(l.steam)}' target='_blank' rel='noopener'>Steam</a>`:'')+(leet?`<a class='btn btn-ghost btn-small' href='${esc(leet)}' target='_blank' rel='noopener'>Leetify</a>`:'');
+  const links=(l.steam?`<a class='btn btn-ghost btn-small' href='${esc(l.steam)}' target='_blank' rel='noopener'>Steam</a>`:'')+(leet?`<a class='btn btn-ghost btn-small' href='${esc(leet)}' target='_blank' rel='noopener'>Leetify</a>`:'')+(p.steam64?`<a class='btn btn-ghost btn-small' href='compare.html?a=${slug(p.name)}'>${t('cmp.link')}</a>`:'');
   const prem=s.premier&&s.premier!=='-'?s.premier:'—';
 
   let body='';
@@ -95,7 +96,7 @@ function render(){
       <span class='role'>${esc(p.role)}</span>
       <h1>${esc(p.name)}</h1>
       <p class='p-tag'>${esc(p.tag||'')}</p>
-      <div class='p-premier'><strong>${esc(prem)}</strong><span>${t('card.premier')}</span></div>
+      <div class='p-premier'><strong class='tier-${tierOf(numOf(s.premier))}'>${esc(prem)}</strong><span>${t('card.premier')}</span></div>
       <div class='p-links'>${links}</div>
     </div>
   </div>

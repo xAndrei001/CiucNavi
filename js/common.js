@@ -112,6 +112,8 @@ const t=k=>(I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;');
 const slug=n=>String(n).toLowerCase().replace(/[^a-z0-9]/g,'');
 const initials=n=>String(n).replace(/[^a-zA-Z0-9 ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?';
+const numOf=v=>Number(String(v).replace(/[^0-9.\-]/g,''));
+const tierOf=n=>n>=30000?6:n>=25000?5:n>=20000?4:n>=15000?3:n>=10000?2:n>=5000?1:0;
 const getJson=u=>fetch(u,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error('Could not load '+u);return r.json()});
 
 function applyLang(){
@@ -170,9 +172,9 @@ if(footerEl){
   cr.innerHTML='Data Provided by <a href="https://leetify.com" target="_blank" rel="noopener" style="color:#ffe600">Leetify</a>';
   footerEl.appendChild(cr);
 }
-Object.assign(I18N.en,{'totop':`Back to top`});
-Object.assign(I18N.ro,{'totop':`Înapoi sus`});
-Object.assign(I18N.hu,{'totop':`Vissza a tetejére`});
+Object.assign(I18N.en,{'totop':`Back to top`,'cmp.link':`Compare players →`,'card.was':`Previously`,'hl.opening':`Opening duels`,'hl.entry':`Entry success`,'hl.he':`HE damage`,'hl.trade':`Trade kills`,'hl.utility':`Utility rating`});
+Object.assign(I18N.ro,{'totop':`Înapoi sus`,'cmp.link':`Compară jucătorii →`,'card.was':`Anterior`,'hl.opening':`Dueluri de deschidere`,'hl.entry':`Succes la intrare`,'hl.he':`Damage HE`,'hl.trade':`Trade kills`,'hl.utility':`Rating utilitare`});
+Object.assign(I18N.hu,{'totop':`Vissza a tetejére`,'cmp.link':`Játékosok összehasonlítása →`,'card.was':`Korábban`,'hl.opening':`Nyitó párbajok`,'hl.entry':`Betörési siker`,'hl.he':`HE sebzés`,'hl.trade':`Trade killek`,'hl.utility':`Utility értékelés`});
 const toTop=document.createElement('button');
 toTop.type='button';toTop.className='to-top';toTop.textContent='↑';
 toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
