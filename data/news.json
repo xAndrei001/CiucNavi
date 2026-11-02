@@ -59,27 +59,35 @@
       "text": "This is an empty example card, used to check the layout with four items. Delete it from data/news.json when you have real news."
     },
     {
-      "id": "example-news",
-      "date": "2026-10-10",
-      "type": "announcement",
-      "title": {
-        "en": "Another example news",
-        "ro": "Încă o noutate exemplu",
-        "hu": "Még egy példahír"
-      },
-      "text": "Another empty example card, so the home page has five items. Delete it from data/news.json when you have real news."
-    },
-    {
       "id": "ciucnavi-launch",
       "date": "2026-09-24",
       "type": "breaking",
-      "image": "ciucnaviposter.png",
+      "image": "ciucnaviposter.jpg",
       "title": {
         "en": "Breaking News: CiucNavi Officially Enters the Counter-Strike Scene!",
         "ro": "Breaking News: CiucNavi intră oficial în scena Counter-Strike!",
         "hu": "Friss hír: a CiucNavi hivatalosan belép a Counter-Strike színtérre!"
       },
       "text": "**A new organisation, a shared vision and the ambition to build something special. CiucNavi's journey starts now.**\n\nA new name is preparing to make its mark on the Counter-Strike 2 scene. We are proud to announce the official launch of **CiucNavi**, a project founded by two passionate players who share one ambition: building a competitive, united and determined team.\n\nWhat started as a shared idea has grown into a project with bigger ambitions. Rather than simply putting five players together and hoping for the best, CiucNavi aims to create an environment where teamwork, commitment and individual improvement come first.\n\n### The Beginning of Something Bigger\n\nThe organisation is currently in its early stages, with its main focus set on building a strong roster capable of competing and improving together. We are looking for dedicated and talented players who share our mentality, understand the importance of teamwork and are ready to put in the effort required to succeed.\n\nSkill matters, but attitude matters just as much. We want players who show up, communicate, learn from mistakes and don't disappear after losing two Premier matches in a row.\n\n### The Mission\n\nOur goal is simple: build a team that people can recognise not only by its results, but also by its identity. We want to combine a serious competitive mindset with the friendship, personality and enjoyment that make Counter-Strike worth playing.\n\nThere is still plenty of work ahead, but every organisation has to start somewhere. For CiucNavi, this is that starting point.\n\n**The roster is waiting to be built. The ambition is already there.**\n\nWelcome to CiucNavi. The journey starts now!\n\n*Once NAVI, always NAVI.*"
+    },
+    {
+      "id": "roster-confirmed",
+      "date": "2026-10-05",
+      "type": "announcement",
+      "image": "ciucnavirosterfive.jpg",
+      "title": {
+        "en": "Roster Confirmed: Ciuc Navi Reveals Its Starting Five!",
+        "ro": "Lot confirmat: Ciuc Navi își dezvăluie primii cinci!",
+        "hu": "Összeállítás megerősítve: a Ciuc Navi bemutatja a kezdőötöst!"
+      },
+      "text": "**Five players. One team. One goal. Ciuc Navi officially confirms its starting Counter-Strike 2 lineup!**\n\nThe wait is over! Ciuc Navi is proud to announce its first official starting five, marking an important step in the organisation's journey towards building a competitive Counter-Strike team.\n\nAfter putting the pieces together, the lineup is officially confirmed:\n\n* GHEOPARD – AWPer\n* Ceontixx – Support\n* stfandrei – Entry\n* REGELE – In-Game Leader\n* teaca – Rifler\n\nEach player brings a different personality and playstyle to the server, but they share the same ambition: competing together, improving as a team and making Ciuc Navi a name worth remembering.\n\n### A New Chapter Begins\n\nBuilding a team takes more than five players with good aim. Communication, trust, consistency and teamwork will be just as important as hitting those headshots. The goal is to develop a lineup that can face challenges together, learn from its mistakes and keep pushing forward.\n\nNaturally, we expect a few challenges along the way. There will be questionable pushes, flashes that blind more teammates than enemies, and tactical discussions that somehow end with everyone rushing B anyway. Our IGL has promised to keep everything under control. We're choosing to believe him.\n\nDespite the occasional chaos, this lineup shares the ambition and commitment needed to build something special. The starting five is confirmed, the servers are waiting and the work begins.\n\n**Five players. One organisation. Countless opportunities to blame the lag.**\n\nWelcome to the first chapter of Ciuc Navi.\n\n*Once NAVI, always NAVI.*",
+      "players": [
+        "GHEOPARD",
+        "Ceontixx",
+        "stfandrei",
+        "REGELE",
+        "teaca"
+      ]
     }
   ]
 }

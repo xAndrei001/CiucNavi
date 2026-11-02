@@ -39,6 +39,8 @@ a.news-card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shad
 .nd-body h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,3.4vw,2.8rem);letter-spacing:1px;line-height:1.1}
 .nd-body p{color:#d6d6dc;line-height:1.75;font-size:1.02rem;overflow-wrap:anywhere}
 .nd-body h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;letter-spacing:1px;margin-top:10px;color:var(--yellow)}
+.nd-body ul{color:#d6d6dc;line-height:1.75;padding-left:1.3em;list-style:disc}
+.nd-body li::marker{color:var(--yellow)}
 .nd-body strong{color:#fff}
 .nd-body .tags{color:var(--yellow);font-weight:600}
 .nd-players{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;color:var(--muted);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase}
@@ -89,7 +91,7 @@ function card(n){
 }
 
 function detail(n){
-  const paras=L(n.text).split(/\n\n+/).map(x=>/^###\s/.test(x)?`<h3>${md(x.replace(/^###\s+/,''))}</h3>`:`<p${/^#\w/.test(x)?" class='tags'":''}>${md(x)}</p>`).join('');
+  const paras=L(n.text).split(/\n\n+/).map(x=>/^[*-]\s/.test(x)&&x.split('\n').every(l=>/^[*-]\s/.test(l))?`<ul>${x.split('\n').map(l=>`<li>${md(l.replace(/^[*-]\s+/,''))}</li>`).join('')}</ul>`:/^###\s/.test(x)?`<h3>${md(x.replace(/^###\s+/,''))}</h3>`:`<p${/^#\w/.test(x)?" class='tags'":''}>${md(x)}</p>`).join('');
   const pl=(n.players||[]).map(x=>`<a href='player.html?p=${slug(x)}'>${esc(x)}</a>`).join('');
   return `<a class='news-back' href='news.html'>${t('news.backList')}</a>
     <article class='news-detail'>${imgOf(n)}
