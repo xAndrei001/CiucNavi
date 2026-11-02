@@ -100,7 +100,7 @@ let dashOpen=false,dashReady=false,dashWatching=false;
 const dashSkel=()=>`<div class='kpis'>${'<div class="kpi skel" style="height:98px"></div>'.repeat(4)}</div><div class='dash-grid'>${'<div class="panel skel" style="height:300px"></div>'.repeat(4)}</div>`;
 
 function loadDash(){
-  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261115';s.onload=s.onerror=res;document.head.appendChild(s)});
+  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261117';s.onload=s.onerror=res;document.head.appendChild(s)});
   const details=Promise.all(STATE.main.map(p=>p.stats.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>x.detail||null).catch(()=>null):null));
   Promise.all([charts,details]).then(([,ds])=>{STATE.main.forEach((p,i)=>{p.detail=ds[i]});dashReady=true;renderDash();observeReveals()});
 }

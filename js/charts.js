@@ -270,10 +270,12 @@ function ranksPanel(r,premierText){
 }
 
 const mapName=m=>String(m||'?').replace(/^(de|cs|ar)_/,'').split('_').map(w=>w?w[0].toUpperCase()+w.slice(1):w).join(' ');
+// Counter-Strike 2 Active Duty pool; update this list when Valve rotates maps
+const ACTIVE_POOL=['de_ancient','de_anubis','de_cache','de_dust2','de_inferno','de_mirage','de_nuke'];
 function mapRows(list){
   const m={};
   (list||[]).forEach(x=>{
-    if(!x||!x.m)return;
+    if(!x||!ACTIVE_POOL.includes(x.m))return;
     const r=m[x.m]=m[x.m]||{map:x.m,w:0,l:0,t:0};
     if(x.o==='win')r.w++;else if(x.o==='loss')r.l++;else r.t++;
   });
