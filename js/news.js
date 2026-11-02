@@ -19,6 +19,18 @@ add('hu',{
 const sty=document.createElement('style');
 sty.textContent=`
 .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px}
+.nc{position:relative;padding:0 26px}
+.nc-track{--per:5;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:8px 0 14px;margin:-8px 0 -14px}
+.nc-track::-webkit-scrollbar{display:none}
+.nc-track .news-card{flex:0 0 calc((100% - (var(--per) - 1)*20px)/var(--per));scroll-snap-align:start;min-width:0}
+@media(max-width:1300px){.nc-track{--per:4}}
+@media(max-width:1000px){.nc-track{--per:3}}
+@media(max-width:720px){.nc-track{--per:2}}
+@media(max-width:480px){.nc-track{--per:1}}
+.news-arrow{position:absolute;top:calc(50% - 22px);width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:rgba(8,8,10,.92);color:var(--yellow);font-size:1.7rem;line-height:1;cursor:pointer;z-index:3;transition:.2s}
+.news-arrow:hover{background:var(--yellow);color:#000}
+.news-arrow[hidden]{display:none}
+.news-arrow.prev{left:-18px}.news-arrow.next{right:-18px}
 .news-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;scroll-margin-top:90px}
 a.news-card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shadow:0 16px 40px rgba(255,230,0,.12)}
 .news-detail{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:36px;align-items:start}
@@ -68,7 +80,7 @@ const imgOf=n=>{
 };
 
 function card(n){
-  return `<a class='news-card reveal' href='news.html?id=${encodeURIComponent(n.id)}'>${imgOf(n)}
+  return `<a class='news-card' href='news.html?id=${encodeURIComponent(n.id)}'>${imgOf(n)}
     <div class='news-body'><span class='news-date'>${esc(dateOf(n))}</span><h3>${esc(L(n.title))}</h3><p>${esc(L(n.text).replace(/\s*\n+\s*/g,' '))}</p></div></a>`;
 }
 
@@ -78,6 +90,15 @@ function detail(n){
   return `<a class='news-back' href='news.html'>${t('news.backList')}</a>
     <article class='news-detail'>${imgOf(n)}
       <div class='nd-body'><span class='news-date'>${esc(dateOf(n))}</span><h2>${esc(L(n.title))}</h2>${paras}${pl?`<div class='nd-players'>${t('news.players')}: ${pl}</div>`:''}</div></article>`;
+}
+
+function carousel(){
+  const tr=list.querySelector('.nc-track'),pv=list.querySelector('.prev'),nx=list.querySelector('.next');
+  if(!tr)return;
+  const sync=()=>{pv.hidden=tr.scrollLeft<=1;nx.hidden=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-1};
+  const step=d=>{const c=tr.firstElementChild;tr.scrollBy({left:d*(c.offsetWidth+20),behavior:'smooth'})};
+  pv.onclick=()=>step(-1);nx.onclick=()=>step(1);
+  tr.addEventListener('scroll',sync,{passive:true});addEventListener('resize',sync);sync();
 }
 
 function draw(){
@@ -90,9 +111,10 @@ function draw(){
     list.innerHTML=one?detail(one):`<a class='news-back' href='news.html'>${t('news.backList')}</a><p class='empty'>${t('news.notfound')}</p>`;
     if(one)document.title=L(one.title)+' | Ciuc Navi';
   }else{
-    const shown=page?items:items.slice(0,4);
-    list.className=(page?'':'news-home ')+'news-grid';
-    list.innerHTML=shown.length?shown.map(card).join(''):`<p class='empty'>${t('news.empty')}</p>`;
+    list.className=page?'news-grid':'';
+    const cards=items.map(card).join('');
+    list.innerHTML=!items.length?`<p class='empty'>${t('news.empty')}</p>`:page?cards:`<div class='nc'><button type='button' class='news-arrow prev' aria-label='Previous' hidden>&lsaquo;</button><div class='nc-track'>${cards}</div><button type='button' class='news-arrow next' aria-label='Next' hidden>&rsaquo;</button></div>`;
+    if(!page)carousel();
   }
   list.querySelectorAll('.news-img img').forEach(i=>i.addEventListener('error',()=>i.remove(),{once:true}));
   observeReveals();

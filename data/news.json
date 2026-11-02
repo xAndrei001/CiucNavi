@@ -57,6 +57,17 @@
         "hu": "Hamarosan további hírek"
       },
       "text": "This is an empty example card, used to check the layout with four items. Delete it from data/news.json when you have real news."
+    },
+    {
+      "id": "example-news",
+      "date": "2026-10-10",
+      "type": "announcement",
+      "title": {
+        "en": "Another example news",
+        "ro": "Încă o noutate exemplu",
+        "hu": "Még egy példahír"
+      },
+      "text": "Another empty example card, so the home page has five items. Delete it from data/news.json when you have real news."
     }
   ]
 }
