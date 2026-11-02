@@ -1,5 +1,5 @@
 {
-  "_note": "The site sorts by date, newest first. type is one of: breaking, new-player, transfer, promotion, demotion, announcement. image is a file name inside img/news/ (leave it out or missing to show the placeholder). title and text can be a plain string or {en, ro, hu}. Use a blank line (\n\n) in text to start a new paragraph. players lists player names to show as links on the full article.",
+  "_note": "The site sorts by date, newest first. type is one of: breaking, new-player, transfer, promotion, demotion, announcement. image is a file name inside img/news/ (leave it out or missing to show the placeholder). title and text can be a plain string or {en, ro, hu}. Use a blank line (\n\n) in text to start a new paragraph. Text understands **bold**, *italic* and a line starting with ### as a subheading. players lists player names to show as links on the full article.",
   "news": [
     {
       "id": "welcome-radutnt",
@@ -68,6 +68,18 @@
         "hu": "Még egy példahír"
       },
       "text": "Another empty example card, so the home page has five items. Delete it from data/news.json when you have real news."
+    },
+    {
+      "id": "ciucnavi-launch",
+      "date": "2026-09-24",
+      "type": "breaking",
+      "image": "ciucnaviposter.png",
+      "title": {
+        "en": "Breaking News: CiucNavi Officially Enters the Counter-Strike Scene!",
+        "ro": "Breaking News: CiucNavi intră oficial în scena Counter-Strike!",
+        "hu": "Friss hír: a CiucNavi hivatalosan belép a Counter-Strike színtérre!"
+      },
+      "text": "**A new organisation, a shared vision and the ambition to build something special. CiucNavi's journey starts now.**\n\nA new name is preparing to make its mark on the Counter-Strike 2 scene. We are proud to announce the official launch of **CiucNavi**, a project founded by two passionate players who share one ambition: building a competitive, united and determined team.\n\nWhat started as a shared idea has grown into a project with bigger ambitions. Rather than simply putting five players together and hoping for the best, CiucNavi aims to create an environment where teamwork, commitment and individual improvement come first.\n\n### The Beginning of Something Bigger\n\nThe organisation is currently in its early stages, with its main focus set on building a strong roster capable of competing and improving together. We are looking for dedicated and talented players who share our mentality, understand the importance of teamwork and are ready to put in the effort required to succeed.\n\nSkill matters, but attitude matters just as much. We want players who show up, communicate, learn from mistakes and don't disappear after losing two Premier matches in a row.\n\n### The Mission\n\nOur goal is simple: build a team that people can recognise not only by its results, but also by its identity. We want to combine a serious competitive mindset with the friendship, personality and enjoyment that make Counter-Strike worth playing.\n\nThere is still plenty of work ahead, but every organisation has to start somewhere. For CiucNavi, this is that starting point.\n\n**The roster is waiting to be built. The ambition is already there.**\n\nWelcome to CiucNavi. The journey starts now!\n\n*Once NAVI, always NAVI.*"
     }
   ]
 }

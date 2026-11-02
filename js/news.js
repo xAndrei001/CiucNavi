@@ -38,6 +38,8 @@ a.news-card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shad
 .nd-body{display:flex;flex-direction:column;gap:14px;min-width:0}
 .nd-body h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,3.4vw,2.8rem);letter-spacing:1px;line-height:1.1}
 .nd-body p{color:#d6d6dc;line-height:1.75;font-size:1.02rem;overflow-wrap:anywhere}
+.nd-body h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;letter-spacing:1px;margin-top:10px;color:var(--yellow)}
+.nd-body strong{color:#fff}
 .nd-body .tags{color:var(--yellow);font-weight:600}
 .nd-players{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px;color:var(--muted);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase}
 .nd-players a{background:var(--bg-2);border:1px solid var(--border);border-radius:99px;padding:5px 14px;color:var(--text);letter-spacing:0;text-transform:none;font-size:.9rem;font-weight:600}
@@ -72,6 +74,8 @@ const page=!!document.getElementById('news-root');
 let DATA=null;
 const L=o=>o&&typeof o==='object'?(o[LANG]||o.en||''):(o||'');
 
+const md=x=>esc(x).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+const plain=x=>x.replace(/\s*\n+\s*/g,' ').replace(/#{1,6}\s+|\*+/g,'');
 const dateOf=n=>n.date?new Date(n.date+'T00:00:00').toLocaleDateString(LANG,{year:'numeric',month:'long',day:'numeric'}):'';
 const typeLabel=k=>t('news.type.'+k)==='news.type.'+k?String(k).replace(/-/g,' '):t('news.type.'+k);
 const imgOf=n=>{
@@ -81,11 +85,11 @@ const imgOf=n=>{
 
 function card(n){
   return `<a class='news-card' href='news.html?id=${encodeURIComponent(n.id)}'>${imgOf(n)}
-    <div class='news-body'><span class='news-date'>${esc(dateOf(n))}</span><h3>${esc(L(n.title))}</h3><p>${esc(L(n.text).replace(/\s*\n+\s*/g,' '))}</p></div></a>`;
+    <div class='news-body'><span class='news-date'>${esc(dateOf(n))}</span><h3>${esc(L(n.title))}</h3><p>${esc(plain(L(n.text)))}</p></div></a>`;
 }
 
 function detail(n){
-  const paras=L(n.text).split(/\n\n+/).map(x=>`<p${/^#/.test(x)?" class='tags'":''}>${esc(x)}</p>`).join('');
+  const paras=L(n.text).split(/\n\n+/).map(x=>/^###\s/.test(x)?`<h3>${md(x.replace(/^###\s+/,''))}</h3>`:`<p${/^#\w/.test(x)?" class='tags'":''}>${md(x)}</p>`).join('');
   const pl=(n.players||[]).map(x=>`<a href='player.html?p=${slug(x)}'>${esc(x)}</a>`).join('');
   return `<a class='news-back' href='news.html'>${t('news.backList')}</a>
     <article class='news-detail'>${imgOf(n)}
