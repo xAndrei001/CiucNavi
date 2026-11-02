@@ -75,6 +75,7 @@ try:
         out = json.load(f)
 except (FileNotFoundError, json.JSONDecodeError):
     out = {}
+os.makedirs('data/stats', exist_ok=True)
 
 shown_debug = False
 for p in players:
@@ -125,11 +126,14 @@ for p in players:
         entry['matches'] = data['total_matches']
     detail = {'rating': prim(data.get('rating')), 'stats': prim(data.get('stats')), 'ranks': prim(data.get('ranks')), 'recent': recent_list(data)}
     if any(detail.values()):
-        entry['detail'] = detail
+        # the heavy part lives in data/stats/<key>.json so the home page only downloads the summary
+        with open('data/stats/' + key + '.json', 'w', encoding='utf-8') as f:
+            json.dump({'detail': detail}, f, indent=2, ensure_ascii=False)
+        entry['hasDetail'] = True
 
     if entry:
         out[key] = entry
-        print('OK ' + p['name'] + ': ' + str({k: v for k, v in entry.items() if k != 'detail'}) + ' recent=' + str(len(detail['recent'])))
+        print('OK ' + p['name'] + ': ' + str(entry) + ' recent=' + str(len(detail['recent'])))
     else:
         print('EMPTY ' + p['name'] + ': nothing usable returned')
     time.sleep(1)

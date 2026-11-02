@@ -1,21 +1,22 @@
 (function(){
 function boot(){
-Object.assign(I18N.en,{'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
-Object.assign(I18N.ro,{'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
-Object.assign(I18N.hu,{'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
+Object.assign(I18N.en,{'nav.dashboard':`Dashboard`,'dash.title':`Team ~Dashboard~`,'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
+Object.assign(I18N.ro,{'nav.dashboard':`Panou`,'dash.title':`Panou ~echipă~`,'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
+Object.assign(I18N.hu,{'nav.dashboard':`Irányítópult`,'dash.title':`Csapat ~irányítópult~`,'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
 const mainGrid=document.getElementById('main-grid');
 const benchGrid=document.getElementById('bench-grid');
 const benchEmpty=document.getElementById('bench-empty');
 const heroStats=document.getElementById('hero-stats');
 const updatedEl=document.getElementById('stats-updated');
 let STATE=null;
+mainGrid.innerHTML='<div class="skel" style="aspect-ratio:3/4"></div>'.repeat(5);
 
 const statBox=(l,v,c)=>(v===undefined||v===null||v===''||v==='-')?'':`<div class='stat'><strong>${esc(typeof v==='number'?v.toLocaleString():v)}</strong><span>${esc(l)}</span><em>${esc(c||'')}</em></div>`;
 
 function card(p){
   const s=p.stats||{};const l=p.links||{};
   const img=p.icon
-    ?`<img src='img/players/${encodeURIComponent(p.icon)}' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}' loading='lazy'>`
+    ?`<img src='img/players/${encodeURIComponent(p.icon)}' width='600' height='600' alt='${esc(p.name)}' data-ini='${esc(initials(p.name))}' loading='lazy'>`
     :`<span class='initials'>${esc(initials(p.name))}</span>`;
   const leet=p.steam64?`https://leetify.com/app/profile/${encodeURIComponent(p.steam64)}`:'';
   const links=[
@@ -94,7 +95,24 @@ function dashHTML(){
   return h+'</div>';
 }
 
-let dashOpen=false;
+let dashOpen=false,dashReady=false,dashWatching=false;
+
+const dashSkel=()=>`<div class='kpis'>${'<div class="kpi skel" style="height:98px"></div>'.repeat(4)}</div><div class='dash-grid'>${'<div class="panel skel" style="height:300px"></div>'.repeat(4)}</div>`;
+
+function loadDash(){
+  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261115';s.onload=s.onerror=res;document.head.appendChild(s)});
+  const details=Promise.all(STATE.main.map(p=>p.stats.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>x.detail||null).catch(()=>null):null));
+  Promise.all([charts,details]).then(([,ds])=>{STATE.main.forEach((p,i)=>{p.detail=ds[i]});dashReady=true;renderDash();observeReveals()});
+}
+
+// charts.js and the per-player stats files load only when the dashboard is about to scroll into view
+function watchDash(d){
+  if(dashWatching)return;dashWatching=true;
+  if(!('IntersectionObserver' in window)){loadDash();return}
+  const o=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){o.disconnect();loadDash()}},{rootMargin:'600px 0px'});
+  o.observe(d);
+}
+
 function renderDash(){
   let d=document.getElementById('dashboard');
   if(!d){
@@ -105,7 +123,8 @@ function renderDash(){
   }
   const na=document.getElementById('nav-dash');
   if(na)na.textContent=t('nav.dashboard');
-  d.innerHTML=`<h2 class='section-title reveal'>${t('dash.title').replace(/~(.+?)~/g,'<span class=yellow>$1</span>')}</h2>`+dashHTML();
+  d.innerHTML=`<h2 class='section-title reveal'>${t('dash.title').replace(/~(.+?)~/g,'<span class=yellow>$1</span>')}</h2>`+(dashReady?dashHTML():dashSkel());
+  if(!dashReady)watchDash(d);
   const b=document.getElementById('dash-toggle');
   if(b)b.onclick=()=>{dashOpen=!dashOpen;document.getElementById('dash-more').hidden=!dashOpen;b.setAttribute('aria-expanded',dashOpen);b.textContent=t(dashOpen?'dash.less':'dash.more')};
 }
@@ -139,7 +158,5 @@ Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>(
 });
 document.addEventListener('langchange',render);
 }
-if(window.Charts){boot()}else{
-  const s=document.createElement('script');s.src='js/charts.js';s.onload=boot;s.onerror=boot;document.head.appendChild(s);
-}
+boot();
 })();

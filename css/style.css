@@ -171,3 +171,13 @@ html{font-size:112%}
 .hero-glow{animation:none}
 #snow{display:none}
 }
+.skel{background:linear-gradient(90deg,#16161b 25%,#202026 50%,#16161b 75%) 0 0/200% 100%;animation:shimmer 1.4s linear infinite;border-radius:14px;border:1px solid var(--border)}
+@keyframes shimmer{to{background-position:-200% 0}}
+.to-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:rgba(14,14,18,.92);color:var(--yellow);font-size:1.3rem;cursor:pointer;z-index:90;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s,background .2s}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--yellow);color:#000}
+.btn:active{transform:scale(.97)}
+.nav-links a:not(.btn){position:relative}
+.nav-links a:not(.btn)::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--yellow);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.nav-links a:not(.btn):hover::after{transform:scaleX(1)}
+@media(prefers-reduced-motion:reduce){.skel{animation:none}.to-top,.nav-links a::after{transition:none}}
