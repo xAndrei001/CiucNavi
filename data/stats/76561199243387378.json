@@ -1,43 +1,98 @@
 {
   "detail": {
     "rating": {
-      "aim": 53.9828,
-      "positioning": 52.7903,
-      "utility": 27.6306,
-      "clutch": 0.0613,
-      "opening": -0.0142,
-      "ct_leetify": -0.0118,
-      "t_leetify": -0.0292
+      "aim": 57.5345,
+      "positioning": 55.1717,
+      "utility": 25.8334,
+      "clutch": 0.0775,
+      "opening": -0.0175,
+      "ct_leetify": -0.0103,
+      "t_leetify": -0.0296
     },
     "stats": {
-      "accuracy_enemy_spotted": 33.0923,
-      "accuracy_head": 16.6456,
-      "counter_strafing_good_shots_ratio": 72.5149,
-      "ct_opening_aggression_success_rate": 42.6045,
-      "ct_opening_duel_success_percentage": 42.658,
-      "flashbang_hit_foe_avg_duration": 1.6001,
-      "flashbang_hit_foe_per_flashbang": 0.3749,
-      "flashbang_hit_friend_per_flashbang": 0.3246,
-      "flashbang_leading_to_kill": 2.7598,
-      "flashbang_thrown": 2.008,
-      "he_foes_damage_avg": 7.0835,
-      "he_friends_damage_avg": 0.0797,
-      "preaim": 10.7166,
-      "reaction_time_ms": 594.2588,
-      "spray_accuracy": 33.8846,
-      "t_opening_aggression_success_rate": 33.4405,
-      "t_opening_duel_success_percentage": 40.3857,
-      "traded_deaths_success_percentage": 60.2877,
-      "trade_kill_opportunities_per_round": 0.2524,
-      "trade_kills_success_percentage": 45.0681,
-      "utility_on_death_avg": 499.9952
+      "accuracy_enemy_spotted": 34.2014,
+      "accuracy_head": 16.8815,
+      "counter_strafing_good_shots_ratio": 72.5681,
+      "ct_opening_aggression_success_rate": 45.9201,
+      "ct_opening_duel_success_percentage": 48.9333,
+      "flashbang_hit_foe_avg_duration": 1.4484,
+      "flashbang_hit_foe_per_flashbang": 0.3103,
+      "flashbang_hit_friend_per_flashbang": 0.2076,
+      "flashbang_leading_to_kill": 1.4667,
+      "flashbang_thrown": 1.8352,
+      "he_foes_damage_avg": 7.8532,
+      "he_friends_damage_avg": 0.0176,
+      "preaim": 10.524,
+      "reaction_time_ms": 585.4144,
+      "spray_accuracy": 33.8267,
+      "t_opening_aggression_success_rate": 36.48,
+      "t_opening_duel_success_percentage": 38.4983,
+      "traded_deaths_success_percentage": 62.235,
+      "trade_kill_opportunities_per_round": 0.2304,
+      "trade_kills_success_percentage": 45.5577,
+      "utility_on_death_avg": 502.7008
     },
     "ranks": {
-      "leetify": -2.06,
-      "premier": 15352,
+      "leetify": -1.96,
+      "premier": 15818,
       "wingman": 8
     },
     "recent": [
+      {
+        "m": "de_ancient",
+        "o": "win",
+        "d": "2026-11-08T01:27:19.000Z",
+        "s": "matchmaking",
+        "r": 0.0096,
+        "sc": [
+          13,
+          10
+        ]
+      },
+      {
+        "m": "de_cache",
+        "o": "win",
+        "d": "2026-11-08T01:02:49.000Z",
+        "s": "matchmaking",
+        "r": 0.0177,
+        "sc": [
+          13,
+          0
+        ]
+      },
+      {
+        "m": "de_mirage",
+        "o": "win",
+        "d": "2026-11-08T00:24:22.000Z",
+        "s": "matchmaking",
+        "r": 0.0486,
+        "sc": [
+          13,
+          2
+        ]
+      },
+      {
+        "m": "de_mirage",
+        "o": "loss",
+        "d": "2026-11-07T23:29:50.000Z",
+        "s": "matchmaking",
+        "r": -0.0416,
+        "sc": [
+          13,
+          16
+        ]
+      },
+      {
+        "m": "de_ancient",
+        "o": "loss",
+        "d": "2026-11-07T21:01:47.000Z",
+        "s": "matchmaking",
+        "r": -0.0345,
+        "sc": [
+          8,
+          13
+        ]
+      },
       {
         "m": "de_dust2",
         "o": "loss",
@@ -531,61 +586,6 @@
         "sc": [
           8,
           8
-        ]
-      },
-      {
-        "m": "de_ancient",
-        "o": "loss",
-        "d": "2026-10-20T21:00:41.000Z",
-        "s": "matchmaking",
-        "r": 0.0026,
-        "sc": [
-          5,
-          13
-        ]
-      },
-      {
-        "m": "de_inferno",
-        "o": "loss",
-        "d": "2026-10-20T16:36:43.000Z",
-        "s": "matchmaking",
-        "r": 0.027,
-        "sc": [
-          6,
-          13
-        ]
-      },
-      {
-        "m": "de_dust2",
-        "o": "tie",
-        "d": "2026-10-19T20:43:53.000Z",
-        "s": "matchmaking",
-        "r": -0.0422,
-        "sc": [
-          15,
-          15
-        ]
-      },
-      {
-        "m": "de_cache",
-        "o": "win",
-        "d": "2026-10-19T20:14:33.000Z",
-        "s": "matchmaking",
-        "r": -0.012,
-        "sc": [
-          13,
-          5
-        ]
-      },
-      {
-        "m": "de_cache",
-        "o": "loss",
-        "d": "2026-10-18T22:35:53.000Z",
-        "s": "matchmaking",
-        "r": -0.0371,
-        "sc": [
-          7,
-          13
         ]
       }
     ]
