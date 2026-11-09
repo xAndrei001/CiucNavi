@@ -1,70 +1,69 @@
 {
-  "_updated": "2026-11-09 03:56 UTC",
+  "_updated": "2026-11-09 14:50 UTC",
   "76561198930064082": {
-    "premier": "15,418",
-    "hs": "18.9%",
+    "premier": "15,118",
+    "hs": "19.5%",
     "winrate": "53.3%",
-    "matches": 1652,
+    "matches": 1653,
     "hasDetail": true,
     "hl": {
       "k": "opening",
-      "v": 58.1
+      "v": 57.4
     },
     "prev": {
-      "premier": "15,491",
-      "hs": "19.3%",
-      "winrate": "50.0%",
-      "matches": 1649
+      "premier": "15,418",
+      "hs": "18.9%",
+      "matches": 1652
     }
   },
   "76561198157122706": {
-    "premier": "10,314",
-    "hs": "14.1%",
+    "premier": "10,206",
+    "hs": "13.7%",
     "winrate": "53.3%",
-    "matches": 634,
+    "matches": 635,
     "hasDetail": true,
     "hl": {
       "k": "he",
-      "v": 12.1
+      "v": 11.7
     },
     "prev": {
-      "premier": "9,434",
-      "hs": "13.4%",
-      "winrate": "46.7%",
-      "matches": 627
+      "premier": "10,314",
+      "hs": "14.1%",
+      "matches": 634
     }
   },
   "76561199046007584": {
-    "premier": "24,314",
-    "hs": "20.2%",
-    "winrate": "58.6%",
-    "matches": 831,
+    "premier": "24,191",
+    "hs": "19.9%",
+    "winrate": "55.2%",
+    "matches": 832,
     "hasDetail": true,
     "hl": {
       "k": "utility",
-      "v": 69.5
+      "v": 68.7
     },
     "prev": {
-      "premier": "22,989",
-      "hs": "20.9%",
-      "winrate": "55.2%",
-      "matches": 825
+      "premier": "24,314",
+      "hs": "20.2%",
+      "winrate": "58.6%",
+      "matches": 831
     }
   },
   "76561199243387378": {
-    "premier": "16,057",
-    "hs": "14.2%",
-    "winrate": "65.5%",
-    "matches": 184,
+    "premier": "15,778",
+    "hs": "13.7%",
+    "winrate": "62.1%",
+    "matches": 185,
     "hasDetail": true,
     "hl": {
       "k": "trade",
-      "v": 45.0
+      "v": 45.8
     },
     "prev": {
-      "premier": "15,561",
-      "hs": "16.0%",
-      "matches": 180
+      "premier": "16,057",
+      "hs": "14.2%",
+      "winrate": "65.5%",
+      "matches": 184
     }
   },
   "76561199846135632": {
