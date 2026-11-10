@@ -1,35 +1,37 @@
 {
-  "_updated": "2026-11-09 14:50 UTC",
+  "_updated": "2026-11-10 01:01 UTC",
   "76561198930064082": {
-    "premier": "15,118",
-    "hs": "19.5%",
-    "winrate": "53.3%",
-    "matches": 1653,
+    "premier": "15,168",
+    "hs": "19.3%",
+    "winrate": "55.2%",
+    "matches": 1654,
     "hasDetail": true,
     "hl": {
       "k": "opening",
-      "v": 57.4
+      "v": 58.1
     },
     "prev": {
-      "premier": "15,418",
-      "hs": "18.9%",
-      "matches": 1652
+      "premier": "15,118",
+      "hs": "19.5%",
+      "winrate": "53.3%",
+      "matches": 1653
     }
   },
   "76561198157122706": {
-    "premier": "10,206",
-    "hs": "13.7%",
-    "winrate": "53.3%",
-    "matches": 635,
+    "premier": "10,265",
+    "hs": "13.9%",
+    "winrate": "55.2%",
+    "matches": 636,
     "hasDetail": true,
     "hl": {
       "k": "he",
-      "v": 11.7
+      "v": 11.5
     },
     "prev": {
-      "premier": "10,314",
-      "hs": "14.1%",
-      "matches": 634
+      "premier": "10,206",
+      "hs": "13.7%",
+      "winrate": "53.3%",
+      "matches": 635
     }
   },
   "76561199046007584": {
@@ -53,17 +55,14 @@
     "premier": "15,778",
     "hs": "13.7%",
     "winrate": "62.1%",
-    "matches": 185,
+    "matches": 187,
     "hasDetail": true,
     "hl": {
       "k": "trade",
       "v": 45.8
     },
     "prev": {
-      "premier": "16,057",
-      "hs": "14.2%",
-      "winrate": "65.5%",
-      "matches": 184
+      "matches": 185
     }
   },
   "76561199846135632": {
