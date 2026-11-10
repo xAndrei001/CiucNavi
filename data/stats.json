@@ -1,35 +1,36 @@
 {
-  "_updated": "2026-11-10 14:03 UTC",
+  "_updated": "2026-11-10 22:42 UTC",
   "76561198930064082": {
-    "premier": "15,895",
-    "hs": "19.3%",
-    "winrate": "58.6%",
-    "matches": 1656,
+    "premier": "16,240",
+    "hs": "18.9%",
+    "winrate": "62.1%",
+    "matches": 1657,
     "hasDetail": true,
     "hl": {
       "k": "opening",
-      "v": 59.9
+      "v": 59.5
     },
     "prev": {
-      "premier": "15,168",
-      "winrate": "55.2%",
-      "matches": 1654
+      "premier": "15,895",
+      "hs": "19.3%",
+      "winrate": "58.6%",
+      "matches": 1656
     }
   },
   "76561198157122706": {
-    "premier": "11,157",
-    "hs": "13.9%",
+    "premier": "11,590",
+    "hs": "13.8%",
     "winrate": "58.6%",
-    "matches": 638,
+    "matches": 639,
     "hasDetail": true,
     "hl": {
       "k": "he",
-      "v": 11.1
+      "v": 10.7
     },
     "prev": {
-      "premier": "10,265",
-      "winrate": "55.2%",
-      "matches": 636
+      "premier": "11,157",
+      "hs": "13.9%",
+      "matches": 638
     }
   },
   "76561199046007584": {
@@ -50,17 +51,20 @@
     }
   },
   "76561199243387378": {
-    "premier": "15,778",
-    "hs": "13.7%",
-    "winrate": "62.1%",
-    "matches": 187,
+    "premier": "15,801",
+    "hs": "14.2%",
+    "winrate": "58.6%",
+    "matches": 189,
     "hasDetail": true,
     "hl": {
       "k": "trade",
-      "v": 45.8
+      "v": 50.0
     },
     "prev": {
-      "matches": 185
+      "premier": "15,778",
+      "hs": "13.7%",
+      "winrate": "62.1%",
+      "matches": 187
     }
   },
   "76561199846135632": {
@@ -89,16 +93,15 @@
     }
   },
   "76561199106120931": {
-    "premier": "12,870",
-    "hs": "11.8%",
+    "premier": "12,633",
+    "hs": "12.0%",
     "winrate": "50.0%",
-    "matches": 131,
+    "matches": 132,
     "hasDetail": true,
     "prev": {
-      "premier": "12,518",
-      "hs": "10.6%",
-      "winrate": "40.0%",
-      "matches": 113
+      "premier": "12,870",
+      "hs": "11.8%",
+      "matches": 131
     }
   }
 }
