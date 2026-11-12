@@ -1,18 +1,17 @@
 {
-  "_updated": "2026-11-11 23:54 UTC",
+  "_updated": "2026-11-12 05:12 UTC",
   "76561198930064082": {
     "premier": "16,240",
     "hs": "18.8%",
     "winrate": "62.1%",
-    "matches": 1658,
+    "matches": 1663,
     "hasDetail": true,
     "hl": {
       "k": "opening",
       "v": 57.8
     },
     "prev": {
-      "hs": "18.9%",
-      "matches": 1657
+      "matches": 1658
     }
   },
   "76561198157122706": {
