@@ -1,43 +1,65 @@
 {
   "detail": {
     "rating": {
-      "aim": 65.5422,
-      "positioning": 58.3166,
-      "utility": 37.2489,
-      "clutch": 0.0931,
-      "opening": -0.0091,
-      "ct_leetify": 0.0071,
-      "t_leetify": -0.016
+      "aim": 67.7242,
+      "positioning": 55.567,
+      "utility": 36.8544,
+      "clutch": 0.0892,
+      "opening": -0.0109,
+      "ct_leetify": 0.0022,
+      "t_leetify": -0.0161
     },
     "stats": {
-      "accuracy_enemy_spotted": 37.4665,
-      "accuracy_head": 13.4732,
-      "counter_strafing_good_shots_ratio": 73.7391,
-      "ct_opening_aggression_success_rate": 52.4431,
-      "ct_opening_duel_success_percentage": 55.4017,
-      "flashbang_hit_foe_avg_duration": 2.1569,
-      "flashbang_hit_foe_per_flashbang": 0.4724,
-      "flashbang_hit_friend_per_flashbang": 0.2134,
-      "flashbang_leading_to_kill": 0,
-      "flashbang_thrown": 1.9072,
-      "he_foes_damage_avg": 9.1852,
-      "he_friends_damage_avg": 0.0274,
-      "preaim": 10.432,
-      "reaction_time_ms": 561.4967,
-      "spray_accuracy": 39.1339,
-      "t_opening_aggression_success_rate": 48.3713,
-      "t_opening_duel_success_percentage": 34.0575,
-      "traded_deaths_success_percentage": 52.8938,
-      "trade_kill_opportunities_per_round": 0.2394,
-      "trade_kills_success_percentage": 46.8573,
-      "utility_on_death_avg": 453.4577
+      "accuracy_enemy_spotted": 37.9322,
+      "accuracy_head": 13.5258,
+      "counter_strafing_good_shots_ratio": 73.2582,
+      "ct_opening_aggression_success_rate": 50.1568,
+      "ct_opening_duel_success_percentage": 51.1234,
+      "flashbang_hit_foe_avg_duration": 2.1775,
+      "flashbang_hit_foe_per_flashbang": 0.5069,
+      "flashbang_hit_friend_per_flashbang": 0.3731,
+      "flashbang_leading_to_kill": 0.5376,
+      "flashbang_thrown": 2.1238,
+      "he_foes_damage_avg": 9.1531,
+      "he_friends_damage_avg": 0.1392,
+      "preaim": 10.2588,
+      "reaction_time_ms": 549.9702,
+      "spray_accuracy": 39.4132,
+      "t_opening_aggression_success_rate": 46.7085,
+      "t_opening_duel_success_percentage": 32.9331,
+      "traded_deaths_success_percentage": 49.9008,
+      "trade_kill_opportunities_per_round": 0.2335,
+      "trade_kills_success_percentage": 50.5283,
+      "utility_on_death_avg": 456.0235
     },
     "ranks": {
-      "leetify": -0.32,
-      "premier": 17384,
+      "leetify": -0.6,
+      "premier": 17794,
       "wingman": 8
     },
     "recent": [
+      {
+        "m": "de_inferno",
+        "o": "tie",
+        "d": "2026-11-13T22:04:45.000Z",
+        "s": "matchmaking",
+        "r": -0.0291,
+        "sc": [
+          15,
+          15
+        ]
+      },
+      {
+        "m": "de_dust2",
+        "o": "win",
+        "d": "2026-11-13T21:14:07.000Z",
+        "s": "matchmaking",
+        "r": -0.0182,
+        "sc": [
+          13,
+          11
+        ]
+      },
       {
         "m": "de_cache",
         "o": "win",
@@ -564,28 +586,6 @@
         "sc": [
           13,
           6
-        ]
-      },
-      {
-        "m": "de_mirage",
-        "o": "loss",
-        "d": "2026-10-28T22:40:13.000Z",
-        "s": "matchmaking",
-        "r": -0.0799,
-        "sc": [
-          3,
-          13
-        ]
-      },
-      {
-        "m": "de_dust2",
-        "o": "win",
-        "d": "2026-10-28T22:03:29.000Z",
-        "s": "matchmaking",
-        "r": -0.0308,
-        "sc": [
-          13,
-          5
         ]
       }
     ]
