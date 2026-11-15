@@ -1,68 +1,68 @@
 {
-  "_updated": "2026-11-14 21:52 UTC",
+  "_updated": "2026-11-15 04:08 UTC",
   "76561198930064082": {
-    "premier": "18,672",
-    "hs": "20.0%",
+    "premier": "18,222",
+    "hs": "19.8%",
     "winrate": "65.5%",
-    "matches": 1673,
+    "matches": 1674,
     "hasDetail": true,
     "hl": {
       "k": "opening",
-      "v": 64.1
+      "v": 64.2
     },
     "prev": {
-      "premier": "18,998",
-      "hs": "19.7%",
-      "matches": 1672
+      "premier": "18,672",
+      "hs": "20.0%",
+      "matches": 1673
     }
   },
   "76561198157122706": {
-    "premier": "15,000",
-    "hs": "12.8%",
-    "winrate": "71.4%",
-    "matches": 656,
+    "premier": "14,639",
+    "hs": "13.4%",
+    "winrate": "64.3%",
+    "matches": 659,
     "hasDetail": true,
     "hl": {
       "k": "he",
-      "v": 10.1
+      "v": 8.7
     },
     "prev": {
-      "premier": "14,999",
-      "hs": "12.5%",
-      "matches": 654
+      "premier": "15,000",
+      "hs": "12.8%",
+      "winrate": "71.4%",
+      "matches": 656
     }
   },
   "76561199046007584": {
-    "premier": "24,191",
-    "hs": "19.9%",
-    "winrate": "55.2%",
-    "matches": 832,
+    "premier": "23,807",
+    "hs": "19.0%",
+    "winrate": "51.7%",
+    "matches": 835,
     "hasDetail": true,
     "hl": {
       "k": "utility",
-      "v": 68.7
+      "v": 66.8
     },
     "prev": {
-      "premier": "24,314",
-      "hs": "20.2%",
-      "winrate": "58.6%",
-      "matches": 831
+      "premier": "24,191",
+      "hs": "19.9%",
+      "winrate": "55.2%",
+      "matches": 832
     }
   },
   "76561199243387378": {
-    "premier": "17,492",
+    "premier": "17,556",
     "hs": "13.5%",
     "winrate": "58.6%",
-    "matches": 206,
+    "matches": 208,
     "hasDetail": true,
     "hl": {
       "k": "trade",
-      "v": 50.0
+      "v": 48.4
     },
     "prev": {
-      "premier": "17,794",
-      "winrate": "62.1%",
-      "matches": 205
+      "premier": "17,492",
+      "matches": 206
     }
   },
   "76561199846135632": {
