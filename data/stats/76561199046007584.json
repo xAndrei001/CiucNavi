@@ -1,44 +1,66 @@
 {
   "detail": {
     "rating": {
-      "aim": 83.6457,
-      "positioning": 70.5402,
-      "utility": 68.514,
-      "clutch": 0.1444,
-      "opening": 0.0071,
-      "ct_leetify": 0.023,
-      "t_leetify": 0.008
+      "aim": 81.8589,
+      "positioning": 68.7933,
+      "utility": 70.991,
+      "clutch": 0.1436,
+      "opening": 0.0123,
+      "ct_leetify": 0.024,
+      "t_leetify": 0.0069
     },
     "stats": {
-      "accuracy_enemy_spotted": 40.7599,
-      "accuracy_head": 17.9742,
-      "counter_strafing_good_shots_ratio": 84.113,
-      "ct_opening_aggression_success_rate": 56.672,
-      "ct_opening_duel_success_percentage": 57.2856,
-      "flashbang_hit_foe_avg_duration": 3.0523,
-      "flashbang_hit_foe_per_flashbang": 0.6378,
-      "flashbang_hit_friend_per_flashbang": 0.3481,
-      "flashbang_leading_to_kill": 10.4542,
-      "flashbang_thrown": 10.8803,
-      "he_foes_damage_avg": 8.5272,
-      "he_friends_damage_avg": 0.2738,
-      "preaim": 9.4058,
-      "reaction_time_ms": 617.6045,
-      "spray_accuracy": 45.5204,
-      "t_opening_aggression_success_rate": 57.8788,
-      "t_opening_duel_success_percentage": 42.5504,
-      "traded_deaths_success_percentage": 55.1426,
-      "trade_kill_opportunities_per_round": 0.2788,
-      "trade_kills_success_percentage": 56.1426,
-      "utility_on_death_avg": 329.4379
+      "accuracy_enemy_spotted": 40.4259,
+      "accuracy_head": 17.723,
+      "counter_strafing_good_shots_ratio": 83.6395,
+      "ct_opening_aggression_success_rate": 53.7118,
+      "ct_opening_duel_success_percentage": 60.4515,
+      "flashbang_hit_foe_avg_duration": 3.0705,
+      "flashbang_hit_foe_per_flashbang": 0.6866,
+      "flashbang_hit_friend_per_flashbang": 0.3641,
+      "flashbang_leading_to_kill": 12.6321,
+      "flashbang_thrown": 10.8638,
+      "he_foes_damage_avg": 8.5031,
+      "he_friends_damage_avg": 0.2734,
+      "preaim": 9.8413,
+      "reaction_time_ms": 612.5098,
+      "spray_accuracy": 44.986,
+      "t_opening_aggression_success_rate": 53.5552,
+      "t_opening_duel_success_percentage": 39.7629,
+      "traded_deaths_success_percentage": 57.4796,
+      "trade_kill_opportunities_per_round": 0.2844,
+      "trade_kills_success_percentage": 51.993,
+      "utility_on_death_avg": 334.4478
     },
     "ranks": {
-      "leetify": 1.55,
-      "premier": 24875,
+      "leetify": 1.54,
+      "premier": 25108,
       "faceit": 10,
       "wingman": 17
     },
     "recent": [
+      {
+        "m": "de_dust2",
+        "o": "win",
+        "d": "2026-11-23T02:24:53.000Z",
+        "s": "matchmaking",
+        "r": -0.0423,
+        "sc": [
+          16,
+          13
+        ]
+      },
+      {
+        "m": "de_ancient",
+        "o": "win",
+        "d": "2026-11-23T01:48:40.000Z",
+        "s": "matchmaking",
+        "r": -0.0071,
+        "sc": [
+          13,
+          9
+        ]
+      },
       {
         "m": "de_ancient",
         "o": "loss",
@@ -564,28 +586,6 @@
         "r": -0.0624,
         "sc": [
           3,
-          13
-        ]
-      },
-      {
-        "m": "de_ancient",
-        "o": "loss",
-        "d": "2026-10-24T23:33:39.000Z",
-        "s": "matchmaking",
-        "r": -0.0377,
-        "sc": [
-          4,
-          13
-        ]
-      },
-      {
-        "m": "de_cache",
-        "o": "loss",
-        "d": "2026-10-24T22:54:47.000Z",
-        "s": "matchmaking",
-        "r": -0.0014,
-        "sc": [
-          6,
           13
         ]
       }
