@@ -1,35 +1,36 @@
 {
-  "_updated": "2026-11-25 16:36 UTC",
+  "_updated": "2026-11-26 01:23 UTC",
   "76561198930064082": {
-    "premier": "20,105",
-    "hs": "19.5%",
-    "winrate": "63.3%",
-    "matches": 1697,
+    "premier": "20,924",
+    "hs": "19.1%",
+    "winrate": "70.0%",
+    "matches": 1699,
     "hasDetail": true,
     "hl": {
       "k": "opening",
-      "v": 60.1
+      "v": 57.6
     },
     "prev": {
-      "premier": "19,637",
-      "hs": "18.9%",
-      "matches": 1694
+      "premier": "20,105",
+      "hs": "19.5%",
+      "winrate": "63.3%",
+      "matches": 1697
     }
   },
   "76561198157122706": {
-    "premier": "15,468",
-    "hs": "13.3%",
+    "premier": "16,153",
+    "hs": "13.7%",
     "winrate": "69.0%",
-    "matches": 667,
+    "matches": 671,
     "hasDetail": true,
     "hl": {
       "k": "he",
-      "v": 9.6
+      "v": 8.9
     },
     "prev": {
-      "premier": "15,102",
-      "hs": "13.1%",
-      "matches": 666
+      "premier": "15,468",
+      "hs": "13.3%",
+      "matches": 667
     }
   },
   "76561199046007584": {
@@ -70,12 +71,10 @@
     "premier": "6,738",
     "hs": "12.3%",
     "winrate": "33.3%",
-    "matches": 124,
+    "matches": 126,
     "hasDetail": true,
     "prev": {
-      "premier": "6,920",
-      "hs": "12.1%",
-      "matches": 123
+      "matches": 124
     }
   },
   "76561199046293468": {
