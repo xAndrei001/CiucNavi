@@ -6,6 +6,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
+import history
+
 LEETIFY_KEY = os.environ.get('LEETIFY_API_KEY', '')
 STEAM_KEY = os.environ.get('STEAM_API_KEY', '')
 LEETIFY_URL = 'https://api-public.cs-prod.leetify.com/v3/profile?steam64_id={}'
@@ -102,6 +104,7 @@ except (FileNotFoundError, json.JSONDecodeError):
 os.makedirs('data/stats', exist_ok=True)
 
 shown_debug = False
+fresh = []
 for p in players:
     vanity = str(p.get('vanity', '')).strip()
     sid = str(p.get('steam64', '')).strip()
@@ -167,12 +170,19 @@ for p in players:
         elif old.get('prev'):
             entry['prev'] = old['prev']
         out[key] = entry
+        fresh.append(key)
         print('OK ' + p['name'] + ': ' + str(entry) + ' recent=' + str(len(detail['recent'])))
     else:
         print('EMPTY ' + p['name'] + ': nothing usable returned')
     time.sleep(1)
 
-out['_updated'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')
+now = datetime.now(timezone.utc)
+out['_updated'] = now.strftime('%Y-%m-%d %H:%M UTC')
+
+hist = history.load('data/history.json')
+for key in fresh:
+    history.add(hist, key, out[key], now.strftime('%Y-%m-%dT%H:%MZ'))
+history.save(hist, 'data/history.json')
 
 with open('data/stats.json', 'w', encoding='utf-8') as f:
     json.dump(out, f, indent=2, ensure_ascii=False)
