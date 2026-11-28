@@ -58,6 +58,7 @@ function statsTab(){
     typeof st.he_foes_damage_avg==='number'?tile(C.statLabel('he_foes_damage_avg'),C.fmtStat('he_foes_damage_avg',st.he_foes_damage_avg)):''
   ].join('');
   h+=`<div class='panel reveal'><h3>${t('chart.perf')}</h3><div class='gauges'>${gauges}</div><div class='tiles'>${tiles}</div></div>`;
+  if(C.historyPanel)h+=C.historyPanel(ST.hist);
   const axes=C.orderAxes(C.profileAxes(d));
   if(axes.length>=3){
     const pv={};axes.forEach(a=>{pv[a.key]=a.value});
@@ -113,12 +114,13 @@ function render(){
   if(cp)cp.addEventListener('click',()=>{
     navigator.clipboard.writeText(info.crosshair.code).then(()=>{cp.textContent=t('xh.copied');setTimeout(()=>{cp.textContent=t('xh.copy')},1500)});
   });
+  if(window.Charts&&Charts.bindHistory)Charts.bindHistory(root);
   fixImages();observeReveals();
   const u=document.getElementById('stats-updated');
   if(u&&ST.live._updated)u.textContent=t('updated')+': '+ST.live._updated+'. ';
 }
 
-Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>({})),getJson('data/player-details.json').catch(()=>({}))]).then(([data,live,details])=>{
+Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>({})),getJson('data/player-details.json').catch(()=>({})),getJson('data/history.json').catch(()=>null)]).then(([data,live,details,history])=>{
   const p=(data.players||[]).find(x=>slug(x.name)===want);
   let s={};
   if(p){
@@ -127,7 +129,7 @@ Promise.all([getJson('data/players.json'),getJson('data/stats.json').catch(()=>(
   }
   const dp=p&&s.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>x.detail||null).catch(()=>null):Promise.resolve(null);
   return dp.then(detail=>{
-    ST={p,s,detail,info:p?details[slug(p.name)]:null,live};
+    ST={p,s,detail,info:p?details[slug(p.name)]:null,live,hist:p&&history&&history.players?history.players[p.steam64]:null};
     render();
   });
 }).catch(err=>{root.innerHTML=`<p class='empty'>${esc(err.message)}</p>`});

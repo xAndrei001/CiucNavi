@@ -335,5 +335,111 @@ function matchFeed(rows,limit){
 }
 const feedPanel=(recent,title)=>`<div class='panel reveal'><h3>${t(title||'feed.title')}</h3>${matchFeed(recent,10)}</div>`;
 
-window.Charts={matchFeed,feedPanel,num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
+// ---- stats history line chart (data/history.json) ----
+Object.assign(I18N.en,{'hist.title':`Rating over time`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Win rate`,'hist.since':`since {d}`,'hist.help':`Hover, tap or use the arrow keys to see each point.`});
+Object.assign(I18N.ro,{'hist.title':`Evoluția în timp`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Rată victorii`,'hist.since':`din {d}`,'hist.help':`Treci cu mouse-ul, atinge sau folosește săgețile pentru fiecare punct.`});
+Object.assign(I18N.hu,{'hist.title':`Alakulás időben`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Győzelmi arány`,'hist.since':`{d} óta`,'hist.help':`Vidd fölé az egeret, koppints, vagy használd a nyílbillentyűket.`});
+const hsty=document.createElement('style');
+hsty.textContent=`
+.hist-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 18px;margin-bottom:12px}
+.hist-now strong{font-family:Rajdhani,sans-serif;font-size:2rem;line-height:1;margin-right:10px}
+.hist-now em{font-style:normal;font-weight:700;font-size:.9rem}
+.hist-now em.up{color:#7ae582}.hist-now em.dn{color:#f25f5c}.hist-now em.eq{color:var(--muted)}
+.hist-tabs{display:flex;gap:6px}
+.hist-tabs button{background:var(--bg-2);border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:5px 12px;font-size:.75rem;font-weight:600;cursor:pointer}
+.hist-tabs button[aria-pressed=true]{border-color:var(--yellow);color:var(--yellow)}
+.hist-box{position:relative}
+.hist-box svg{display:block;width:100%;height:auto;touch-action:pan-y;outline:none}
+.hist-box svg:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:6px}
+.hist-box text{fill:#8a8a96;font-size:11px;font-family:Inter,sans-serif}
+.hist-line{animation:hdraw 1.2s ease-out}
+@keyframes hdraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.hist-tip{position:absolute;top:0;pointer-events:none;background:#0c0c0f;border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.78rem;white-space:nowrap;transform:translate(-50%,-110%)}
+.hist-tip b{display:block;font-family:Rajdhani,sans-serif;font-size:1.1rem}
+.hist-tip[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.hist-line{animation:none}}
+`;
+document.head.appendChild(hsty);
+const HIST_METRICS={
+  premier:{fmt:v=>Math.round(v).toLocaleString('en'),color:tierColor},
+  hs:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'},
+  winrate:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'}
+};
+const histSeries=(pts,k)=>(pts||[]).map(p=>({t:Date.parse(p.t),v:p[k]})).filter(p=>typeof p.v==='number'&&!isNaN(p.t));
+function niceStep(range){
+  const raw=range/4,mag=Math.pow(10,Math.floor(Math.log10(raw)));
+  return [1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw);
+}
+// pts: [{t:"2026-10-05T00:46Z",premier,hs,winrate,matches}] for one player; '' when there is too little to draw
+function historyPanel(pts){
+  const keys=Object.keys(HIST_METRICS).filter(k=>histSeries(pts,k).length>=2);
+  if(!keys.includes('premier'))return '';
+  const tabs=keys.length>1?`<div class='hist-tabs' role='group'>${keys.map((k,i)=>`<button type='button' data-k='${k}' aria-pressed='${i===0}'>${t('hist.'+k)}</button>`).join('')}</div>`:'';
+  return `<div class='panel reveal hist' data-h='${esc(JSON.stringify(pts))}'><h3>${t('hist.title')}</h3><div class='hist-top'><div class='hist-now'></div>${tabs}</div><div class='hist-box'></div><p class='note' style='margin-top:10px'>${t('hist.help')}</p></div>`;
+}
+function drawHistory(el){
+  const k=el.dataset.k||'premier',M=HIST_METRICS[k];
+  const s=histSeries(JSON.parse(el.dataset.h),k);
+  const box=el.querySelector('.hist-box');
+  const W=Math.max(280,box.clientWidth||640),H=W<520?200:240,L=W<520?44:54,R=14,T=14,B=26;
+  const t0=s[0].t,t1=s[s.length-1].t||t0+1;
+  const vs=s.map(p=>p.v);let lo=Math.min(...vs),hi=Math.max(...vs);
+  const step=niceStep(hi-lo||Math.max(1,Math.abs(hi)*.05));
+  lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo)hi=lo+step;
+  const X=v=>L+(t1===t0?.5:(v-t0)/(t1-t0))*(W-L-R),Y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+  const date=(v,o)=>new Date(v).toLocaleDateString(LANG,o||{day:'numeric',month:'short'});
+  let g='';
+  for(let v=lo;v<=hi+step/2;v+=step)g+=`<line x1='${L}' x2='${W-R}' y1='${Y(v).toFixed(1)}' y2='${Y(v).toFixed(1)}' stroke='#25252b'/><text x='${L-8}' y='${(Y(v)+4).toFixed(1)}' text-anchor='end'>${esc(M.fmt(v))}</text>`;
+  const nx=Math.max(2,Math.min(6,Math.floor((W-L-R)/80)));
+  for(let i=0;i<nx;i++){const v=t0+(t1-t0)*i/(nx-1);g+=`<text x='${X(v).toFixed(1)}' y='${H-6}' text-anchor='${i===0?'start':(i===nx-1?'end':'middle')}'>${esc(date(v))}</text>`}
+  // tier colours: hard colour stops at each tier boundary inside the visible range
+  const stops=[];let prev=null;
+  for(let i=0;i<=100;i++){const v=hi-(hi-lo)*i/100,c=M.color(v);if(c!==prev){if(prev)stops.push(`<stop offset='${i}%' stop-color='${prev}'/>`);stops.push(`<stop offset='${i}%' stop-color='${c}'/>`);prev=c}}
+  stops.push(`<stop offset='100%' stop-color='${prev}'/>`);
+  const gid='hg'+Math.random().toString(36).slice(2,8);
+  const d=s.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.v).toFixed(1)).join('');
+  const last=s[s.length-1];
+  box.innerHTML=`<svg viewBox='0 0 ${W} ${H}' tabindex='0' role='img' aria-label='${esc(t('hist.title')+': '+t('hist.'+k)+' '+M.fmt(s[0].v)+' → '+M.fmt(last.v))}'>
+<defs><linearGradient id='${gid}' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='${T}' y2='${H-B}'>${stops.join('')}</linearGradient></defs>${g}
+<path class='hist-line' d='${d}' pathLength='1' stroke-dasharray='1' fill='none' stroke='url(#${gid})' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/>
+<circle cx='${X(last.t).toFixed(1)}' cy='${Y(last.v).toFixed(1)}' r='7' fill='none' stroke='${M.color(last.v)}' stroke-opacity='.45' stroke-width='2'/><circle cx='${X(last.t).toFixed(1)}' cy='${Y(last.v).toFixed(1)}' r='4' fill='${M.color(last.v)}'/>
+<line class='hist-cur' y1='${T}' y2='${H-B}' stroke='#9a9aa5' stroke-dasharray='3 3' visibility='hidden'/><circle class='hist-dot' r='5' fill='#0c0c0f' stroke-width='2.5' visibility='hidden'/></svg><div class='hist-tip' hidden></div>`;
+  const diff=last.v-s[0].v,cls=diff>0?'up':(diff<0?'dn':'eq');
+  el.querySelector('.hist-now').innerHTML=`<strong style='color:${M.color(last.v)}'>${esc(M.fmt(last.v))}</strong><em class='${cls}'>${diff>0?'+':(diff<0?'−':'±')}${esc(M.fmt(Math.abs(diff)))} ${esc(t('hist.since').replace('{d}',date(s[0].t)))}</em>`;
+  const svg=box.querySelector('svg'),tip=box.querySelector('.hist-tip'),cur=svg.querySelector('.hist-cur'),dot=svg.querySelector('.hist-dot');
+  let idx=s.length-1;
+  const show=i=>{
+    idx=clamp(i,0,s.length-1);const p=s[idx],x=X(p.t),y=Y(p.v),sc=box.clientWidth/W;
+    cur.setAttribute('x1',x);cur.setAttribute('x2',x);cur.setAttribute('visibility','visible');
+    dot.setAttribute('cx',x);dot.setAttribute('cy',y);dot.setAttribute('stroke',M.color(p.v));dot.setAttribute('visibility','visible');
+    tip.innerHTML=`<b style='color:${M.color(p.v)}'>${esc(M.fmt(p.v))}</b>${esc(date(p.t,{day:'numeric',month:'short',year:'numeric'}))}`;
+    tip.hidden=false;tip.style.left=clamp(x*sc,60,box.clientWidth-60)+'px';tip.style.top=Math.max(48,y*sc)+'px';
+  };
+  const hide=()=>{tip.hidden=true;cur.setAttribute('visibility','hidden');dot.setAttribute('visibility','hidden')};
+  const nearest=e=>{const r=svg.getBoundingClientRect(),tx=(e.clientX-r.left)/r.width*W;let b=0;s.forEach((p,i)=>{if(Math.abs(X(p.t)-tx)<Math.abs(X(s[b].t)-tx))b=i});return b};
+  svg.addEventListener('pointermove',e=>show(nearest(e)));
+  svg.addEventListener('pointerdown',e=>show(nearest(e)));
+  svg.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
+  svg.addEventListener('blur',hide);
+  svg.addEventListener('keydown',e=>{
+    const m={ArrowLeft:-1,ArrowRight:1,Home:-1e9,End:1e9}[e.key];
+    if(m!=null){e.preventDefault();show(tip.hidden&&Math.abs(m)===1?s.length-1:idx+m)}
+    else if(e.key==='Escape')hide();
+  });
+}
+// call after the panel HTML is in the page (and again after each re-render)
+function bindHistory(root){
+  root.querySelectorAll('.hist').forEach(el=>{
+    drawHistory(el);
+    el.querySelectorAll('.hist-tabs button').forEach(b=>b.addEventListener('click',()=>{
+      el.dataset.k=b.dataset.k;
+      el.querySelectorAll('.hist-tabs button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+      drawHistory(el);
+    }));
+  });
+}
+let histResize=0;
+window.addEventListener('resize',()=>{clearTimeout(histResize);histResize=setTimeout(()=>document.querySelectorAll('.hist').forEach(drawHistory),150)});
+
+window.Charts={historyPanel,bindHistory,matchFeed,feedPanel,num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
 })();
