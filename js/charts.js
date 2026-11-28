@@ -55,70 +55,6 @@ add('hu',{
 'tile.premier':`Premier`,'tile.matches':`Meccsek`
 });
 
-const sty=document.createElement('style');
-sty.textContent=`
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px;margin-bottom:22px}
-.link-btn{background:none;border:none;padding:0;margin-top:14px;color:var(--muted);font-size:.8rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.link-btn:hover{color:var(--text)}
-#dash-more[hidden]{display:none}
-.dash-grid .panel{margin-bottom:0}
-.dash-grid .wide{grid-column:1/-1}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
-.kpi{background:linear-gradient(135deg,#17170a,var(--card));border:1px solid var(--border);border-radius:14px;padding:18px 20px}
-.kpi strong{display:block;font-family:'Rajdhani',sans-serif;font-size:2.2rem;color:var(--yellow);line-height:1.1}
-.kpi span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
-.bar-track{height:10px;background:var(--bg-2);border-radius:99px;overflow:hidden;border:1px solid var(--border)}
-.bar-fill{height:100%;border-radius:99px;transform-origin:left;animation:growx 1.1s cubic-bezier(.2,.8,.2,1)}
-@keyframes growx{from{transform:scaleX(0)}}
-.meters{display:flex;flex-direction:column;gap:14px}
-.meter-top{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;margin-bottom:5px}
-.meter-top span{font-weight:600;color:var(--text)}
-.meter-top b{color:var(--yellow)}
-.meter small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}
-.cols{display:flex;align-items:flex-end;gap:12px;height:240px;padding-top:10px}
-.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
-.col-bar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(to top,#8a7d00,var(--yellow));transform-origin:bottom;animation:growy 1.1s cubic-bezier(.2,.8,.2,1)}
-@keyframes growy{from{transform:scaleY(0)}}
-.col-val{font-size:.78rem;color:var(--yellow);font-weight:700;margin-bottom:6px}
-.col-name{font-size:.72rem;color:var(--muted);margin-top:8px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.radar{width:100%;max-width:460px;display:block;margin:0 auto}
-.radar text{fill:#b4b4be;font-size:11px;font-family:Inter,sans-serif}
-.rad-poly{animation:fadein 1s ease-out}
-@keyframes fadein{from{opacity:0}}
-.legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:12px;font-size:.78rem;color:var(--muted)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
-.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;margin-bottom:18px}
-.gauge{text-align:center}
-.gauge svg{width:100%;max-width:130px}
-.gauge span{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-top:2px}
-.g-arc{animation:garc 1.3s ease-out}
-@keyframes garc{from{stroke-dasharray:0 400}}
-.g-text{fill:#ffe600;font-family:Rajdhani,sans-serif;font-size:25px;font-weight:700}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.sc{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color .2s;min-width:0}
-.sc:hover{border-color:var(--yellow)}
-.sc-l{display:block;font-size:.76rem;color:var(--muted);line-height:1.3;min-height:2em;margin-bottom:4px}
-.sc strong{display:block;font-family:Rajdhani,sans-serif;font-size:1.7rem;color:var(--yellow);line-height:1.1;margin-bottom:8px}
-.sc em{display:block;font-style:normal;font-size:.68rem;color:#8a8a96;margin-top:6px}
-.rk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-.rk{border:1px solid var(--c,#25252b);border-radius:14px;padding:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--c,#555) 14%,#141418),#141418);min-width:0}
-.rk-t{display:block;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--c,#9a9aa5);font-weight:700}
-.rk strong{display:block;font-family:Rajdhani,sans-serif;font-size:2rem;line-height:1.15;color:#f1f1f3;overflow-wrap:anywhere}
-.rk small{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.form{display:flex;gap:6px;flex-wrap:wrap}
-.fm{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#0a0a0a}
-.fm.w{background:#7ae582}.fm.l{background:#f25f5c}.fm.t{background:#9a9aa5}
-.callouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
-.co{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:var(--bg-2)}
-.co span{display:block;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-.co strong{font-family:Rajdhani,sans-serif;font-size:1.5rem;color:#f1f1f3}
-.co em{font-style:normal;margin-left:8px;font-weight:700}
-.co.good em{color:#7ae582}.co.bad em{color:#f25f5c}
-@media(max-width:520px){.cols{height:200px;gap:8px}.sc-grid{grid-template-columns:1fr 1fr}.sc strong{font-size:1.4rem}.fm{width:22px;height:22px}}
-@media(prefers-reduced-motion:reduce){.bar-fill,.col-bar,.rad-poly,.g-arc{animation:none}}
-`;
-document.head.appendChild(sty);
 
 const PLC=['#4cc9f0','#f72585','#7ae582','#b388ff','#ff9f1c'];
 const num=v=>{const n=parseFloat(String(v==null?'':v).replace(/[%,\s]/g,''));return isNaN(n)?null:n};
@@ -304,22 +240,6 @@ function formPanel(recent){
 Object.assign(I18N.en,{'feed.title':`Recent matches`,'feed.team':`Team match feed`,'feed.wingman':`Wingman`,'feed.none':`No recent matches yet.`});
 Object.assign(I18N.ro,{'feed.title':`Meciuri recente`,'feed.team':`Meciurile echipei`,'feed.wingman':`Wingman`,'feed.none':`Încă nu există meciuri recente.`});
 Object.assign(I18N.hu,{'feed.title':`Legutóbbi meccsek`,'feed.team':`A csapat meccsei`,'feed.wingman':`Wingman`,'feed.none':`Még nincsenek friss meccsek.`});
-const fsty=document.createElement('style');
-fsty.textContent=`
-.feed{list-style:none;display:flex;flex-direction:column;gap:8px}
-.feed li{display:grid;grid-template-columns:auto 34px 1fr auto;align-items:center;gap:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:9px 14px}
-.fd{color:var(--muted);font-size:.78rem;white-space:nowrap;min-width:92px}
-.fb{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:#000}
-.fb.w{background:#7ae582}.fb.l{background:#f25f5c}.fb.t{background:#ffe600}
-.fm2{display:flex;align-items:center;gap:10px;min-width:0;flex-wrap:wrap}
-.fm2 b{font-family:'Rajdhani',sans-serif;font-size:1.15rem;letter-spacing:1px}
-.fsc{color:var(--text);font-weight:700;font-size:.95rem}
-.fmode{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:2px 8px}
-.fpl{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.fpl i{font-style:normal;font-size:.72rem;border:1px solid;border-radius:99px;padding:2px 9px}
-@media(max-width:600px){.feed li{grid-template-columns:34px 1fr;row-gap:4px}.fd{grid-column:2;grid-row:1}.fm2{grid-column:2}.fpl{grid-column:1/-1;justify-content:flex-start}.fb{grid-row:1/3}}
-`;
-document.head.appendChild(fsty);
 // rows: {d,m,o,sc,s,names:[{n,c}]}, newest first, only maps in the Active Duty pool
 function matchFeed(rows,limit){
   const list=(rows||[]).filter(x=>x&&x.o&&ACTIVE_POOL.includes(x.m)).sort((a,b)=>(Date.parse(b.d)||0)-(Date.parse(a.d)||0)).slice(0,limit||10);
@@ -339,27 +259,6 @@ const feedPanel=(recent,title)=>`<div class='panel reveal'><h3>${t(title||'feed.
 Object.assign(I18N.en,{'hist.title':`Rating over time`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Win rate`,'hist.since':`since {d}`,'hist.help':`Hover, tap or use the arrow keys to see each point.`});
 Object.assign(I18N.ro,{'hist.title':`Evoluția în timp`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Rată victorii`,'hist.since':`din {d}`,'hist.help':`Treci cu mouse-ul, atinge sau folosește săgețile pentru fiecare punct.`});
 Object.assign(I18N.hu,{'hist.title':`Alakulás időben`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Győzelmi arány`,'hist.since':`{d} óta`,'hist.help':`Vidd fölé az egeret, koppints, vagy használd a nyílbillentyűket.`});
-const hsty=document.createElement('style');
-hsty.textContent=`
-.hist-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px 18px;margin-bottom:12px}
-.hist-now strong{font-family:Rajdhani,sans-serif;font-size:2rem;line-height:1;margin-right:10px}
-.hist-now em{font-style:normal;font-weight:700;font-size:.9rem}
-.hist-now em.up{color:#7ae582}.hist-now em.dn{color:#f25f5c}.hist-now em.eq{color:var(--muted)}
-.hist-tabs{display:flex;gap:6px}
-.hist-tabs button{background:var(--bg-2);border:1px solid var(--border);color:var(--muted);border-radius:99px;padding:5px 12px;font-size:.75rem;font-weight:600;cursor:pointer}
-.hist-tabs button[aria-pressed=true]{border-color:var(--yellow);color:var(--yellow)}
-.hist-box{position:relative}
-.hist-box svg{display:block;width:100%;height:auto;touch-action:pan-y;outline:none}
-.hist-box svg:focus-visible{outline:2px solid var(--yellow);outline-offset:4px;border-radius:6px}
-.hist-box text{fill:#8a8a96;font-size:11px;font-family:Inter,sans-serif}
-.hist-line{animation:hdraw 1.2s ease-out}
-@keyframes hdraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
-.hist-tip{position:absolute;top:0;pointer-events:none;background:#0c0c0f;border:1px solid var(--border);border-radius:8px;padding:5px 9px;font-size:.78rem;white-space:nowrap;transform:translate(-50%,-110%)}
-.hist-tip b{display:block;font-family:Rajdhani,sans-serif;font-size:1.1rem}
-.hist-tip[hidden]{display:none}
-@media(prefers-reduced-motion:reduce){.hist-line{animation:none}}
-`;
-document.head.appendChild(hsty);
 const HIST_METRICS={
   premier:{fmt:v=>Math.round(v).toLocaleString('en'),color:tierColor},
   hs:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'},

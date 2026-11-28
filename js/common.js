@@ -169,7 +169,7 @@ if(yearEl)yearEl.textContent=new Date().getFullYear();
 const footerEl=document.querySelector('.footer');
 if(footerEl){
   const cr=document.createElement('p');
-  cr.innerHTML='Data Provided by <a href="https://leetify.com" target="_blank" rel="noopener" style="color:#ffe600">Leetify</a>';
+  cr.innerHTML='Data Provided by <a href="https://leetify.com" target="_blank" rel="noopener" class="credit-link">Leetify</a>';
   footerEl.appendChild(cr);
 }
 Object.assign(I18N.en,{'totop':`Back to top`,'cmp.link':`Compare players →`,'card.was':`Previously`,'hl.opening':`Opening duels`,'hl.entry':`Entry success`,'hl.he':`HE damage`,'hl.trade':`Trade kills`,'hl.utility':`Utility rating`});

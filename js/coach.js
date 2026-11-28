@@ -28,47 +28,6 @@ add('hu',{
 'coach.best':`Legjobb pálya`,'coach.worst':`Leggyengébb pálya`,'coach.notfound':`Az edző adatai nem találhatók.`
 });
 
-const sty=document.createElement('style');
-sty.textContent=`
-.coach{position:relative;display:grid;grid-template-columns:minmax(200px,270px) 1fr;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#17170a 0%,var(--card) 55%)}
-.coach::before{content:'COACH';position:absolute;right:-6px;bottom:-22px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:7rem;line-height:1;letter-spacing:6px;color:rgba(255,230,0,.04);pointer-events:none}
-.coach-photo{position:relative;display:block;min-height:270px;background:#0c0c0f;overflow:hidden}
-.coach-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 18%;transition:transform .6s}
-.coach:hover .coach-photo img{transform:scale(1.04)}
-.coach-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,#141418 100%),linear-gradient(to top,rgba(8,8,10,.7),transparent 40%);pointer-events:none}
-.coach-photo .initials{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem}
-.coach-tag{position:absolute;left:14px;bottom:14px;z-index:2;background:var(--yellow);color:#000;font-weight:800;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;padding:5px 10px;border-radius:6px}
-.coach-body{position:relative;z-index:1;padding:22px 28px;display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}
-.coach-id h3{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);letter-spacing:3px;line-height:1;overflow-wrap:anywhere}
-.coach-id p{color:var(--muted);margin:6px 0 12px;font-size:.92rem}
-.coach-links{display:flex;gap:10px;flex-wrap:wrap}
-.fun-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.fs{position:relative;background:rgba(16,16,19,.88);border:1px solid var(--border);border-radius:14px;padding:18px 18px 16px;overflow:hidden;transition:border-color .25s,transform .25s;min-width:0}
-.fs::before{content:'';position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--yellow),transparent)}
-.fs:hover{border-color:var(--yellow);transform:translateY(-3px)}
-.fs strong{display:block;font-family:'Rajdhani',sans-serif;font-size:2.3rem;color:var(--yellow);line-height:1.1}
-.fs span{display:block;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:#f1f1f3;font-weight:700}
-.fs em{display:block;font-style:normal;font-size:.76rem;color:var(--muted);margin-top:4px;line-height:1.35}
-.coach .fun-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.coach .fs{padding:12px 14px 10px;border-radius:12px}
-.coach .fs strong{font-size:1.6rem}
-.coach .fs span{font-size:.66rem;letter-spacing:1.2px}
-.coach .fs em{font-size:.66rem;margin-top:2px}
-#coach.section{padding-top:0;padding-bottom:60px}
-#coach .section-title{font-size:1.9rem;margin-bottom:22px}
-#coach .section-title::before{height:26px}
-.coach-bio{color:var(--muted);line-height:1.7;font-size:1.02rem}
-@media(max-width:860px){
-.coach{grid-template-columns:1fr}
-.coach-photo{min-height:240px}
-.coach-photo::after{background:linear-gradient(to top,#141418,transparent 55%)}
-.coach-body{padding:20px}
-.coach::before{font-size:4.5rem}
-.coach .fun-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:420px){.coach .fun-grid{grid-template-columns:1fr}.fun-grid{grid-template-columns:1fr}.fs strong{font-size:2rem}}
-`;
-document.head.appendChild(sty);
 
 const L=o=>(o&&typeof o==='object')?(o[LANG]||o.en||''):(o==null?'':o);
 const imgTag=d=>d.icon?`<img src='img/players/${encodeURIComponent(d.icon)}' width='600' height='600' alt='${esc(d.name)}' data-ini='${esc(initials(d.name))}'>`:`<span class='initials'>${esc(initials(d.name))}</span>`;

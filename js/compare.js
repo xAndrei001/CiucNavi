@@ -4,35 +4,6 @@ add('en',{'cmp.title':`Head ~to Head~`,'cmp.back':`← Back to team`,'cmp.leads'
 add('ro',{'cmp.title':`Față ~în față~`,'cmp.back':`← Înapoi la echipă`,'cmp.leads':`conduce la`,'cmp.of':`din`,'cmp.cats':`categorii`,'cmp.even':`Egalitate perfectă`,'cmp.radar':`Profil de abilități`,'cmp.stats':`Statistică cu statistică`,'cmp.nodata':`Fără date încă`,'cmp.pick':`Alege doi jucători pentru comparație.`});
 add('hu',{'cmp.title':`Szemtől ~szemben~`,'cmp.back':`← Vissza a csapathoz`,'cmp.leads':`vezet`,'cmp.of':`/`,'cmp.cats':`kategóriában`,'cmp.even':`Teljesen egyenlő`,'cmp.radar':`Képességprofil`,'cmp.stats':`Statisztikáról statisztikára`,'cmp.nodata':`Még nincs adat`,'cmp.pick':`Válassz ki két játékost az összehasonlításhoz.`});
 
-const sty=document.createElement('style');
-sty.textContent=`
-.cmp-pick{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-bottom:26px}
-.cmp-pick select{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font:600 1rem Inter,sans-serif}
-.cmp-pick select:focus{outline:none;border-color:var(--yellow)}
-.cmp-vs{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.6rem;color:var(--yellow);letter-spacing:2px}
-.cmp-people{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
-.cmp-card{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;border-top:3px solid var(--c)}
-.cmp-card .ph{aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#1b1b20,#0c0c0f);display:flex;align-items:center;justify-content:center}
-.cmp-card img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
-.cmp-card h2{font-family:'Rajdhani',sans-serif;font-size:1.9rem;letter-spacing:1px;line-height:1}
-.cmp-card .role{position:static;display:inline-block;margin-top:6px;background:var(--yellow);color:#000;font-weight:800;font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:5px}
-.cmp-card .pr{display:block;margin-top:8px;font-family:'Rajdhani',sans-serif;font-size:1.7rem}
-.cmp-sum{color:var(--muted);margin-bottom:10px}
-.cmp-sum b{color:var(--c);font-family:'Rajdhani',sans-serif;font-size:1.2rem}
-.cmp-row{display:grid;grid-template-columns:84px 1fr 84px;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)}
-.cmp-row:last-child{border-bottom:0}
-.cmp-v{font-family:'Rajdhani',sans-serif;font-size:1.45rem;font-weight:700;color:var(--muted)}
-.cmp-v.win{color:#fff}
-.cmp-v.l{text-align:left}.cmp-v.r{text-align:right}
-.cmp-mid label{display:block;text-align:center;font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:5px}
-.cmp-bars{display:flex;gap:4px}
-.cmp-bars>div{flex:1;height:8px;background:var(--bg-2);border-radius:99px;overflow:hidden;display:flex}
-.cmp-bars .la{justify-content:flex-end}
-.cmp-bars i{display:block;height:100%;border-radius:99px;opacity:.45;animation:growx 1s cubic-bezier(.2,.8,.2,1)}
-.cmp-bars i.win{opacity:1}
-@media(max-width:720px){.cmp-pick{grid-template-columns:1fr}.cmp-vs{text-align:center}.cmp-people{grid-template-columns:1fr}.cmp-row{grid-template-columns:62px 1fr 62px}}
-`;
-document.head.appendChild(sty);
 applyLang();
 
 const root=document.getElementById('compare-root');
