@@ -1,8 +1,5 @@
 (function(){
 function boot(){
-Object.assign(I18N.en,{'nav.dashboard':`Dashboard`,'dash.title':`Team ~Dashboard~`,'cmp.link':`Compare players →`,'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
-Object.assign(I18N.ro,{'nav.dashboard':`Panou`,'dash.title':`Panou ~echipă~`,'cmp.link':`Compară jucătorii →`,'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
-Object.assign(I18N.hu,{'nav.dashboard':`Irányítópult`,'dash.title':`Csapat ~irányítópult~`,'cmp.link':`Játékosok összehasonlítása →`,'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
 const mainGrid=document.getElementById('main-grid');
 const benchGrid=document.getElementById('bench-grid');
 const benchEmpty=document.getElementById('bench-empty');
@@ -117,7 +114,7 @@ let dashOpen=false,dashReady=false,dashWatching=false;
 const dashSkel=()=>`<div class='kpis'>${'<div class="kpi skel" style="height:98px"></div>'.repeat(4)}</div><div class='dash-grid'>${'<div class="panel skel" style="height:300px"></div>'.repeat(4)}</div>`;
 
 function loadDash(){
-  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261122';s.onload=s.onerror=res;document.head.appendChild(s)});
+  const charts=window.Charts?Promise.resolve():new Promise(res=>{const s=document.createElement('script');s.src='js/charts.js?v=20261128';s.onload=s.onerror=res;document.head.appendChild(s)});
   const details=Promise.all(STATE.main.map(p=>p.stats.hasDetail?getJson('data/stats/'+(p.steam64||p.vanity)+'.json').then(x=>x.detail||null).catch(()=>null):null));
   Promise.all([charts,details]).then(([,ds])=>{STATE.main.forEach((p,i)=>{p.detail=ds[i]});dashReady=true;renderDash();observeReveals()});
 }

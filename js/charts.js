@@ -1,124 +1,5 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{
-'nav.dashboard':`Dashboard`,
-'dash.title':`Team ~Dashboard~`,
-'dash.avgPremier':`Avg. Premier`,'dash.avgHs':`Avg. HS%`,'dash.avgWin':`Avg. win rate`,'dash.matches':`Total matches`,
-'dash.premierChart':`Premier rating by player`,'dash.hsChart':`Headshot accuracy`,'dash.winChart':`Win rate`,
-'dash.radar':`Team skill radar`,'dash.radarTeam':`Team average`,
-'dash.nodata':`Charts appear as soon as players register on Leetify.`,
-'dash.maps':`Team strengths by map`,'dash.mapsNote':`Win rate across the recent matches of every registered player. Maps with fewer than 3 games are hidden.`,
-'dash.more':`Show more`,'dash.less':`Show less`,'dash.best':`Strongest map`,'dash.worst':`Weakest map`,'dash.games':`games`,'dash.nomaps':`Map data appears after the next stats update.`,
-'chart.perf':`Performance`,'chart.winrate':`Win rate`,'chart.hs':`Headshot accuracy`,'chart.spray':`Spray control`,'chart.cs':`Counter-strafing`,'chart.open':`Opening duels`,'chart.trade':`Trading`,'chart.radar':`Skill profile`,
-'axis.aim':`Aim`,'axis.positioning':`Positioning`,'axis.utility':`Utility`,'axis.cs':`Counter-strafing`,'axis.spray':`Spray control`,'axis.trade':`Trading`,'axis.open':`Opening duels`,
-'grp.aim':`Aim & mechanics`,'grp.util':`Utility`,'grp.open':`Opening duels`,'grp.trade':`Trading`,'grp.other':`Other`,
-'lower':`Lower is better`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Level`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Map performance`,'map.form':`Recent form`,'map.formNote':`Last matches, newest on the right.`,'map.win':`Win`,'map.loss':`Loss`,'map.tie':`Tie`,'map.none':`Map data appears after the next stats update.`,
-'rt.aim':`Aim`,'rt.positioning':`Positioning`,'rt.utility':`Utility`,'rt.clutch':`Clutch`,'rt.opening':`Opening`,'rt.ct_leetify':`CT side`,'rt.t_leetify':`T side`,
-'tile.premier':`Premier`,'tile.matches':`Matches`
-});
-add('ro',{
-'nav.dashboard':`Panou`,
-'dash.title':`Panou ~echipă~`,
-'dash.avgPremier':`Premier mediu`,'dash.avgHs':`HS% mediu`,'dash.avgWin':`Rată victorii medie`,'dash.matches':`Meciuri totale`,
-'dash.premierChart':`Rating Premier pe jucător`,'dash.hsChart':`Precizie headshot`,'dash.winChart':`Rată victorii`,
-'dash.radar':`Radar abilități echipă`,'dash.radarTeam':`Media echipei`,
-'dash.nodata':`Graficele apar imediat ce jucătorii se înregistrează pe Leetify.`,
-'dash.maps':`Punctele forte ale echipei pe hărți`,'dash.mapsNote':`Rată de victorii în meciurile recente ale fiecărui jucător înregistrat. Hărțile cu mai puțin de 3 meciuri sunt ascunse.`,
-'dash.more':`Arată mai mult`,'dash.less':`Arată mai puțin`,'dash.best':`Cea mai bună hartă`,'dash.worst':`Cea mai slabă hartă`,'dash.games':`meciuri`,'dash.nomaps':`Datele pe hărți apar după următoarea actualizare a statisticilor.`,
-'chart.perf':`Performanță`,'chart.winrate':`Rată victorii`,'chart.hs':`Precizie headshot`,'chart.spray':`Control spray`,'chart.cs':`Counter-strafing`,'chart.open':`Dueluri de deschidere`,'chart.trade':`Trade-uri`,'chart.radar':`Profil de abilități`,
-'axis.aim':`Aim`,'axis.positioning':`Poziționare`,'axis.utility':`Utilitare`,'axis.cs':`Counter-strafing`,'axis.spray':`Control spray`,'axis.trade':`Trade-uri`,'axis.open':`Dueluri de deschidere`,
-'grp.aim':`Aim și mecanică`,'grp.util':`Utilitare`,'grp.open':`Dueluri de deschidere`,'grp.trade':`Trade-uri`,'grp.other':`Altele`,
-'lower':`Mai mic = mai bine`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Nivel`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Performanță pe hărți`,'map.form':`Forma recentă`,'map.formNote':`Ultimele meciuri, cele mai noi în dreapta.`,'map.win':`Victorie`,'map.loss':`Înfrângere`,'map.tie':`Egal`,'map.none':`Datele pe hărți apar după următoarea actualizare.`,
-'rt.aim':`Aim`,'rt.positioning':`Poziționare`,'rt.utility':`Utilitare`,'rt.clutch':`Clutch`,'rt.opening':`Deschidere`,'rt.ct_leetify':`Partea CT`,'rt.t_leetify':`Partea T`,
-'tile.premier':`Premier`,'tile.matches':`Meciuri`
-});
-add('hu',{
-'nav.dashboard':`Irányítópult`,
-'dash.title':`Csapat ~irányítópult~`,
-'dash.avgPremier':`Átl. Premier`,'dash.avgHs':`Átl. HS%`,'dash.avgWin':`Átl. győzelmi arány`,'dash.matches':`Összes meccs`,
-'dash.premierChart':`Premier érték játékosonként`,'dash.hsChart':`Fejlövés pontosság`,'dash.winChart':`Győzelmi arány`,
-'dash.radar':`Csapat képességradar`,'dash.radarTeam':`Csapatátlag`,
-'dash.nodata':`A diagramok megjelennek, amint a játékosok regisztrálnak a Leetify-on.`,
-'dash.maps':`A csapat erősségei pályánként`,'dash.mapsNote':`Győzelmi arány minden regisztrált játékos legutóbbi meccsei alapján. A 3-nál kevesebb meccses pályák rejtve vannak.`,
-'dash.more':`Több mutatása`,'dash.less':`Kevesebb mutatása`,'dash.best':`Legerősebb pálya`,'dash.worst':`Leggyengébb pálya`,'dash.games':`meccs`,'dash.nomaps':`A pályaadatok a következő statisztikafrissítés után jelennek meg.`,
-'chart.perf':`Teljesítmény`,'chart.winrate':`Győzelmi arány`,'chart.hs':`Fejlövés pontosság`,'chart.spray':`Spray kontroll`,'chart.cs':`Counter-strafe`,'chart.open':`Nyitó párharcok`,'chart.trade':`Trade`,'chart.radar':`Képességprofil`,
-'axis.aim':`Célzás`,'axis.positioning':`Pozícionálás`,'axis.utility':`Utility`,'axis.cs':`Counter-strafe`,'axis.spray':`Spray kontroll`,'axis.trade':`Trade`,'axis.open':`Nyitó párharcok`,
-'grp.aim':`Célzás és mechanika`,'grp.util':`Utility`,'grp.open':`Nyitó párharcok`,'grp.trade':`Trade`,'grp.other':`Egyéb`,
-'lower':`Alacsonyabb a jobb`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Szint`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Pálya teljesítmény`,'map.form':`Friss forma`,'map.formNote':`Utolsó meccsek, a legfrissebb jobbra.`,'map.win':`Győzelem`,'map.loss':`Vereség`,'map.tie':`Döntetlen`,'map.none':`A pályaadatok a következő frissítés után jelennek meg.`,
-'rt.aim':`Célzás`,'rt.positioning':`Pozícionálás`,'rt.utility':`Utility`,'rt.clutch':`Clutch`,'rt.opening':`Nyitás`,'rt.ct_leetify':`CT oldal`,'rt.t_leetify':`T oldal`,
-'tile.premier':`Premier`,'tile.matches':`Meccsek`
-});
 
-const sty=document.createElement('style');
-sty.textContent=`
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:22px;margin-bottom:22px}
-.link-btn{background:none;border:none;padding:0;margin-top:14px;color:var(--muted);font-size:.8rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.link-btn:hover{color:var(--text)}
-#dash-more[hidden]{display:none}
-.dash-grid .panel{margin-bottom:0}
-.dash-grid .wide{grid-column:1/-1}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
-.kpi{background:linear-gradient(135deg,#17170a,var(--card));border:1px solid var(--border);border-radius:14px;padding:18px 20px}
-.kpi strong{display:block;font-family:'Rajdhani',sans-serif;font-size:2.2rem;color:var(--yellow);line-height:1.1}
-.kpi span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px}
-.bar-track{height:10px;background:var(--bg-2);border-radius:99px;overflow:hidden;border:1px solid var(--border)}
-.bar-fill{height:100%;border-radius:99px;transform-origin:left;animation:growx 1.1s cubic-bezier(.2,.8,.2,1)}
-@keyframes growx{from{transform:scaleX(0)}}
-.meters{display:flex;flex-direction:column;gap:14px}
-.meter-top{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;margin-bottom:5px}
-.meter-top span{font-weight:600;color:var(--text)}
-.meter-top b{color:var(--yellow)}
-.meter small{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}
-.cols{display:flex;align-items:flex-end;gap:12px;height:240px;padding-top:10px}
-.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
-.col-bar{width:100%;max-width:56px;border-radius:8px 8px 0 0;background:linear-gradient(to top,#8a7d00,var(--yellow));transform-origin:bottom;animation:growy 1.1s cubic-bezier(.2,.8,.2,1)}
-@keyframes growy{from{transform:scaleY(0)}}
-.col-val{font-size:.78rem;color:var(--yellow);font-weight:700;margin-bottom:6px}
-.col-name{font-size:.72rem;color:var(--muted);margin-top:8px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.radar{width:100%;max-width:460px;display:block;margin:0 auto}
-.radar text{fill:#b4b4be;font-size:11px;font-family:Inter,sans-serif}
-.rad-poly{animation:fadein 1s ease-out}
-@keyframes fadein{from{opacity:0}}
-.legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:12px;font-size:.78rem;color:var(--muted)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
-.gauges{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:18px;margin-bottom:18px}
-.gauge{text-align:center}
-.gauge svg{width:100%;max-width:130px}
-.gauge span{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-top:2px}
-.g-arc{animation:garc 1.3s ease-out}
-@keyframes garc{from{stroke-dasharray:0 400}}
-.g-text{fill:#ffe600;font-family:Rajdhani,sans-serif;font-size:25px;font-weight:700}
-.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.sc{background:var(--bg-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px;transition:border-color .2s;min-width:0}
-.sc:hover{border-color:var(--yellow)}
-.sc-l{display:block;font-size:.76rem;color:var(--muted);line-height:1.3;min-height:2em;margin-bottom:4px}
-.sc strong{display:block;font-family:Rajdhani,sans-serif;font-size:1.7rem;color:var(--yellow);line-height:1.1;margin-bottom:8px}
-.sc em{display:block;font-style:normal;font-size:.68rem;color:#8a8a96;margin-top:6px}
-.rk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-.rk{border:1px solid var(--c,#25252b);border-radius:14px;padding:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--c,#555) 14%,#141418),#141418);min-width:0}
-.rk-t{display:block;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--c,#9a9aa5);font-weight:700}
-.rk strong{display:block;font-family:Rajdhani,sans-serif;font-size:2rem;line-height:1.15;color:#f1f1f3;overflow-wrap:anywhere}
-.rk small{display:block;color:var(--muted);font-size:.8rem;margin-top:2px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
-.form{display:flex;gap:6px;flex-wrap:wrap}
-.fm{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#0a0a0a}
-.fm.w{background:#7ae582}.fm.l{background:#f25f5c}.fm.t{background:#9a9aa5}
-.callouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
-.co{border:1px solid var(--border);border-radius:12px;padding:12px 16px;background:var(--bg-2)}
-.co span{display:block;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
-.co strong{font-family:Rajdhani,sans-serif;font-size:1.5rem;color:#f1f1f3}
-.co em{font-style:normal;margin-left:8px;font-weight:700}
-.co.good em{color:#7ae582}.co.bad em{color:#f25f5c}
-@media(max-width:520px){.cols{height:200px;gap:8px}.sc-grid{grid-template-columns:1fr 1fr}.sc strong{font-size:1.4rem}.fm{width:22px;height:22px}}
-@media(prefers-reduced-motion:reduce){.bar-fill,.col-bar,.rad-poly,.g-arc{animation:none}}
-`;
-document.head.appendChild(sty);
 
 const PLC=['#4cc9f0','#f72585','#7ae582','#b388ff','#ff9f1c'];
 const num=v=>{const n=parseFloat(String(v==null?'':v).replace(/[%,\s]/g,''));return isNaN(n)?null:n};
@@ -301,25 +182,6 @@ function formPanel(recent){
   return `<div class='panel reveal'><h3>${t('map.form')}</h3><div class='form'>${sq}</div><p class='note' style='margin-top:12px'>${t('map.formNote')}</p></div>`;
 }
 
-Object.assign(I18N.en,{'feed.title':`Recent matches`,'feed.team':`Team match feed`,'feed.wingman':`Wingman`,'feed.none':`No recent matches yet.`});
-Object.assign(I18N.ro,{'feed.title':`Meciuri recente`,'feed.team':`Meciurile echipei`,'feed.wingman':`Wingman`,'feed.none':`Încă nu există meciuri recente.`});
-Object.assign(I18N.hu,{'feed.title':`Legutóbbi meccsek`,'feed.team':`A csapat meccsei`,'feed.wingman':`Wingman`,'feed.none':`Még nincsenek friss meccsek.`});
-const fsty=document.createElement('style');
-fsty.textContent=`
-.feed{list-style:none;display:flex;flex-direction:column;gap:8px}
-.feed li{display:grid;grid-template-columns:auto 34px 1fr auto;align-items:center;gap:12px;background:var(--bg-2);border:1px solid var(--border);border-radius:10px;padding:9px 14px}
-.fd{color:var(--muted);font-size:.78rem;white-space:nowrap;min-width:92px}
-.fb{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:#000}
-.fb.w{background:#7ae582}.fb.l{background:#f25f5c}.fb.t{background:#ffe600}
-.fm2{display:flex;align-items:center;gap:10px;min-width:0;flex-wrap:wrap}
-.fm2 b{font-family:'Rajdhani',sans-serif;font-size:1.15rem;letter-spacing:1px}
-.fsc{color:var(--text);font-weight:700;font-size:.95rem}
-.fmode{font-size:.65rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:2px 8px}
-.fpl{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.fpl i{font-style:normal;font-size:.72rem;border:1px solid;border-radius:99px;padding:2px 9px}
-@media(max-width:600px){.feed li{grid-template-columns:34px 1fr;row-gap:4px}.fd{grid-column:2;grid-row:1}.fm2{grid-column:2}.fpl{grid-column:1/-1;justify-content:flex-start}.fb{grid-row:1/3}}
-`;
-document.head.appendChild(fsty);
 // rows: {d,m,o,sc,s,names:[{n,c}]}, newest first, only maps in the Active Duty pool
 function matchFeed(rows,limit){
   const list=(rows||[]).filter(x=>x&&x.o&&ACTIVE_POOL.includes(x.m)).sort((a,b)=>(Date.parse(b.d)||0)-(Date.parse(a.d)||0)).slice(0,limit||10);
@@ -335,5 +197,87 @@ function matchFeed(rows,limit){
 }
 const feedPanel=(recent,title)=>`<div class='panel reveal'><h3>${t(title||'feed.title')}</h3>${matchFeed(recent,10)}</div>`;
 
-window.Charts={matchFeed,feedPanel,num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
+// ---- stats history line chart (data/history.json) ----
+const HIST_METRICS={
+  premier:{fmt:v=>Math.round(v).toLocaleString('en'),color:tierColor},
+  hs:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'},
+  winrate:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'}
+};
+const histSeries=(pts,k)=>(pts||[]).map(p=>({t:Date.parse(p.t),v:p[k]})).filter(p=>typeof p.v==='number'&&!isNaN(p.t));
+function niceStep(range){
+  const raw=range/4,mag=Math.pow(10,Math.floor(Math.log10(raw)));
+  return [1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw);
+}
+// pts: [{t:"2026-10-05T00:46Z",premier,hs,winrate,matches}] for one player; '' when there is too little to draw
+function historyPanel(pts){
+  const keys=Object.keys(HIST_METRICS).filter(k=>histSeries(pts,k).length>=2);
+  if(!keys.includes('premier'))return '';
+  const tabs=keys.length>1?`<div class='hist-tabs' role='group'>${keys.map((k,i)=>`<button type='button' data-k='${k}' aria-pressed='${i===0}'>${t('hist.'+k)}</button>`).join('')}</div>`:'';
+  return `<div class='panel reveal hist' data-h='${esc(JSON.stringify(pts))}'><h3>${t('hist.title')}</h3><div class='hist-top'><div class='hist-now'></div>${tabs}</div><div class='hist-box'></div><p class='note' style='margin-top:10px'>${t('hist.help')}</p></div>`;
+}
+function drawHistory(el){
+  const k=el.dataset.k||'premier',M=HIST_METRICS[k];
+  const s=histSeries(JSON.parse(el.dataset.h),k);
+  const box=el.querySelector('.hist-box');
+  const W=Math.max(280,box.clientWidth||640),H=W<520?200:240,L=W<520?44:54,R=14,T=14,B=26;
+  const t0=s[0].t,t1=s[s.length-1].t||t0+1;
+  const vs=s.map(p=>p.v);let lo=Math.min(...vs),hi=Math.max(...vs);
+  const step=niceStep(hi-lo||Math.max(1,Math.abs(hi)*.05));
+  lo=Math.floor(lo/step)*step;hi=Math.ceil(hi/step)*step;if(hi===lo)hi=lo+step;
+  const X=v=>L+(t1===t0?.5:(v-t0)/(t1-t0))*(W-L-R),Y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+  const date=(v,o)=>new Date(v).toLocaleDateString(LANG,o||{day:'numeric',month:'short'});
+  let g='';
+  for(let v=lo;v<=hi+step/2;v+=step)g+=`<line x1='${L}' x2='${W-R}' y1='${Y(v).toFixed(1)}' y2='${Y(v).toFixed(1)}' stroke='#25252b'/><text x='${L-8}' y='${(Y(v)+4).toFixed(1)}' text-anchor='end'>${esc(M.fmt(v))}</text>`;
+  const nx=Math.max(2,Math.min(6,Math.floor((W-L-R)/80)));
+  for(let i=0;i<nx;i++){const v=t0+(t1-t0)*i/(nx-1);g+=`<text x='${X(v).toFixed(1)}' y='${H-6}' text-anchor='${i===0?'start':(i===nx-1?'end':'middle')}'>${esc(date(v))}</text>`}
+  // tier colours: hard colour stops at each tier boundary inside the visible range
+  const stops=[];let prev=null;
+  for(let i=0;i<=100;i++){const v=hi-(hi-lo)*i/100,c=M.color(v);if(c!==prev){if(prev)stops.push(`<stop offset='${i}%' stop-color='${prev}'/>`);stops.push(`<stop offset='${i}%' stop-color='${c}'/>`);prev=c}}
+  stops.push(`<stop offset='100%' stop-color='${prev}'/>`);
+  const gid='hg'+Math.random().toString(36).slice(2,8);
+  const d=s.map((p,i)=>(i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.v).toFixed(1)).join('');
+  const last=s[s.length-1];
+  box.innerHTML=`<svg viewBox='0 0 ${W} ${H}' tabindex='0' role='img' aria-label='${esc(t('hist.title')+': '+t('hist.'+k)+' '+M.fmt(s[0].v)+' → '+M.fmt(last.v))}'>
+<defs><linearGradient id='${gid}' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='${T}' y2='${H-B}'>${stops.join('')}</linearGradient></defs>${g}
+<path class='hist-line' d='${d}' pathLength='1' stroke-dasharray='1' fill='none' stroke='url(#${gid})' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/>
+<circle cx='${X(last.t).toFixed(1)}' cy='${Y(last.v).toFixed(1)}' r='7' fill='none' stroke='${M.color(last.v)}' stroke-opacity='.45' stroke-width='2'/><circle cx='${X(last.t).toFixed(1)}' cy='${Y(last.v).toFixed(1)}' r='4' fill='${M.color(last.v)}'/>
+<line class='hist-cur' y1='${T}' y2='${H-B}' stroke='#9a9aa5' stroke-dasharray='3 3' visibility='hidden'/><circle class='hist-dot' r='5' fill='#0c0c0f' stroke-width='2.5' visibility='hidden'/></svg><div class='hist-tip' hidden></div>`;
+  const diff=last.v-s[0].v,cls=diff>0?'up':(diff<0?'dn':'eq');
+  el.querySelector('.hist-now').innerHTML=`<strong style='color:${M.color(last.v)}'>${esc(M.fmt(last.v))}</strong><em class='${cls}'>${diff>0?'+':(diff<0?'−':'±')}${esc(M.fmt(Math.abs(diff)))} ${esc(t('hist.since').replace('{d}',date(s[0].t)))}</em>`;
+  const svg=box.querySelector('svg'),tip=box.querySelector('.hist-tip'),cur=svg.querySelector('.hist-cur'),dot=svg.querySelector('.hist-dot');
+  let idx=s.length-1;
+  const show=i=>{
+    idx=clamp(i,0,s.length-1);const p=s[idx],x=X(p.t),y=Y(p.v),sc=box.clientWidth/W;
+    cur.setAttribute('x1',x);cur.setAttribute('x2',x);cur.setAttribute('visibility','visible');
+    dot.setAttribute('cx',x);dot.setAttribute('cy',y);dot.setAttribute('stroke',M.color(p.v));dot.setAttribute('visibility','visible');
+    tip.innerHTML=`<b style='color:${M.color(p.v)}'>${esc(M.fmt(p.v))}</b>${esc(date(p.t,{day:'numeric',month:'short',year:'numeric'}))}`;
+    tip.hidden=false;tip.style.left=clamp(x*sc,60,box.clientWidth-60)+'px';tip.style.top=Math.max(48,y*sc)+'px';
+  };
+  const hide=()=>{tip.hidden=true;cur.setAttribute('visibility','hidden');dot.setAttribute('visibility','hidden')};
+  const nearest=e=>{const r=svg.getBoundingClientRect(),tx=(e.clientX-r.left)/r.width*W;let b=0;s.forEach((p,i)=>{if(Math.abs(X(p.t)-tx)<Math.abs(X(s[b].t)-tx))b=i});return b};
+  svg.addEventListener('pointermove',e=>show(nearest(e)));
+  svg.addEventListener('pointerdown',e=>show(nearest(e)));
+  svg.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
+  svg.addEventListener('blur',hide);
+  svg.addEventListener('keydown',e=>{
+    const m={ArrowLeft:-1,ArrowRight:1,Home:-1e9,End:1e9}[e.key];
+    if(m!=null){e.preventDefault();show(tip.hidden&&Math.abs(m)===1?s.length-1:idx+m)}
+    else if(e.key==='Escape')hide();
+  });
+}
+// call after the panel HTML is in the page (and again after each re-render)
+function bindHistory(root){
+  root.querySelectorAll('.hist').forEach(el=>{
+    drawHistory(el);
+    el.querySelectorAll('.hist-tabs button').forEach(b=>b.addEventListener('click',()=>{
+      el.dataset.k=b.dataset.k;
+      el.querySelectorAll('.hist-tabs button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+      drawHistory(el);
+    }));
+  });
+}
+let histResize=0;
+window.addEventListener('resize',()=>{clearTimeout(histResize);histResize=setTimeout(()=>document.querySelectorAll('.hist').forEach(drawHistory),150)});
+
+window.Charts={historyPanel,bindHistory,matchFeed,feedPanel,num,pretty,pctv,profileAxes,orderAxes,radar,columns,meters,gauge,legend,ratingsPanel,statGroups,ranksPanel,mapRows,mapName,mapMeters,playerMaps,formPanel,fmtStat,statLabel,wrColor,PLC};
 })();

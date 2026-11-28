@@ -28,16 +28,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # The growing stats history lives on its own branch, which only this bot commits to.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         continue-on-error: true
         with:
           ref: stats-history
           path: _history
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
@@ -70,13 +70,21 @@ jobs:
             git diff --cached --quiet || { git commit -m "chore: stats history" && git push origin HEAD:stats-history; }
           fi
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
       - run: rm -rf _history
 
-      - uses: actions/upload-pages-artifact@v3
+      # Cache-busting: the ?v=... on css/js links (in *.html and js/*.js) is a placeholder in the repo (e.g. ?v=20261128).
+      # Every deploy replaces it with this commit + run number, so it never needs bumping by hand.
+      - name: Stamp asset versions
+        run: |
+          sed -i -E "s/\?v=[A-Za-z0-9._-]+/?v=${GITHUB_SHA::7}-${GITHUB_RUN_NUMBER}/g" *.html js/*.js
+          grep -q "?v=${GITHUB_SHA::7}-${GITHUB_RUN_NUMBER}" *.html \
+            || echo "::warning::No ?v= asset links found to stamp"
+
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
