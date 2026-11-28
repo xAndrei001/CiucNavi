@@ -1,20 +1,4 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{
-'nav.news':`News`,'news.title':`Latest ~News~`,'news.all':`All news →`,'news.back':`← Back to home`,'news.empty':`No news yet. Check back soon.`,
-'news.filter.all':`All`,'news.type.breaking':`Breaking news`,'news.players':`Players involved`,'news.backList':`← All news`,'news.notfound':`News item not found.`,
-'news.type.new-player':`New player`,'news.type.transfer':`Transfer`,'news.type.promotion':`Promotion`,'news.type.demotion':`Demotion`,'news.type.announcement':`Announcement`
-});
-add('ro',{
-'nav.news':`Noutăți`,'news.title':`Ultimele ~Noutăți~`,'news.all':`Toate noutățile →`,'news.back':`← Înapoi acasă`,'news.empty':`Nicio noutate încă. Revino curând.`,
-'news.filter.all':`Toate`,'news.type.breaking':`Breaking news`,'news.players':`Jucători implicați`,'news.backList':`← Toate noutățile`,'news.notfound':`Noutatea nu a fost găsită.`,
-'news.type.new-player':`Jucător nou`,'news.type.transfer':`Transfer`,'news.type.promotion':`Promovare`,'news.type.demotion':`Retrogradare`,'news.type.announcement':`Anunț`
-});
-add('hu',{
-'nav.news':`Hírek`,'news.title':`Legfrissebb ~hírek~`,'news.all':`Összes hír →`,'news.back':`← Vissza a főoldalra`,'news.empty':`Még nincs hír. Nézz vissza hamarosan.`,
-'news.filter.all':`Mind`,'news.type.breaking':`Friss hír`,'news.players':`Érintett játékosok`,'news.backList':`← Összes hír`,'news.notfound':`A hír nem található.`,
-'news.type.new-player':`Új játékos`,'news.type.transfer':`Átigazolás`,'news.type.promotion':`Előléptetés`,'news.type.demotion':`Lefokozás`,'news.type.announcement':`Közlemény`
-});
 
 applyLang();
 

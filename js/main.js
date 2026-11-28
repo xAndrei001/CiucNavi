@@ -1,8 +1,5 @@
 (function(){
 function boot(){
-Object.assign(I18N.en,{'nav.dashboard':`Dashboard`,'dash.title':`Team ~Dashboard~`,'cmp.link':`Compare players →`,'card.premierC':`CS rating`,'card.hsC':`Headshot accuracy`,'card.winC':`Match win rate`,'card.matches':`Matches`,'card.matchesC':`Played in total`});
-Object.assign(I18N.ro,{'nav.dashboard':`Panou`,'dash.title':`Panou ~echipă~`,'cmp.link':`Compară jucătorii →`,'card.premierC':`Rating CS`,'card.hsC':`Precizie headshot`,'card.winC':`Rată de victorii`,'card.matches':`Meciuri`,'card.matchesC':`Jucate în total`});
-Object.assign(I18N.hu,{'nav.dashboard':`Irányítópult`,'dash.title':`Csapat ~irányítópult~`,'cmp.link':`Játékosok összehasonlítása →`,'card.premierC':`CS értékelés`,'card.hsC':`Fejlövés pontosság`,'card.winC':`Győzelmi arány`,'card.matches':`Meccsek`,'card.matchesC':`Összes lejátszott`});
 const mainGrid=document.getElementById('main-grid');
 const benchGrid=document.getElementById('bench-grid');
 const benchEmpty=document.getElementById('bench-empty');

@@ -1,59 +1,4 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{
-'nav.dashboard':`Dashboard`,
-'dash.title':`Team ~Dashboard~`,
-'dash.avgPremier':`Avg. Premier`,'dash.avgHs':`Avg. HS%`,'dash.avgWin':`Avg. win rate`,'dash.matches':`Total matches`,
-'dash.premierChart':`Premier rating by player`,'dash.hsChart':`Headshot accuracy`,'dash.winChart':`Win rate`,
-'dash.radar':`Team skill radar`,'dash.radarTeam':`Team average`,
-'dash.nodata':`Charts appear as soon as players register on Leetify.`,
-'dash.maps':`Team strengths by map`,'dash.mapsNote':`Win rate across the recent matches of every registered player. Maps with fewer than 3 games are hidden.`,
-'dash.more':`Show more`,'dash.less':`Show less`,'dash.best':`Strongest map`,'dash.worst':`Weakest map`,'dash.games':`games`,'dash.nomaps':`Map data appears after the next stats update.`,
-'chart.perf':`Performance`,'chart.winrate':`Win rate`,'chart.hs':`Headshot accuracy`,'chart.spray':`Spray control`,'chart.cs':`Counter-strafing`,'chart.open':`Opening duels`,'chart.trade':`Trading`,'chart.radar':`Skill profile`,
-'axis.aim':`Aim`,'axis.positioning':`Positioning`,'axis.utility':`Utility`,'axis.cs':`Counter-strafing`,'axis.spray':`Spray control`,'axis.trade':`Trading`,'axis.open':`Opening duels`,
-'grp.aim':`Aim & mechanics`,'grp.util':`Utility`,'grp.open':`Opening duels`,'grp.trade':`Trading`,'grp.other':`Other`,
-'lower':`Lower is better`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Level`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Map performance`,'map.form':`Recent form`,'map.formNote':`Last matches, newest on the right.`,'map.win':`Win`,'map.loss':`Loss`,'map.tie':`Tie`,'map.none':`Map data appears after the next stats update.`,
-'rt.aim':`Aim`,'rt.positioning':`Positioning`,'rt.utility':`Utility`,'rt.clutch':`Clutch`,'rt.opening':`Opening`,'rt.ct_leetify':`CT side`,'rt.t_leetify':`T side`,
-'tile.premier':`Premier`,'tile.matches':`Matches`
-});
-add('ro',{
-'nav.dashboard':`Panou`,
-'dash.title':`Panou ~echipă~`,
-'dash.avgPremier':`Premier mediu`,'dash.avgHs':`HS% mediu`,'dash.avgWin':`Rată victorii medie`,'dash.matches':`Meciuri totale`,
-'dash.premierChart':`Rating Premier pe jucător`,'dash.hsChart':`Precizie headshot`,'dash.winChart':`Rată victorii`,
-'dash.radar':`Radar abilități echipă`,'dash.radarTeam':`Media echipei`,
-'dash.nodata':`Graficele apar imediat ce jucătorii se înregistrează pe Leetify.`,
-'dash.maps':`Punctele forte ale echipei pe hărți`,'dash.mapsNote':`Rată de victorii în meciurile recente ale fiecărui jucător înregistrat. Hărțile cu mai puțin de 3 meciuri sunt ascunse.`,
-'dash.more':`Arată mai mult`,'dash.less':`Arată mai puțin`,'dash.best':`Cea mai bună hartă`,'dash.worst':`Cea mai slabă hartă`,'dash.games':`meciuri`,'dash.nomaps':`Datele pe hărți apar după următoarea actualizare a statisticilor.`,
-'chart.perf':`Performanță`,'chart.winrate':`Rată victorii`,'chart.hs':`Precizie headshot`,'chart.spray':`Control spray`,'chart.cs':`Counter-strafing`,'chart.open':`Dueluri de deschidere`,'chart.trade':`Trade-uri`,'chart.radar':`Profil de abilități`,
-'axis.aim':`Aim`,'axis.positioning':`Poziționare`,'axis.utility':`Utilitare`,'axis.cs':`Counter-strafing`,'axis.spray':`Control spray`,'axis.trade':`Trade-uri`,'axis.open':`Dueluri de deschidere`,
-'grp.aim':`Aim și mecanică`,'grp.util':`Utilitare`,'grp.open':`Dueluri de deschidere`,'grp.trade':`Trade-uri`,'grp.other':`Altele`,
-'lower':`Mai mic = mai bine`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Nivel`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Performanță pe hărți`,'map.form':`Forma recentă`,'map.formNote':`Ultimele meciuri, cele mai noi în dreapta.`,'map.win':`Victorie`,'map.loss':`Înfrângere`,'map.tie':`Egal`,'map.none':`Datele pe hărți apar după următoarea actualizare.`,
-'rt.aim':`Aim`,'rt.positioning':`Poziționare`,'rt.utility':`Utilitare`,'rt.clutch':`Clutch`,'rt.opening':`Deschidere`,'rt.ct_leetify':`Partea CT`,'rt.t_leetify':`Partea T`,
-'tile.premier':`Premier`,'tile.matches':`Meciuri`
-});
-add('hu',{
-'nav.dashboard':`Irányítópult`,
-'dash.title':`Csapat ~irányítópult~`,
-'dash.avgPremier':`Átl. Premier`,'dash.avgHs':`Átl. HS%`,'dash.avgWin':`Átl. győzelmi arány`,'dash.matches':`Összes meccs`,
-'dash.premierChart':`Premier érték játékosonként`,'dash.hsChart':`Fejlövés pontosság`,'dash.winChart':`Győzelmi arány`,
-'dash.radar':`Csapat képességradar`,'dash.radarTeam':`Csapatátlag`,
-'dash.nodata':`A diagramok megjelennek, amint a játékosok regisztrálnak a Leetify-on.`,
-'dash.maps':`A csapat erősségei pályánként`,'dash.mapsNote':`Győzelmi arány minden regisztrált játékos legutóbbi meccsei alapján. A 3-nál kevesebb meccses pályák rejtve vannak.`,
-'dash.more':`Több mutatása`,'dash.less':`Kevesebb mutatása`,'dash.best':`Legerősebb pálya`,'dash.worst':`Leggyengébb pálya`,'dash.games':`meccs`,'dash.nomaps':`A pályaadatok a következő statisztikafrissítés után jelennek meg.`,
-'chart.perf':`Teljesítmény`,'chart.winrate':`Győzelmi arány`,'chart.hs':`Fejlövés pontosság`,'chart.spray':`Spray kontroll`,'chart.cs':`Counter-strafe`,'chart.open':`Nyitó párharcok`,'chart.trade':`Trade`,'chart.radar':`Képességprofil`,
-'axis.aim':`Célzás`,'axis.positioning':`Pozícionálás`,'axis.utility':`Utility`,'axis.cs':`Counter-strafe`,'axis.spray':`Spray kontroll`,'axis.trade':`Trade`,'axis.open':`Nyitó párharcok`,
-'grp.aim':`Célzás és mechanika`,'grp.util':`Utility`,'grp.open':`Nyitó párharcok`,'grp.trade':`Trade`,'grp.other':`Egyéb`,
-'lower':`Alacsonyabb a jobb`,
-'rank.premier':`Premier`,'rank.faceit':`FACEIT`,'rank.level':`Szint`,'rank.elo':`ELO`,'rank.wingman':`Wingman`,'rank.renown':`Renown`,'rank.leetify':`Leetify`,'rank.competitive':`Competitive`,
-'map.title':`Pálya teljesítmény`,'map.form':`Friss forma`,'map.formNote':`Utolsó meccsek, a legfrissebb jobbra.`,'map.win':`Győzelem`,'map.loss':`Vereség`,'map.tie':`Döntetlen`,'map.none':`A pályaadatok a következő frissítés után jelennek meg.`,
-'rt.aim':`Célzás`,'rt.positioning':`Pozícionálás`,'rt.utility':`Utility`,'rt.clutch':`Clutch`,'rt.opening':`Nyitás`,'rt.ct_leetify':`CT oldal`,'rt.t_leetify':`T oldal`,
-'tile.premier':`Premier`,'tile.matches':`Meccsek`
-});
 
 
 const PLC=['#4cc9f0','#f72585','#7ae582','#b388ff','#ff9f1c'];
@@ -237,9 +182,6 @@ function formPanel(recent){
   return `<div class='panel reveal'><h3>${t('map.form')}</h3><div class='form'>${sq}</div><p class='note' style='margin-top:12px'>${t('map.formNote')}</p></div>`;
 }
 
-Object.assign(I18N.en,{'feed.title':`Recent matches`,'feed.team':`Team match feed`,'feed.wingman':`Wingman`,'feed.none':`No recent matches yet.`});
-Object.assign(I18N.ro,{'feed.title':`Meciuri recente`,'feed.team':`Meciurile echipei`,'feed.wingman':`Wingman`,'feed.none':`Încă nu există meciuri recente.`});
-Object.assign(I18N.hu,{'feed.title':`Legutóbbi meccsek`,'feed.team':`A csapat meccsei`,'feed.wingman':`Wingman`,'feed.none':`Még nincsenek friss meccsek.`});
 // rows: {d,m,o,sc,s,names:[{n,c}]}, newest first, only maps in the Active Duty pool
 function matchFeed(rows,limit){
   const list=(rows||[]).filter(x=>x&&x.o&&ACTIVE_POOL.includes(x.m)).sort((a,b)=>(Date.parse(b.d)||0)-(Date.parse(a.d)||0)).slice(0,limit||10);
@@ -256,9 +198,6 @@ function matchFeed(rows,limit){
 const feedPanel=(recent,title)=>`<div class='panel reveal'><h3>${t(title||'feed.title')}</h3>${matchFeed(recent,10)}</div>`;
 
 // ---- stats history line chart (data/history.json) ----
-Object.assign(I18N.en,{'hist.title':`Rating over time`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Win rate`,'hist.since':`since {d}`,'hist.help':`Hover, tap or use the arrow keys to see each point.`});
-Object.assign(I18N.ro,{'hist.title':`Evoluția în timp`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Rată victorii`,'hist.since':`din {d}`,'hist.help':`Treci cu mouse-ul, atinge sau folosește săgețile pentru fiecare punct.`});
-Object.assign(I18N.hu,{'hist.title':`Alakulás időben`,'hist.premier':`Premier`,'hist.hs':`HS%`,'hist.winrate':`Győzelmi arány`,'hist.since':`{d} óta`,'hist.help':`Vidd fölé az egeret, koppints, vagy használd a nyílbillentyűket.`});
 const HIST_METRICS={
   premier:{fmt:v=>Math.round(v).toLocaleString('en'),color:tierColor},
   hs:{fmt:v=>v.toFixed(1)+'%',color:()=>'#ffe600'},

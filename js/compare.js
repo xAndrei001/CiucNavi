@@ -1,8 +1,4 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{'cmp.title':`Head ~to Head~`,'cmp.back':`← Back to team`,'cmp.leads':`leads in`,'cmp.of':`of`,'cmp.cats':`categories`,'cmp.even':`Dead even`,'cmp.radar':`Skill profile`,'cmp.stats':`Stat by stat`,'cmp.nodata':`No data yet`,'cmp.pick':`Pick two players to compare.`});
-add('ro',{'cmp.title':`Față ~în față~`,'cmp.back':`← Înapoi la echipă`,'cmp.leads':`conduce la`,'cmp.of':`din`,'cmp.cats':`categorii`,'cmp.even':`Egalitate perfectă`,'cmp.radar':`Profil de abilități`,'cmp.stats':`Statistică cu statistică`,'cmp.nodata':`Fără date încă`,'cmp.pick':`Alege doi jucători pentru comparație.`});
-add('hu',{'cmp.title':`Szemtől ~szemben~`,'cmp.back':`← Vissza a csapathoz`,'cmp.leads':`vezet`,'cmp.of':`/`,'cmp.cats':`kategóriában`,'cmp.even':`Teljesen egyenlő`,'cmp.radar':`Képességprofil`,'cmp.stats':`Statisztikáról statisztikára`,'cmp.nodata':`Még nincs adat`,'cmp.pick':`Válassz ki két játékost az összehasonlításhoz.`});
 
 applyLang();
 

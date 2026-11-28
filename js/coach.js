@@ -1,32 +1,4 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{
-'nav.coach':`Coach`,
-'coach.title':`Head ~Coach~`,'coach.view':`View profile →`,
-'coach.awards':`Coach awards`,'coach.stats':`Coach stats`,'coach.about':`About the coach`,
-'coach.maps':`Best maps under the coach`,'coach.mapsNote':`Team results across the recent matches of the registered players. Maps with fewer than 3 games are hidden.`,
-'coach.nomaps':`Map data appears after the next stats update.`,
-'coach.ct':`CT round win rate`,'coach.t':`T round win rate`,'coach.pistol':`Pistol round win rate`,'coach.ot':`Overtime win rate`,
-'coach.best':`Best map`,'coach.worst':`Weakest map`,'coach.notfound':`Coach data not found.`
-});
-add('ro',{
-'nav.coach':`Antrenor`,
-'coach.title':`Antrenor ~principal~`,'coach.view':`Vezi profilul →`,
-'coach.awards':`Premiile antrenorului`,'coach.stats':`Statistici antrenor`,'coach.about':`Despre antrenor`,
-'coach.maps':`Cele mai bune hărți sub antrenor`,'coach.mapsNote':`Rezultatele echipei în meciurile recente ale jucătorilor înregistrați. Hărțile cu mai puțin de 3 meciuri sunt ascunse.`,
-'coach.nomaps':`Datele pe hărți apar după următoarea actualizare a statisticilor.`,
-'coach.ct':`Rate de runde câștigate CT`,'coach.t':`Rate de runde câștigate T`,'coach.pistol':`Runde pistol câștigate`,'coach.ot':`Prelungiri câștigate`,
-'coach.best':`Cea mai bună hartă`,'coach.worst':`Cea mai slabă hartă`,'coach.notfound':`Datele antrenorului nu au fost găsite.`
-});
-add('hu',{
-'nav.coach':`Edző`,
-'coach.title':`Vezéredző`,'coach.view':`Profil megtekintése →`,
-'coach.awards':`Edzői díjak`,'coach.stats':`Edzői statisztikák`,'coach.about':`Az edzőről`,
-'coach.maps':`Legjobb pályák az edző alatt`,'coach.mapsNote':`A csapat eredményei a regisztrált játékosok legutóbbi meccsei alapján. A 3-nál kevesebb meccses pályák rejtve vannak.`,
-'coach.nomaps':`A pályaadatok a következő statisztikafrissítés után jelennek meg.`,
-'coach.ct':`CT kör győzelmi arány`,'coach.t':`T kör győzelmi arány`,'coach.pistol':`Pisztolykör győzelmi arány`,'coach.ot':`Hosszabbítás győzelmi arány`,
-'coach.best':`Legjobb pálya`,'coach.worst':`Leggyengébb pálya`,'coach.notfound':`Az edző adatai nem találhatók.`
-});
 
 
 const L=o=>(o&&typeof o==='object')?(o[LANG]||o.en||''):(o==null?'':o);

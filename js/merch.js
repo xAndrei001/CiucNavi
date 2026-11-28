@@ -1,35 +1,4 @@
 (function(){
-const add=(l,o)=>Object.assign(I18N[l],o);
-add('en',{
-'merch.viewAll':`Browse all merch`,'merch.teeSuffix':`Player Tee`,'merch.tshirt':`T-shirt`,
-'merch.sub':`Official Ciuc Navi player tees. Front and back print, sizes XS to XL.`,
-'merch.size':`Size`,'merch.edition':`Edition`,'merch.standard':`Standard`,'merch.signedOpt':`Signed by the player`,
-'merch.qty':`Quantity`,'merch.total':`Total`,'merch.checkout':`Go to checkout`,'merch.pick':`Please choose a size first.`,
-'merch.received':`Order received`,'merch.receivedText':`Thank you! We got your order.`,
-'merch.demo':`Demo store: nothing is actually ordered or charged.`,'merch.close':`Close`,
-'merch.front':`Front`,'merch.back':`Back`,'merch.backLink':`← Back to merch`,'merch.notfound':`Item not found.`,
-'merch.signedShort':`Signed`,'merch.signedFrom':`Signed +`
-});
-add('ro',{
-'merch.viewAll':`Vezi tot merch-ul`,'merch.teeSuffix':`Tricou jucător`,'merch.tshirt':`Tricou`,
-'merch.sub':`Tricouri oficiale Ciuc Navi cu numele jucătorilor. Print față și spate, mărimi XS–XL.`,
-'merch.size':`Mărime`,'merch.edition':`Ediție`,'merch.standard':`Standard`,'merch.signedOpt':`Semnat de jucător`,
-'merch.qty':`Cantitate`,'merch.total':`Total`,'merch.checkout':`Mergi la checkout`,'merch.pick':`Alege mai întâi o mărime.`,
-'merch.received':`Comandă primită`,'merch.receivedText':`Mulțumim! Am primit comanda ta.`,
-'merch.demo':`Magazin demo: nu se comandă și nu se taxează nimic.`,'merch.close':`Înschide`,
-'merch.front':`Față`,'merch.back':`Spate`,'merch.backLink':`← Înapoi la merch`,'merch.notfound':`Produsul nu a fost găsit.`,
-'merch.signedShort':`Semnat`,'merch.signedFrom':`Semnat +`
-});
-add('hu',{
-'merch.viewAll':`Összes merch megtekintése`,'merch.teeSuffix':`Játékospóló`,'merch.tshirt':`Póló`,
-'merch.sub':`Hivatalos Ciuc Navi játékospólók. Elöl-hátul nyomat, XS-től XL-ig.`,
-'merch.size':`Méret`,'merch.edition':`Kiadás`,'merch.standard':`Normál`,'merch.signedOpt':`A játékos által aláírt`,
-'merch.qty':`Mennyiség`,'merch.total':`Összesen`,'merch.checkout':`Tovább a pénztárhoz`,'merch.pick':`Először válassz méretet.`,
-'merch.received':`Rendelés megérkezett`,'merch.receivedText':`Köszönjük! Megkaptuk a rendelésedet.`,
-'merch.demo':`Demó bolt: valójában nem rendelsz és nem fizetsz semmit.`,'merch.close':`Bezár`,
-'merch.front':`Elöl`,'merch.back':`Hátul`,'merch.backLink':`← Vissza a merchhez`,'merch.notfound':`A termék nem található.`,
-'merch.signedShort':`Aláírt`,'merch.signedFrom':`Aláírt +`
-});
 
 
 let CFG={currency:'RON',price:350,signedExtra:50,sizes:['XS','S','M','L','XL'],maxQty:10};
