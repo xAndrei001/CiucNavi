@@ -35,7 +35,7 @@ It's plain HTML, CSS and vanilla JavaScript with no build step. Content comes fr
 - `data/merch.json`: price, sizes, currency
 - `data/stats.json`, `data/stats/<steam64>.json`, `data/history.json`: stats. These are a fallback copy; the live values are produced by the deploy workflow (see below)
 - `img/players/`, `img/news/`, `img/merch/`, `img/background/`: images. `img/og.jpg` is the social preview image
-- `scripts/`: the stats bot (Python, standard library only)
+- `scripts/`: the stats bot (Python, standard library only) and `serve.py`, the local preview server
 - `.github/workflows/update-stats.yml`: build and deploy
 
 ## How to
@@ -89,10 +89,10 @@ CSS and JS links carry `?v=…`. The deploy workflow replaces every `?v=` in `*.
 ## Local preview
 
 ```
-python -m http.server 8000
+python scripts/serve.py
 ```
 
-Run it in this folder, then open http://localhost:8000. Opening the HTML files directly doesn't work, because the pages load their data with `fetch`.
+Then open http://localhost:8000 (pass another port as an argument if 8000 is taken). It's a plain static server that tells the browser not to cache, so a normal refresh always shows your latest edits. With `python -m http.server`, the browser can keep old CSS/JS, because the `?v=` tags only change at deploy. Opening the HTML files directly doesn't work, because the pages load their data with `fetch`.
 
 ## Branches
 

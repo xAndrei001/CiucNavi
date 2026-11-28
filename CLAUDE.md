@@ -7,6 +7,6 @@
 - Translations go only in `js/i18n.js`, in all three languages (`en`, `ro`, `hu`), with the same keys in the same order.
 - CSS goes in `css/style.css`. Never inject styles from JS.
 - Don't bump the `?v=` tags by hand; the deploy stamps them.
-- Test changes through the local server (`python -m http.server 8000`) in a headless browser, at desktop width and at 390px. Check the console for errors.
+- Test changes through the local no-cache server (`python scripts/serve.py`, port 8000) in a headless browser, at desktop width and at 390px. Check the console for errors.
 - `_note` keys in the data files describe their format; scripts and pages skip keys starting with `_`.
 - For everything else (pages, data formats, the stats pipeline), see `README.md`.
