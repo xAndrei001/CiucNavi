@@ -117,7 +117,7 @@ body strong.tier-6{color:#ffd700;text-shadow:0 0 14px rgba(255,215,0,.4)}
 .p-premier{display:inline-block;border:1px solid var(--yellow);border-radius:12px;padding:10px 22px;margin-right:12px;background:rgba(255,230,0,.06)}
 .p-premier strong{display:block;font-family:'Rajdhani',sans-serif;font-size:2.2rem;color:var(--yellow);line-height:1.1}
 .p-premier span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
-.p-links{display:inline-flex;gap:8px;vertical-align:top;margin-top:8px}
+.p-links{display:inline-flex;flex-wrap:wrap;gap:8px;vertical-align:top;margin-top:8px}
 .tabs{display:flex;gap:8px;margin-bottom:26px;border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap}
 .tab-btn{background:transparent;border:none;color:var(--muted);padding:12px 22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.85rem;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;transition:.2s}
 .tab-btn:hover{color:var(--text)}
@@ -323,6 +323,7 @@ a.news-card:hover{transform:translateY(-6px);border-color:var(--yellow);box-shad
 .news-detail .news-img{border:1px solid var(--border);border-radius:16px}
 .nd-body{display:flex;flex-direction:column;gap:14px;min-width:0}
 .nd-body h2{font-family:'Rajdhani',sans-serif;font-size:clamp(1.8rem,3.4vw,2.8rem);letter-spacing:1px;line-height:1.1}
+.nd-share{margin:-4px 0 6px}
 .nd-body p{color:#d6d6dc;line-height:1.75;font-size:1.02rem;overflow-wrap:anywhere}
 .nd-body h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;letter-spacing:1px;margin-top:10px;color:var(--yellow)}
 .nd-body ul{color:#d6d6dc;line-height:1.75;padding-left:1.3em;list-style:disc}

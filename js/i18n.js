@@ -35,6 +35,8 @@ en:{
 'cta.text':`Join the Discord and say hi.`,
 'cta.btn':`Join our Discord`,
 'footer.text':`Fan-made parody project, not affiliated with NAVI (Natus Vincere).`,
+'share.copy':`Copy link`,
+'share.copied':`Link copied!`,
 // Roster and player cards
 'roster.title':`Main ~Roster~`,
 'bench.title':`The ~Bench~`,
@@ -276,6 +278,8 @@ ro:{
 'cta.text':`Intră pe Discord și salută-ne.`,
 'cta.btn':`Intră pe Discord`,
 'footer.text':`Proiect parodie făcut de fani, fără legătură cu NAVI (Natus Vincere).`,
+'share.copy':`Copiază linkul`,
+'share.copied':`Link copiat!`,
 // Roster and player cards
 'roster.title':`Echipa ~principală~`,
 'bench.title':`Banca de ~rezerve~`,
@@ -517,6 +521,8 @@ hu:{
 'cta.text':`Gyere a Discordra és köszönj be.`,
 'cta.btn':`Csatlakozz a Discordhoz`,
 'footer.text':`Rajongói paródia projekt, nincs kapcsolatban a NAVI-val (Natus Vincere).`,
+'share.copy':`Link másolása`,
+'share.copied':`Link kimásolva!`,
 // Roster and player cards
 'roster.title':`Fő ~keret~`,
 'bench.title':`A ~kispad~`,

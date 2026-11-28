@@ -3,6 +3,15 @@ if(!I18N[LANG])LANG='en';
 const t=k=>(I18N[LANG]&&I18N[LANG][k])||I18N.en[k]||k;
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;');
 const slug=n=>String(n).toLowerCase().replace(/[^a-z0-9]/g,'');
+// "Copy link" points at the preview pages built at deploy (p/<slug>/, n/<id>/), always on the live site so shared links show a card
+const SITE_URL='https://xandrei001.github.io/CiucNavi';
+const shareBtn=path=>`<button type='button' class='btn btn-ghost btn-small share-btn' data-url='${esc(SITE_URL+'/'+path)}'>${t('share.copy')}</button>`;
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.share-btn');if(!b)return;
+  const u=b.dataset.url,done=()=>{b.textContent=t('share.copied');setTimeout(()=>{b.textContent=t('share.copy')},1500)};
+  const fallback=()=>{const a=document.createElement('textarea');a.value=u;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();done()};
+  if(navigator.clipboard)navigator.clipboard.writeText(u).then(done,fallback);else fallback();
+});
 const initials=n=>String(n).replace(/[^a-zA-Z0-9 ]/g,'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?';
 const numOf=v=>Number(String(v).replace(/[^0-9.\-]/g,''));
 const tierOf=n=>n>=30000?6:n>=25000?5:n>=20000?4:n>=15000?3:n>=10000?2:n>=5000?1:0;

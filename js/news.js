@@ -27,7 +27,7 @@ function detail(n){
   const pl=(n.players||[]).map(x=>`<a href='player.html?p=${slug(x)}'>${esc(x)}</a>`).join('');
   return `<a class='news-back' href='news.html'>${t('news.backList')}</a>
     <article class='news-detail'>${imgOf(n)}
-      <div class='nd-body'><span class='news-date'>${esc(dateOf(n))}</span><h2>${esc(L(n.title))}</h2>${paras}${pl?`<div class='nd-players'>${t('news.players')}: ${pl}</div>`:''}</div></article>`;
+      <div class='nd-body'><span class='news-date'>${esc(dateOf(n))}</span><h2>${esc(L(n.title))}</h2><div class='nd-share'>${shareBtn('n/'+encodeURIComponent(n.id)+'/')}</div>${paras}${pl?`<div class='nd-players'>${t('news.players')}: ${pl}</div>`:''}</div></article>`;
 }
 
 const skelCard=()=>`<div class='news-card'><div class='skel' style='aspect-ratio:3/4;border:0;border-radius:0'></div><div class='news-body'><div class='skel' style='height:12px;width:45%'></div><div class='skel' style='height:22px'></div><div class='skel' style='height:56px'></div></div></div>`;

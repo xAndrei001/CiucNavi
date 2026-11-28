@@ -100,7 +100,7 @@ function render(){
       <h1>${esc(p.name)}</h1>
       <p class='p-tag'>${esc(p.tag||'')}</p>
       <div class='p-premier'><strong class='tier-${tierOf(numOf(s.premier))}'>${esc(prem)}</strong><span>${t('card.premier')}</span></div>
-      <div class='p-links'>${links}</div>
+      <div class='p-links'>${links}${shareBtn('p/'+slug(p.name)+'/')}</div>
     </div>
   </div>
   ${settings?`<div class='tabs'>
