@@ -21,14 +21,18 @@ function crosshairSVG(c){
   return s+'</svg>';
 }
 
+// player-details.json is a template: only filled values show, and '_' keys are notes
+const filled=([k,v])=>v!==''&&v!=null&&k[0]!=='_';
+
 function settingsHTML(set){
   const order=['mouse','video','viewmodel','gear'];
-  const keys=[...order.filter(k=>set&&set[k]),...Object.keys(set||{}).filter(k=>!order.includes(k))];
+  const keys=[...order.filter(k=>set&&set[k]),...Object.keys(set||{}).filter(k=>!order.includes(k)&&k[0]!=='_')];
   return keys.map(g=>{
-    const items=Object.entries(set[g]||{});
+    const items=Object.entries(set[g]||{}).filter(filled);
+    if(!items.length)return '';
     return `<div class='panel'><h3>${esc(I18N[LANG]['set.'+g]||I18N.en['set.'+g]||pretty(g))}</h3><div class='kv-grid'>${items.map(([k,v])=>{
       const label=I18N[LANG]['set.'+k]||I18N.en['set.'+k]||pretty(k);
-      return `<div class='kv'><strong>${v===''||v==null?'—':esc(v)}</strong><span>${esc(label)}</span></div>`;
+      return `<div class='kv'><strong>${esc(v)}</strong><span>${esc(label)}</span></div>`;
     }).join('')}</div></div>`;
   }).join('');
 }
@@ -79,15 +83,13 @@ function render(){
   const links=(l.steam?`<a class='btn btn-ghost btn-small' href='${esc(l.steam)}' target='_blank' rel='noopener'>Steam</a>`:'')+(leet?`<a class='btn btn-ghost btn-small' href='${esc(leet)}' target='_blank' rel='noopener'>Leetify</a>`:'')+(p.steam64?`<a class='btn btn-ghost btn-small' href='compare.html?a=${slug(p.name)}'>${t('cmp.link')}</a>`:'');
   const prem=s.premier&&s.premier!=='-'?s.premier:'—';
 
-  let body='';
-  if(tab==='stats'){
-    body=statsTab();
-  }else{
-    const c=(info&&info.crosshair)||{};
-    const code=c.code||'';
-    body+=`<div class='panel'><h3>${t('xh.title')}</h3><div class='crosshair-box'><div class='xh-preview'>${crosshairSVG(c)}</div><div><div class='note'>${t('xh.code')}</div><div class='code-row'><div class='code'>${code?esc(code):t('xh.empty')}</div>${code?`<button class='btn btn-small' id='copy-xh'>${t('xh.copy')}</button>`:''}</div><p class='note' style='margin-top:12px'>${t('xh.note')}</p></div></div></div>`;
-    body+=settingsHTML(info&&info.settings);
-  }
+  // crosshair shows only with a code (size/colour defaults are placeholders); no settings at all -> no tab
+  const c=(info&&info.crosshair)||{};
+  const code=c.code||'';
+  const xh=code?`<div class='panel'><h3>${t('xh.title')}</h3><div class='crosshair-box'><div class='xh-preview'>${crosshairSVG(c)}</div><div><div class='note'>${t('xh.code')}</div><div class='code-row'><div class='code'>${esc(code)}</div><button class='btn btn-small' id='copy-xh'>${t('xh.copy')}</button></div><p class='note' style='margin-top:12px'>${t('xh.note')}</p></div></div></div>`:'';
+  const settings=xh+settingsHTML(info&&info.settings);
+  if(!settings)tab='stats';
+  const body=tab==='stats'?statsTab():settings;
 
   root.innerHTML=`<a class='back' href='index.html#roster'>${t('player.back')}</a>
   <div class='p-hero'>
@@ -100,10 +102,10 @@ function render(){
       <div class='p-links'>${links}</div>
     </div>
   </div>
-  <div class='tabs'>
+  ${settings?`<div class='tabs'>
     <button class='tab-btn ${tab==='stats'?'active':''}' data-tab='stats'>${t('tab.stats')}</button>
     <button class='tab-btn ${tab==='settings'?'active':''}' data-tab='settings'>${t('tab.settings')}</button>
-  </div>
+  </div>`:''}
   <div>${body}</div>`;
 
   root.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{tab=b.dataset.tab;render()}));

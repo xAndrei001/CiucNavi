@@ -1,4 +1,5 @@
 {
+  "_note": "Template for each player's page. Empty fields are hidden: a settings group (mouse, video, viewmodel, gear) appears on the site as soon as any of its fields is filled in, and the crosshair appears once 'code' is filled in. If nothing is filled in, the Settings & Crosshair tab is hidden.",
   "gheopard": {
     "crosshair": { "code": "", "size": 3, "thickness": 1, "gap": -1, "color": "#00ff00", "dot": false, "outline": true },
     "settings": {
