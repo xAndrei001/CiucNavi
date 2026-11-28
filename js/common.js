@@ -76,7 +76,7 @@ hu:{
 'hero.sub':`Hargitán született. Bajnokként játszik. Öt barát, egy keret, nulla kompromisszum.`,
 'hero.cta1':`Ismerd meg a csapatot`,'hero.cta2':`Discord`,
 'hero.main':`Alapjátékos`,'hero.bench':`A kispadon`,'hero.avg':`Átl. Premier`,
-'about.title':`Rólunk`,
+'about.title':`~Rólunk~`,
 'about.headline':`Natus Vincere de Harghita: Győzelemre született, -20 °C-on edzett.`,
 'about.p1':`Ha s1mple és b1t a Vákár Lajos műjégpálya mellett születtek volna, ez a csapat lett volna az eredmény. Mi vagyunk a csíkszeredai Na'Vi, a csapat, amely a jégkorong fegyelmét viszi egyenesen a Mirage-ra és az Inferno-ra. Amikor télen megfagy az ujjad az egéren, megtanulsz csak one-tap-ekkel lőni, hogy spórolj a mozdulatokkal.`,
 'about.p2':`Nem félünk a B-rushtól és a hosszabbítástól sem, mert a hő- és lelki stressztűrésünk verhetetlen. A stratégia egyszerű: füst midre, flash hosszúra, forró tea (vagy egy áfonyalikőr) a freeze time-ban, és a célkereszt egyenesen a fejen.`,

@@ -1,19 +1,13 @@
 # Merch photos
 
-Put the t-shirt pictures in this folder. Each main-roster player needs two files:
+Put the t-shirt pictures in this folder. Every player whose `status` is `"main"` in
+`data/players.json` needs two files:
 
 - `<name>-front.jpg`
 - `<name>-back.jpg`
 
-where `<name>` is the player name in lowercase letters and numbers only:
+where `<name>` is the player name in lowercase with only letters a-z and digits 0-9 kept
+(the same rule as `slug()` in `js/common.js`). Example: REGELE → `regele-front.jpg`, `regele-back.jpg`.
 
-| Player | Files |
-|---|---|
-| GHEOPARD | `gheopard-front.jpg`, `gheopard-back.jpg` |
-| Ceontixx | `ceontixx-front.jpg`, `ceontixx-back.jpg` |
-| stfandrei | `stfandrei-front.jpg`, `stfandrei-back.jpg` |
-| REGELE | `regele-front.jpg`, `regele-back.jpg` |
-| teaca | `teaca-front.jpg`, `teaca-back.jpg` |
-
-Tip: keep each picture under about 300 KB (800 x 1000 px is plenty).
+Tip: keep each picture at most 1200 px on its longest side and about 250 KB.
 Until a picture exists, the site shows a drawn placeholder t-shirt.
