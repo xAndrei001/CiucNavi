@@ -58,6 +58,11 @@ jobs:
           STEAM_API_KEY: ${{ secrets.STEAM_API_KEY }}
         run: python scripts/update_stats.py
 
+      # Per-player and per-news link-preview pages (p/<slug>/, n/<id>/), so shared links show that player or article.
+      - name: Build link previews
+        continue-on-error: true
+        run: python scripts/build_previews.py
+
       - name: Save stats history
         continue-on-error: true
         run: |

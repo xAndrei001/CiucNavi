@@ -37,6 +37,7 @@ It's plain HTML, CSS and vanilla JavaScript with no build step. Content comes fr
 - `img/players/`, `img/news/`, `img/merch/`, `img/background/`: images. `img/og.jpg` is the social preview image
 - `scripts/`: the stats bot (Python, standard library only) and `serve.py`, the local preview server
 - `.github/workflows/update-stats.yml`: build and deploy
+- `p/`, `n/`: link-preview pages, generated at deploy by `scripts/build_previews.py` and never committed (see Sharing links)
 
 ## How to
 
@@ -81,6 +82,10 @@ Keys starting with `_` in the data files (like `_note`) are documentation and ar
 - **History** lives on the `stats-history` branch as `history.json`: `{"players": {"<steam64>": [{"t": "2026-11-28T07:02Z", "premier": 22469, "hs": 18.0, "winrate": 73.3, "matches": 1703}, …]}}`. A point is only added when one of those values changed. `scripts/history.py` holds the shared logic. `scripts/backfill_history.py` was a one-off that rebuilt the history from old git commits.
 - **Required repo secrets:** `LEETIFY_API_KEY` and `STEAM_API_KEY`.
 - **Pages setting:** Settings → Pages → Source must be **GitHub Actions**.
+
+## Sharing links
+
+Chat apps like Discord don't run JavaScript, so `player.html?p=…` and `news.html?id=…` would all show the same generic card. On every deploy, `scripts/build_previews.py` writes a small page per player (`p/<name>/`) and per news post (`n/<id>/`). Each one has that player's or article's title, description and picture, and sends visitors straight on to the real page. The **Copy link** button on player pages and news articles copies that live preview address. A new player or news post gets its preview page on the next deploy.
 
 ## Cache-busting
 
